@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="CustomTimeGrid" extends="TimeGrid">
+    <interface>
+        <field id="KEY_PRESSED_STATE" type="string" alwaysnotify="true" />
+    </interface>
+    <script type="text/brightscript"
+        uri="pkg:/components/Scenes/TimeGridScene/TimeGrid/CustomTimeGrid.brs" />
+
+    <children>
+        
+    </children>
+
+</component>

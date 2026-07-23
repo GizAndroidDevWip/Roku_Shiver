@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<!--********** Copyright 2016 Roku Corp.  All Rights Reserved. **********-->
+<!-- This is a panel that has a list inside of it and handles proper focusing of it.
+	List is accessible via interface field "list" so you can customize it easily. -->
+<component name="MarkupListPanel" extends="Panel" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+	<interface>
+		<!-- provides acess to items list -->
+		<field id="categoryRowlist" type="node"/>
+	</interface> 
+	
+	<script type="text/brightscript" uri="pkg:/components/screens/MarkupListPanel/MarkupListPanel.brs"/>
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+	
+	<children>
+	
+		<RowList
+			id="RowList"
+			itemComponentName="customItemForCategories"
+			focusBitmapUri="pkg:/images/focus_grid.9.png"
+			itemSize="[1920, 1080]"
+			focusXOffset="[12,12,12,12,12,12,12,12,12]"
+			itemSpacing="[13,50]"
+			rowLabelOffset="[[0,20]]"
+			variableWidthItems="[true]"
+			rowFocusAnimationStyle="floatingfocus"
+			vertFocusAnimationStyle="fixedfocus"
+			rowItemSize="[[320, 180]]"
+			rowItemSpacing="[[50, 50]]"
+			rowHeights="[235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235]" />
+	</children>
+</component>

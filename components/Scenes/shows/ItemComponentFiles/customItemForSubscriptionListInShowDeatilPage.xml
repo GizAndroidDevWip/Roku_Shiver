@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="customItemForSubscriptionListInShowDeatilPage" extends="Group">
+
+  <interface>
+    <field id="width" type="float" onChange="updateLayout" />
+    <field id="height" type="float" onChange="updateLayout" />
+    <field id="itemContent" type="node" onChange="itemContentChanged" />
+
+  </interface>
+
+  <script type="text/brightscript">
+
+    <![CDATA[
+      sub Init()
+        m.Poster = m.top.findNode("poster")
+        m.name_label =m.top.findNode("name_label")
+        m.main_rect =m.top.findNode("main_rect")
+        m.subscriptionCornerRounded =m.top.findNode("subscriptionCornerRounded")
+      end sub
+
+
+      sub updateLayout()
+        if m.top.height > 0 And m.top.width > 0 then
+          m.main_rect.width = m.top.width
+          m.main_rect.height = m.top.height
+          m.name_label.height = m.top.height
+          m.name_label.width = m.top.width
+          m.subscriptionCornerRounded.height = m.top.height
+          m.subscriptionCornerRounded.width = m.top.width
+        end if
+      end sub
+
+
+      sub itemContentChanged()
+      ?"sdhkjhfkshdkfhkdfkhkhfkds"
+      ?m.top.itemContent
+        m.name_label.text = m.top.itemContent.subscription_text + " "+ m.top.itemContent.subscription_name 
+        m.name_label.visible = "true"
+        m.name_label.font.size = "21"
+      end sub
+      ]]>
+  </script>
+
+  <children>
+    <Rectangle id="main_rect" width="325" height="70" translation="[0,0]" color="00FFFFFF"
+      visible="true">
+
+      <Poster id="subscriptionCornerRounded" uri="pkg:/images/img_newbg_default.9.png"
+        visible="true"
+        translation="[0,0]" width="315" height="70" />
+
+      <Label
+        id="name_label"
+        visible="true"
+        width="300"
+        wrap="true"
+        numLines="3"
+        maxLines="3"
+        lineSpacing="0.000000001"
+        horizAlign="center"
+        vertAlign="center"
+        color="#FFFFFF"
+        translation="[10,0]">
+        <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="23" />
+      </Label>
+
+
+    </Rectangle>
+  </children>
+</component>

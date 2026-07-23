@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="AllCategory" extends="Group"
+    xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+    <script type="text/brightscript" uri="pkg:/components/Scenes/AllCategory/AllCategory.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <interface>
+        <field id="start" type="string" alwaysnotify="true" onChange="onStarted" />
+        <field id="logout" type="bool" alwaysnotify="true" />
+        <field id="logoutall" type="bool" alwaysnotify="true" />
+        <field id="selectedlangugae" type="String" alwaysnotify="true" />
+        <field id="Content" type="node" onChange="OnChangeContent" />
+        <field id="LabelContent" type="node" onChange="OnChangeLabelContent" />
+        <field id="OptionsContent" type="node" onChange="OnChangeOptionsContent" />
+        <field id="VODcontent" type="node" />
+        <field id="goToShowDetailsScreen" type="intarray" alwaysnotify="true" />
+        <field id="goToVideoPlayerScene" type="intarray" alwaysnotify="true" />
+        <field id="SET_DEFAULT_FOCUS" type="bool" alwaysnotify="true" onChange="onSetDefaultFocus" />
+
+    </interface>
+
+
+    <children>
+
+        <Rectangle id="AppBackground" width="1920" height="1080" translation="[0,0]" />
+
+
+        <Group id="Overhang">
+            <Label>
+                <Font id="DescFont" role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="18" />
+            </Label>
+            <PaymentDescription id="PaymentDescription" visible="false" />
+            
+        </Group>
+
+
+        <PaymentDescription id="PaymentDescription" visible="false" />
+
+
+        <Label
+            id="sceneTitle"
+            text="Category"
+            font="font:LargeBoldSystemFont"
+            horizAlign="center"
+            width="400"
+            height="80"
+            translation="[0, 45]"
+            visible="false" />
+
+        <Poster
+            id="back" width="1920" height="1080" uri="pkg:/images/App_blackbanner_1920x1080.png"
+            translation="[0,0]"
+            visible="false" opacity="0.2" />
+
+
+        <PanelSet id="PanelSet" translation="[0,50]" />
+
+        <!-- <Label id="OptionsLabel" translation="[26,1020]" width="400" horizAlign="right"
+        font="font:SmallestBoldSystemFont"
+				color = "#ffffff" text="Copyright © 2022 ISG " /> -->
+
+        <!-- <Poster id="PosterOverhang" translation="[170,570]"
+        uri="pkg:/images/App_transparent_logo_375.png" width="350" height="95" opacity="0.5"/> -->
+
+        <!-- <Poster id="eye" blendColor="##10c1d0" translation="[60,128]"
+        uri="pkg:/images/focus.png" width="60" height="60" /> -->
+
+
+        <Loading id="loading" />
+
+        <Dialog id="Dialog" translation="[0,0]" visible="false" close="true"
+            message="Some option text goes here" title="Options" messageFont="font:MediumSystemFont" />
+
+        
+
+
+        <Label id="lbl1" color="#ffffff" text="No Shows Under This Category"
+            visible="false" translation="[1000,200]">
+            <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="40" />
+        </Label>
+
+        <Channel id="Channel" visible="false" />
+
+        <Loading id="loading" visible="false" />
+
+        <Timer
+            id="debounceTimer"
+            repeat="false"
+            duration="0.5" />
+
+    </children>
+</component>

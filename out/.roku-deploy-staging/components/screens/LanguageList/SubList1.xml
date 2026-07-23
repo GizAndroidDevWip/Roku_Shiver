@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="SubList1" extends="Group"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+  <script type="text/brightscript" uri="pkg:/components/screens/LanguageList/SubList1.brs" />
+
+  <interface>
+
+    <field id="begin" type="String" alwaysnotify="true"/>
+    <field id="selectedlangid" type="String" alwaysnotify="true"/>
+
+  </interface>
+
+
+  <children>
+
+    <Rectangle id="AppBackground" color="#000000" width="1920" height="1080" translation="[0,0]" />
+
+
+    <SubscriptionLists1 id="contentRowList1" translation="[50,50]" />
+
+
+
+  </children>
+</component>

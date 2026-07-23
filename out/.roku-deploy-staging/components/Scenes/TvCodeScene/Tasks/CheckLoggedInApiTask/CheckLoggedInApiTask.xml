@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="CheckLoggedInApiTask" extends="Task">
+	<interface>
+		<field id="CheckLoggedInApiTaskContent" alwaysnotify="true" type="integer" />
+		<field id="CheckLoggedInApiTaskListStatus" alwaysnotify="true" type="Boolean" />
+		<field id="code"  type="String" />
+		
+		<function name="runCheckLoggedInApiTask" />
+		<function name="stopCheckLoggedInApiTask" />
+	</interface>
+	<script type="text/brightscript" uri="pkg:/components/Scenes/TvCodeScene/Tasks/CheckLoggedInApiTask/CheckLoggedInApiTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Util.brs" />
+	<!-- <script type="text/brightscript" uri="pkg:/components/Scenes/LaunchScene/LaunchScene.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" /> -->
+</component>

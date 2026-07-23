@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="GetVideoDetailsTask2" extends="Task">
+    <interface>
+        <field id="request" type="string" alwaysnotify="true" />
+        <field id="videoID" type="string" alwaysnotify="true" />
+        <field id="show_id" type="string" alwaysnotify="true" />
+        <field id="videoSubs" alwaysnotify="true" type="bool"/>
+        <field id="userSubIDSCount" alwaysnotify="true" type="Integer" />
+        <field id="notifyClick"  type="bool" />
+        <field id="videoDetailsResponse"  type="assocarray" />
+        <field id="tagsContent"  type="node" />
+        <field id="playListVideosParsed"  type="node" alwaysNotify="true" />
+        <field id="resolutions_parsed"  type="node" alwaysNotify="true" />
+
+        <function  name="runGetVideoDetailsTask"/>
+        <function name="stopGetVideoDetailsTask" />
+    </interface>
+    <script type="text/brightscript" uri="pkg:/components/tasks/GetVideoDetailsTask/GetVideoDetailsTask2.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs"/>
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs"/>
+    <script type="text/brightscript" uri="pkg:/source/Util.brs"/>
+</component>

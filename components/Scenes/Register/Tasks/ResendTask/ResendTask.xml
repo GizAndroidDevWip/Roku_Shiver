@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ResendTask" extends="Task">
+<interface>
+  	<field id="ResendRequest" alwaysnotify="true" type="String"/>
+    <field id="ResendResponse" alwaysnotify="true" type="String" />
+    
+	<function name="runResendTask" />
+    <function name="stopResendTask" />
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/Scenes/Register/Tasks/ResendTask/ResendTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+</component>

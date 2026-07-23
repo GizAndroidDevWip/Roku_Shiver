@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="AutoPlayAPiTask" extends="Task">
+	<interface>
+		<field id="AutoPlayAPiTaskContent" alwaysnotify="true"
+			type="roAssociativeArray" />
+		<field id="AutoPlayAPiTaskListStatus" alwaysnotify="true" type="Boolean" />
+		<field id="courseId"  type="Integer" />
+		<field id="show_id"  type="string" />
+
+			<field id="autoplay_show_id"  type="string" />
+		
+		
+		<function name="runAutoPlayAPiTask" />
+		<function name="stopAutoPlayAPiTask" />
+	</interface>
+	<script type="text/brightscript" uri="pkg:/components/Scenes/shows/Tasks/AutoPlayAPiTask/AutoPlayAPiTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Util.brs" />
+	<!-- <script type="text/brightscript" uri="pkg:/components/Scenes/LaunchScene/LaunchScene.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" /> -->
+</component>

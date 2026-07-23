@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--********** Copyright 2017 Roku Inc.  All Rights Reserved. **********-->
+
+<component name="SimpleRowListItemDataSub1" extends="ContentNode">
+
+<interface>
+  <field id="audio_language_id" type="string" />
+  <field id="audio_language_name" type="string" />
+</interface>
+
+</component>

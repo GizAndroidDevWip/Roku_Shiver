@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="SelvideoFetcher" extends="Task">
+
+<interface>
+  	<field id="SelectRequest" type="String" alwaysnotify="true"/>
+    <field id="SelContent" type="node" />
+</interface>
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components/tasks/SelvideoFetcher/SelvideoFetcher.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+</component>

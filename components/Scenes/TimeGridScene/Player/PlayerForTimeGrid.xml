@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<component name="PlayerForTimeGrid" extends="Group">
+    <interface>
+        <field id="content" type="node" />
+        <field id="visibility" type="bool" alwaysNotify="true" />
+        <field id="state" type="string" alwaysNotify="true" />
+        <field id="playerState" type="string" alwaysNotify="true" />
+        <field id="autoplay" type="bool" alwaysNotify="true" />
+        <field id="subtitles" type="Array" alwaysNotify="true" />
+        <field id="control" type="string" alwaysNotify="true" onChange="controlChanged" />
+        <field id="skipAd" type="bool" />
+        <field id="watched_duration" type="integer" />
+        <field id="VIDEO_LANGUAGE_CHANGED" type="string" alwaysNotify="true" />
+        <field id="linear_channel_id" type="String" />
+        <field id="channel_id" alwaysnotify="true" type="string" />
+        <field id="schedule" alwaysnotify="true" type="node" />
+        <field id="test" alwaysnotify="true" type="string" />
+        <field id="schedulecontent" alwaysnotify="true" type="node" />
+        <field id="scheduletask" alwaysnotify="true" type="node" />
+
+
+    </interface>
+
+    <script type="text/brightscript"
+        uri="pkg:/components/Scenes/TimeGridScene/Player/PlayerForTimeGrid.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+
+    <children>
+        <Rectangle id="languageLbllist_react" width="1920" height="1080"
+            translation="[0,0]" color="#000000" visible="true">
+            <Label id="language_Lbl" translation="[840,203]" height="38" size="40" width="360"
+                color="#FBFBFB" filltype="solid"
+                font="font:MediumBoldSystemFont"
+                text="Select Language" />
+            <LabelList id="selectLanguage" translation="[729,315]" textHorizAlign="center"
+                numRows="7"
+                font="font:SmallestSystemFont" visible="true" focusedColor="#ffffff" width="680"
+                height="480"
+                vertFocusAnimationStyle="floatingFocus">
+            </LabelList>
+        </Rectangle>
+
+        <Timer
+            id="makeVisibleTimer"
+            repeat="false"
+            duration="10" />
+
+        <Timer
+            id="makeHideTimer"
+            repeat="false"
+            duration="16" />
+
+        <Video
+            id="Video"
+            translation="[0,0]"
+            width="1920"
+            height="1080"
+            enableUI="true"
+            loop="true" />
+
+
+        <!-- 0x000000FF -->
+        <Rectangle
+            id="BottomBar"
+            translation="[30,1080]"
+            width="1920"
+            height="600"
+            color="00FFFFFF">
+
+            <Poster id="poster_bottom_shadow" uri="pkg:/images/img_newbottomshade.png"
+                visible="true" translation="[0, -45]" width="1920" height="480" />
+
+            <RowList
+                id="RowList" focusBitmapUri="pkg:/images/focus_grid.9.png"
+                itemComponentName="RowListItemss" rowLabelOffset="[[0,10]]"
+                translation="[240,120]" showRowLabel="true"
+                numRows="0" rowLabelFont="font:MediumBoldSystemFont"
+                rowItemSize="[[340, 191]]"
+                rowItemSpacing="[[30, 20]]"
+                itemSize="[1455,375]" rowFocusAnimationStyle="floatingFocus">
+            </RowList>
+        </Rectangle>
+
+
+        <Animation
+            id="ShowBar"
+            repeat="false"
+            duration="0.2"
+            easeFunction="linear">
+            <Vector2DFieldInterpolator
+                fieldToInterp="BottomBar.translation"
+                key="[0,1]"
+                keyValue="[[0,1080],[0,650]]" />
+        </Animation>
+
+        <Animation
+            id="HideBar"
+            repeat="false"
+            duration="0.2"
+            easeFunction="linear">
+            <Vector2DFieldInterpolator
+                fieldToInterp="BottomBar.translation"
+                key="[0,1]"
+                keyValue="[[0,650],[0,1080]]" />
+        </Animation>
+
+        <Label
+            id="Hint"
+            height="50"
+            color="#949494"
+            width="400" visible="false"
+            text=""
+            font="font:SmallestSystemFont"
+            translation="[810,1020]" />
+
+        <Label
+            id="title"
+            height="30"
+            width="400" color="##10c1d0"
+            visible="false"
+            font="font:MediumBoldSystemFont"
+            translation="[1450,800]" />
+
+        <Label id="live" translation="[80, 1019]" width="150" horizAlign="right"
+            font="font:SmallestBoldSystemFont"
+            color="##10c1d0" />
+
+        <!-- <Timer
+            id="Timer"
+            repeat="true"
+            duration="1" /> -->
+        <Timer
+            id="Timer"
+            repeat="false"
+            duration="3" />
+        <Timer
+            id="AdTimer"
+            repeat="true"
+            duration="1200" />
+
+        <Timer
+            id="scheduleTimer"
+            repeat="true"
+            duration="60" />
+
+        <Timer
+            id="scheduleRowListHideTimer"
+            repeat="false"
+            duration="10" />
+
+        <Label
+            id="playing"
+            height="0"
+            width="300"
+            numLines="3"
+            wrap="true"
+            maxLines="3"
+            font="font:SmallBoldSystemFont"
+            translation="[1500,100]" size="20" />
+
+        <Label id="next" translation="[260, 1020]" width="150" horizAlign="right"
+            font="font:SmallestBoldSystemFont"
+            color="##10c1d0" />
+
+
+    </children>
+</component>

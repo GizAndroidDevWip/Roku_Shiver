@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="customItemShowDetails" extends="Group">
+
+  <interface>
+    <field id="width" type="float" onChange="updateLayout" />
+    <field id="height" type="float" onChange="updateLayout" />
+    <field id="itemContent" type="node" onChange="itemContentChanged" />
+    <field id="focusPercent" type="float" onChange="onFocusPercentChanged" />
+    <field id="rowHasFocus" type="float" onChange="OnrowHasFocus" />
+  </interface>
+
+  <script type="text/brightscript"
+    uri="pkg:/components/Scenes/shows/ItemComponentFiles/customItemShowDetails.brs" />
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+
+  <children>
+    <Rectangle id="main_rect" width="320" height="211" translation="[0,0]" color="#000000"
+      visible="true">
+
+      <Poster id="poster" translation="[0,0]" width="320" height="211" loadDisplayMode="limitSize"
+        loadWidth="300" loadHeight="300"
+        uri="" loadSync="true" />
+
+      <Poster id="play_now_poster" translation="[1,114]" width="310" height="60"
+        uri="pkg:/images/img_long_button_selected.png" visible="false" />
+
+      <Poster id="cornerRounded" uri="pkg:/images/cornerRounded.png" visible="false"
+        translation="[0,0]" width="320" height="180" />
+
+      <Poster id="highlighter" uri="pkg:/images/highlighter2.png" visible="false"
+        translation="[0,0]" width="320" height="180" />
+
+      <Poster id="premium_tag" uri="pkg:/images/free_icon1.png" visible="false"
+        translation="[15,15]" width="30" height="30" />
+
+      <Label
+        id="episodeTitle"
+        translation="[0, 0]"
+        width="0"
+        visible="false"
+        height="0"
+        horizAlign="center"
+        vertAlign="center"
+        color="#cccccc"
+        font="font:MediumBoldSystemFont"
+        text="" />
+
+      <Label id="name_label" height="55" width="310" wrap="true" lineSpacing="0.01"
+        horizAlign="left"
+        vertAlign="top" font="font:SmallestBoldSystemFont" translation="[10,190]" numLines="2"
+        maxLines="2">
+      </Label>
+
+      <Label id="sub_label" height="105" width="310" wrap="true" lineSpacing="0.01"
+        horizAlign="left"
+        vertAlign="top" color="#cccccc" font="font:MediumBoldSystemFont" translation="[10,210]"
+        numLines="5" maxLines="10" size="60">
+      </Label>
+
+      <Poster id="free_icon" uri="pkg:/images/free_icon1.png" visible="false"
+        translation="[15,15]" width="53" height="54" />
+
+      <Poster id="lock_icon" uri="pkg:/images/icons/lock_icon.png" visible="false"
+        translation="[15,15]" width="30" height="30" />
+
+      <Label
+        id="descriptionBanner"
+        translation="[ 20, 140 ]"
+        horizAlign="right"
+        text="test"
+        width="492"
+        visible="false" color="#FFFFFF">
+      </Label>
+
+      <Rectangle
+        id="watchProgressContainer"
+        width="0"
+        height="5"
+        translation="[0,0]"
+        color="0x00000000"
+        visible="false">
+
+        <Poster
+          id="watchProgressLineBg"
+          width="0"
+          height="5"
+          opacity="0.2"
+          uri="pkg:/images/img_itemcatbg_selected.png"
+          translation="[0,0]"
+          visible="true" />
+
+        <Poster
+          id="watchProgressLine"
+          width="0" height="5" uri="pkg:/images/img_itemcatbg_selected.png"
+          translation="[0,0]" visible="true" />
+      </Rectangle>
+    </Rectangle>
+
+
+    <Rectangle id="descriptionZone" color="0x111111" height="60">
+
+
+      <Poster id="premiumIcon" width="80" height="80" visible="false" translation="[250, 20]" uri="" />
+
+
+    </Rectangle>
+
+  </children>
+
+</component>

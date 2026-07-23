@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="LaunchScene" extends="Group">
+    <interface>
+
+        <field id="gotoLandingScene" type="string" alwaysnotify="true" />
+        <field id="gotoHomeScene" type="string" alwaysnotify="true" />
+        <field id="gotoShowScene" type="string" alwaysnotify="true" />
+        <field id="goToMainVideoPlayer" type="roAssociativeArray" alwaysnotify="true" />
+        <field id="goToTimeGridScreen" type="bool" alwaysnotify="true" />
+        <field id="closethispage" type="string" alwaysnotify="true" />
+        <field id="gotoPlayDeepLinkVideo" type="bool" alwaysnotify="true" />
+    </interface>
+    
+
+    <script type="text/brightscript" uri="pkg:/components/Scenes/LaunchScene/LaunchScene.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/main.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+
+
+    <children>
+        <Rectangle width="1920" height="1080" color="#000000">
+
+
+            <Poster id="secondSplashScreen"
+                width="1920"
+                height="1080"
+                uri="pkg:/images/logos/BHD LOGO_Face Of APP_1920X1080.png"
+                translation="[0,0]"
+                enableUI="true" />
+
+            <Video id="splashVideo"
+                width="1920"
+                height="1080"
+                visible="false"
+                uri="pkg:/images/logos/Splash_video.mp4"
+                translation="[0,0]"
+                enableUI="false" />
+
+            <Loading id="loading" />
+
+            <Rectangle
+                id="messageDialog_rect" visible="false"
+                width="1920"
+                height="1080"
+                color="#000000">
+
+                <Label id="messageDialog" width="1920" horizAlign="center" vertAlign="center"
+                    height="1080"
+                    color="#ffffff" text="">
+                    <Font role="font" uri="pkg:/fonts/Netflix-Regular.ttf" size="28" />
+                </Label>
+
+            </Rectangle>
+
+
+            <!-- <Label id="logindialogmessage_label" width="750" height="36" text="Choose Sign In"
+          horizAlign="center" vertAlign="center" visible="true" translation="[0,60]"
+          color="#080808">
+          <Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="26" />
+        </Label> -->
+
+            <!-- <Poster id="secondSplashScreen"
+                width="1920"
+                height="1080"
+                visible ="false"
+                uri="pkg:/images/splashImage.png"
+                translation="[0,0]" /> -->
+
+            <!-- <Loading id="loading" /> -->
+        </Rectangle>
+    </children>
+</component>

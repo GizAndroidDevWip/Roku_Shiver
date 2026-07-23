@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="TokenFetcher" extends="Task">
+<interface>
+  	<field id="TokenRequest" alwaysnotify="true" type="String"/>
+    <field id="Token" type="String" />
+</interface>
+
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components/tasks/TokenFetcher.brs" />
+</component>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="SearchFetcherForShowMore" extends="Task">
+	<interface>
+  	  <field id="searchType" alwaysnotify="true" type="String"/>
+  	  <field id="SearchRequest" alwaysnotify="true" type="String"/>
+      <field id="searchContent" type="node"  alwaysNotify="true"/>
+      <field id="SearchBoolean" type="boolean" alwaysNotify="true"/>
+      <field id="searchFilter" type="Array" alwaysNotify="true"/>
+      
+	<function name="runSearchFetcherTask" />
+    <function name="stopSearchFetcherTask" />
+    </interface>
+
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Scenes/ShowMore/Task/SearchFetcherForShowMore.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+	<script type="text/brightscript" uri="pkg:/source/Util.brs"/>
+</component>

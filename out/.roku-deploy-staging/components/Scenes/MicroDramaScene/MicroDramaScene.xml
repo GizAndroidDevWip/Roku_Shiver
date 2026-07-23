@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="MicroDramaScene" extends="Group"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+    <interface>
+        <field id="show_id" type="int" alwaysnotify="true" onChange="callMicroDramaApi" />
+        <field id="sceneName" type="String" value="MicroDramaScene" />
+        <field id="show_name" type="string" alwaysnotify="true" />
+        <field id="goToShowDetailsPage" type="roAssociativeArray" alwaysnotify="true" />
+        <field id="playSelectedShortsVideo" type="integer" alwaysnotify="true" />
+        <field id="closethispage" type="string" alwaysnotify="true" />
+        <field id="goToPaymentDescriptionScreen" type="string" alwaysnotify="true" />
+        <field id="gotoLandingScene" type="bool" alwaysnotify="true" />
+
+
+    </interface>
+    <script type="text/brightscript"
+        uri="pkg:/components/Scenes/MicroDramaScene/MicroDramaScene.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <children>
+
+        <Rectangle color="#000000" width="1920" height="1080">
+            <Rectangle color="00ffffff" width="1920" height="1080" opacity="0.1">
+                <Poster id="image" visible="true" width="1920" height="1080" translation="[0,0]"
+                    uri="" />
+            </Rectangle>
+
+            <Label
+                id="title"
+                height="200"
+                width="1600"
+                font="font:LargeBoldSystemFont"
+                horizAlign="center"
+                wrap="true"
+                vertAlign="top"
+                translation="[200,282]" />
+
+            <Label
+                id="description"
+                height="197"
+                width="1500"
+                font="font:MediumSystemFont"
+                translation="[220,500]"
+                horizAlign="center"
+                vertAlign="top"
+                wrap="true" />
+
+
+
+
+            <Rectangle id="episodesBoxContainer" width="1920" height="1080" color="#000000"
+                translation="[0,0]">
+
+
+                <Label
+                    id="episodesTitle"
+                    text="Episodes"
+                    height="150"
+                    width="1450"
+                    lineSpacing="1"
+                    maxLines="2"
+                    horizAlign="left"
+                    vertAlign="bottom"
+                    font="font:LargeBoldSystemFont"
+                    translation="[255,90]"
+                    color="#FFFFFF" />
+
+                <RowList
+                    id="episodesBoxRowlist"
+                    itemComponentName="SquareItemComponent"
+                    itemSize="[1900,160]"
+                    rowItemSize="[[160,160]]"
+                    itemSpacing="[30,20]"
+                    numRows="7"
+                    rowheights="[160]"
+                    rowItemSpacing="[[20,20]]"
+                    translation="[255,315]" />
+            </Rectangle>
+
+            <Loading id="loading" visible="false" />
+
+        </Rectangle>
+    </children>
+</component>          

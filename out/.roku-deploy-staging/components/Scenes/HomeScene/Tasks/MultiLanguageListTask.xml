@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="MultiLanguageListApiTask" extends="Task">
+	<interface>
+	    <field id="MultiLanguageListApiTaskContent" alwaysnotify="true"
+			type="node" />
+		<field id="MultiLanguageListApiTaskListStatus" alwaysnotify="true" type="Boolean" />
+		<field id="courseId"  type="Integer" />
+		
+		<function name="runMultiLanguageListApiTask" />
+		<function name="stopMultiLanguageListApiTask" />
+	</interface>
+	<script type="text/brightscript" uri="pkg:/components/Scenes/HomeScene/Tasks/MultiLanguageListTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Util.brs" />
+	<!-- <script type="text/brightscript" uri="pkg:/components/Scenes/LaunchScene/LaunchScene.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" /> -->
+</component>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="RegisterScene" extends="Group"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+    <interface>
+        <field id="show" type="boolean" value="false" alwaysNotify="true" onChange="On_show" />
+        <field id="sceneName" type="String" value="RegisterScene" />
+        <field id="posterSplash" type="node" />
+        <field id="Login4BtrExprnce" type="node" />
+        <field id="SignupButton" type="node" />
+        <field id="alreadyUser" type="node" />
+        <field id="LinkText" type="node" />
+        <field id="or_text" type="node" />
+        <field id="signcreateaccntText" type="node" />
+        <field id="Androidiostext" type="node" />
+        <field id="selecttvactivation" type="node" />
+        <field id="buttonLogin" type="node" />
+        <field id="buttonLogin2" type="node" />
+        <field id="buttonForgot" type="node" />
+        <field id="buttonSignup" type="node" />
+        <field id="buttonGuest" type="node" />
+        <field id="kbdialogName" type="node" />
+        <field id="kbdialogOtpReg" type="node" />
+        <field id="kbdialogOtp" type="node" />
+        <field id="kbdialogCode" type="node" />
+        <field id="dialogErrName" type="node" />
+        <field id="dialogAuthExceed" type="node" />
+        <field id="kbdialogEmail" type="node" />
+        <field id="dialogForgot" type="node" />
+        <field id="dialogErrEmail" type="node" />
+        <field id="kbdialogPassword" type="node" />
+        <field id="forgotLabel" type="node" />
+        <field id="NewUser" type="node" />
+        <field id="skipLogin" type="node" />
+        <field id="dialogErrPassword" type="node" />
+        <field id="dialogForgotFailed" type="node" />
+        <field id="dialogAuthExists" type="node" />
+        <field id="dialogErrEmailForgot" type="node" />
+        <field id="kbdialogEmailForgot" type="node" />
+        <field id="kbdialogEmailReg" type="node" />
+        <field id="dialogErrEmailReg" type="node" />
+        <field id="kbdialogPasswordReg" type="node" />
+        <field id="dialogErrPasswordReg" type="node" />
+        <field id="pdialogAuth" type="node" />
+        <field id="dialogAuthFailed" type="node" />
+        <field id="dialogAuthFailedReg" type="node" />
+        <field id="dialogAuthFailedCode" type="node" />
+        <field id="dialogAuthFailedRegOtpResend" type="node" />
+        <field id="dialogAuthFailedRegOtpResendSuccess" type="node" />
+        <field id="loading" type="node" />
+        <field id="LoginFinish" type="String" alwaysNotify="true" />
+        <field id="RegFinish" type="String" alwaysNotify="true" />
+        <field id="regexEmail" type="string" value="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" />
+        <field id="regexPassword" type="string" value=".{6,}" />
+        <field id="regexName" type="string" value="[a-zA-Z][a-zA-Z ]*" />
+        <field id="gotoLandingScene" type="string" alwaysnotify="true" />
+        <field id="gotoLaunchScreen" type="string" alwaysnotify="true" />
+        <field id="closethispage" type="string" alwaysnotify="true" />
+        <field id="goToHomeScene" type="string" alwaysnotify="true" />
+     <field id="goToLoginSceneFromRegisterScene" type="string" alwaysnotify="true" />
+
+    </interface>
+    <script type="text/brightscript" uri="pkg:/components/Scenes/Register/RegisterScene.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/main.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <children>
+        <Label>
+            <Font id="DescFont" role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="18" />
+        </Label>
+
+
+        <Rectangle id="AppBackground" width="1920" height="1080" translation="[0,0]" />
+
+
+
+        <TextEditBox id="name_texteditbox" width="500" height="90"
+            horizAlign="left" vertAlign="center" visible="true"
+            textColor="#FFFFFF" clearOnDownKey="false"
+            translation="[760,300]" hintText="" fontSize="30"></TextEditBox>
+        <!-- <Rectangle id="LineUnderName_textbox" width="490" height="3" color="#8C8C8C"
+            translation="[767, 390]" /> -->
+        <TextEditBox id="emailAddrees_texteditbox" width="500" height="90"
+            horizAlign="left" vertAlign="center" visible="true"
+            textColor="#FFFFFF" clearOnDownKey="false"
+            translation="[760,430]" hintText="" fontSize="30"></TextEditBox>
+        <!-- <Rectangle id="LineUnderemailAddress_textbox" width="490" height="3" color="#8C8C8C"
+            translation="[765, 516]" /> -->
+        <TextEditBox id="password_textbox" width="500" height="90"
+            horizAlign="left" vertAlign="center" visible="true"
+            textColor="#FFFFFF" clearOnDownKey="false"
+            translation="[760,557]" hintText="" fontSize="30"></TextEditBox>
+        <!-- <Rectangle id="LineUnderpassword_textbox" width="490" height="3" color="#8C8C8C"
+            translation="[765, 643]" /> -->
+
+
+    </children>
+</component>

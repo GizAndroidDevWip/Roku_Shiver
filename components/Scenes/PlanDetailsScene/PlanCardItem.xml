@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="PlanCardItem" extends="Group">
+    <interface>
+        <field id="itemContent" type="node" alwaysnotify="true" onChange="onItemContentChanged" />
+        <field id="itemHasFocus" type="bool" value="false" onChange="onFocusChanged" />
+    </interface>
+    <script type="text/brightscript" uri="PlanCardItem.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <children>
+        <Poster id="cardBg" uri="pkg:/images/img_newbg.9.png"
+            blendColor="#121212" width="720" height="170" />
+
+        <Poster id="iconBox" uri="pkg:/images/img_newbg.9.png"
+            blendColor="#222222" width="110" height="110" translation="[30, 30]" />
+        <Poster id="cardIcon" uri="pkg:/images/icons/crown.png"
+            width="50" height="50" translation="[60, 60]"
+            loadDisplayMode="scaleToFit" />
+
+        <Label id="lblPlanName" width="530" height="44" translation="[172, 16]"
+            text="" vertAlign="center" color="0xFFFFFFff">
+            <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="26" />
+        </Label>
+        <Label id="lblPlanSubtitle" width="530" height="34" translation="[172, 62]"
+            text="" vertAlign="center" color="0xb3b3b3ff">
+            <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="22" />
+        </Label>
+
+        <Poster id="statusBg" uri="pkg:/images/img_newbg.9.png"
+            width="100" height="34" translation="[165, 102]"
+            visible="false" />
+        <Poster id="statusDot" uri="pkg:/images/icons/bannerDot.png"
+            width="10" height="10" translation="[172, 114]"
+            loadDisplayMode="scaleToFit" />
+        <Label id="lblStatus"  height="28" translation="[192, 105]"
+            text="" color="0x00CC44ff">
+            <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="20" />
+        </Label>
+    </children>
+</component>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="customItemForCategories" extends="Group">
+
+  <interface>
+    <field id="width" type="float" onChange="updateLayout" />
+    <field id="height" type="float" onChange="updateLayout" />
+    <field id="itemContent" type="node" onChange="itemContentChanged" />
+  </interface>
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+  <script type="text/brightscript"
+    uri="pkg:/components/Scenes/AllCategory/ItemComponentFiles/customItemForCategories.brs" />
+  <script type="text/brightscript">
+    <!-- <script type="text/brightscript" uri ="pkg:/source/commonUtils.brs"/> -->
+
+
+  </script>
+
+  <children>
+
+
+    <Rectangle id="main_rect" width="320" height="180" translation="[0,0]" color="#000000"
+      visible="true">
+
+
+      <Poster id="poster" translation="[0,0]" width="320" height="180" loadDisplayMode="limitSize" loadWidth="600" loadHeight="300"
+        uri=""
+        loadSync="true" />
+
+      <Rectangle id="Progressbar" width="320" height="11" visible="false"
+        color="#ffffff" translation="[0, 169]">
+      </Rectangle>
+
+      <Poster id="playButton" uri="pkg:/images/play.png" visible="false"
+        translation="[120,52]" width="70" height="70" />
+
+
+      <Poster id="CornerRoundedforHomeScene" uri="pkg:/images/cornerRounded.png" visible="false"
+        translation="[0,0]" width="320" height="180" />
+
+
+      <Poster id="free_icon" uri="pkg:/images/free_icon.png" visible="false"
+        translation="[15,15]" width="53" height="54" />
+
+      <Poster id="lock_icon" uri="pkg:/images/icons/lock_icon.png" visible="false"
+        translation="[15,15]" width="30" height="30" />
+
+
+      <!-- <Poster id="poster_bottom_shadow" uri="pkg:/images/img_newbottomshade.png"
+        translation="[0,104]" width="320" height="77" /> -->
+
+      <Label id="which_week" height="90" width="370" wrap="true" lineSpacing="1" horizAlign="left"
+        vertAlign="top" color="#FFFFFF" visible="false" font="font:MediumBoldSystemFont"
+        translation="[10,165]" numLines="2" maxLines="10">
+      </Label>
+
+      <Label id="title" height="55" width="310" wrap="true" lineSpacing="1" horizAlign="left"
+        vertAlign="top" font="font:SmallestBoldSystemFont" translation="[10,190]" numLines="2"
+        maxLines="2">
+      </Label>
+
+
+      <Label id="type" height="90" width="370" wrap="true" lineSpacing="1" horizAlign="left"
+        vertAlign="top" color="#FFFFFF" visible="false" font="font:MediumBoldSystemFont"
+        translation="[200,320]" numLines="2" maxLines="1">
+      </Label>
+
+
+      <Label id="directorAndYear" height="90" width="370" wrap="true" lineSpacing="1"
+        horizAlign="left" vertAlign="top" color="#FFFFFF" visible="false"
+        font="font:MediumBoldSystemFont" translation="[200,390]" numLines="2" maxLines="1">
+      </Label>
+
+
+      <Poster id="bottom_gradient" uri="pkg:/images/bottom_Gradient.png" visible="false"
+        translation="[0,556]" width="1490" height="400" />
+
+
+      <Poster id="top_gradient" uri="pkg:/images/top_Gradient.png" visible="false"
+        translation="[0,0]" width="1490" height="400" rotationZ="180" />
+
+      <Label id="banner_title" height="90" width="1700" wrap="true" lineSpacing="0.04"
+        horizAlign="center"
+        vertAlign="top" color="#FFFFFF" visible="false" font="font:LargeBoldSystemFont"
+        translation="[0,860]" numLines="2" maxLines="2">
+      </Label>
+
+
+      <Label
+        id="descriptionBanner"
+        translation="[ 0, 810]"
+        horizAlign="center"
+        text=""
+        lineSpacing="0.03"
+        width="1700"
+        height="50" opacity="0.7"
+        wrap="true" numLines="5" maxLines="5"
+        visible="false" color="#ffffff">
+      </Label>
+
+
+    </Rectangle>
+
+
+    <Rectangle id="descriptionZone" color="0x111111" height="60">
+
+      <Poster id="live" width="65" height="36" visible="false" translation="[230, 20]"
+        uri="pkg:/images/live.png" />
+
+    </Rectangle>
+
+  </children>
+
+</component>

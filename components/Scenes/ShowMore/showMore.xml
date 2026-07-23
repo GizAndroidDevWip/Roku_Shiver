@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="showMore" extends="Group">
+	<interface>
+		<!-- Content fields -->
+		<!-- String to make go to homescreen -->
+		<field id="tagName" type="string" alwaysnotify="true" onChange="runMoreTask" />
+		<field id="tagNameForAdditionalDonorContent" type="string" alwaysnotify="true"
+			onChange="runMoreTaskForAdditionalDonorContent" />
+		<field id="title" type="string" alwaysnotify="true" />
+		<field id="tagType" type="string" alwaysnotify="true" />
+		<field id="content" type="node" alias="showMoreItemDemand.content" />
+		<field id="itemFocused" type="intarray" alwaysnotify="true"
+			alias="showMoreItemDemand.rowItemFocused" />
+		<field id="rowItemSelected" type="intarray" alwaysnotify="true"
+			alias="showMoreItemDemand.rowItemSelected" />
+		<field id="showHomeScreen" type="String" alwaysnotify="true" />
+
+
+		<field id="gotoRegisterLoginscene" type="bool" alwaysnotify="true" />
+		<field id="gotoonDemandScene" type="bool" alwaysnotify="true" />
+		<field id="goToMyListScene" type="bool" alwaysnotify="true" />
+		<field id="goToLiveScene" type="bool" alwaysnotify="true" />
+		<field id="gotoMyAccountScreen" type="bool" alwaysnotify="true" />
+		<field id="goToVideoPlayerScene" type="string" alwaysnotify="true" />
+		<field id="goToVideoPlayerSceneWithVideoId" type="string" alwaysnotify="true" />
+		<field id="gotolivevideoplayer" type="string" alwaysnotify="true" />
+		<field id="goToCategoryScreen" type="String" alwaysnotify="true" />
+		<field id="goToSearchScreen" type="String" alwaysnotify="true" />
+		<field id="goToMyListScreen" type="String" alwaysnotify="true" />
+		<field id="goToShowDetailsScreen" type="intarray" alwaysnotify="true" />
+		<field id="goToSubscriptionListScreen" type="String" alwaysnotify="true" />
+		<field id="goToCatchUpScreen" type="bool" alwaysnotify="true" />
+		<field id="goToScheduleScreen" type="String" alwaysnotify="true" />
+
+
+	</interface>
+	<script type="text/brightscript"
+		uri="pkg:/components/Scenes/ShowMore/showMore.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+	<!-- <script type="text/brightscript" uri="pkg:/source/apiUtils.brs" /> -->
+
+	<children>
+		<!-- this is the main rectangle -->
+		<!-- first black Color -->
+		<Rectangle id="main_rect" width="1920" height="1080" translation="[0,0]" color="#1d2124"
+			visible="true">
+			<Rectangle id="AppBackground" width="1920" height="1080" translation="[0,0]" />
+
+			<Label id="showMoreItem_Label" translation="[110,100]" height="38" width="1800"
+				font="font:MediumBoldSystemFont"
+				color="#E3E3E3" size="40" />
+
+			<Label id="message_label" translation="[0, 0]" height="1080" width="1920"
+				font="font:MediumBoldSystemFont" visible="false" horizAlign="center" wrap="true"
+				vertAlign="center"
+				color="#E3E3E3" size="40" />
+
+
+			<RowList itemComponentName="ShowMoreItems"
+				id="showMoreItemDemand" translation="[20,208]" numRows="3"
+				rowitemSize="" wrap="false"
+				itemSize="[1920, 518]"
+				rowItemSpacing="[[45, 45]]" itemSpacing="[40, 60]"
+				focusBitmapUri="pkg:/images/focus_grid.9.png" rowHeights="[300,300,300,300,300]"
+				showRowCounter="[false]" rowLabelOffset="[[0,10]]"
+				rowLabelFont="font:SmallestBoldSystemFont"
+				rowLabelColor="#ffffff" showRowLabel="false"
+				rowFocusAnimationStyle="floatingfocus"
+				vertFocusAnimationStyle="floatingfocus" />
+
+			<Loading id="loading" />
+		</Rectangle>
+	</children>
+</component>

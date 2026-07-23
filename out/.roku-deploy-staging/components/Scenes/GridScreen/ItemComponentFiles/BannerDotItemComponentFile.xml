@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<component name="BannerDotItemComponentFile" extends="Group">
+    <interface>
+        <field id="itemContent" type="node" onChange="onitemContent" />
+    </interface>
+
+    <script type="text/brightscript"
+        uri="pkg:/components\Scenes\GridScreen\ItemComponentFiles\BannerDotItemComponentFile.brs" />
+    <children>
+        <Rectangle
+            id="mainRectangle"
+            width="0"
+            translation="[0,0]"
+            height="0"
+            color="#00000000">
+            <Poster
+                id="dot"
+                width="10" height="10"
+                translation="[0,0]"
+                uri="pkg:/images/icons/bannerDot.png"
+            />
+        </Rectangle>
+    </children>
+
+
+</component>

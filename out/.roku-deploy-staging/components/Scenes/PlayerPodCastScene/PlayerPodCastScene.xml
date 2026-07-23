@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="PlayerPodCastScene" extends="Group"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+    <interface>
+
+        <field id="content" type="node" onChange="onAudioSet" />
+
+    </interface>
+    <script type="text/brightscript"
+        uri="pkg:/components/Scenes/PlayerPodCastScene/PlayerPodCastScene.brs" />
+    <children>
+
+        <Rectangle color="#010915" width="1920" height="1080">
+            <Rectangle color="00ffffff" width="1920" height="1080" opacity="0.1">
+                <Poster id="image" visible="true" width="1920" height="1080" translation="[0,0]"
+                    uri="" />
+            </Rectangle>
+
+
+            <Poster
+                id="bgPoster"
+                width="1170"
+                height="675"
+                opacity="0.2"
+                uri="pkg:/images/img_newbg.9.png"
+                translation="[398,255]"
+                visible="true" />
+
+
+            <Label
+                id="title"
+                height="200"
+                width="1080"
+                font="font:LargeBoldSystemFont"
+                horizAlign="center"
+                wrap="true"
+                vertAlign="bottom"
+                translation="[435,282]" />
+
+            <Label
+                id="description"
+                height="225"
+                width="1080"
+                font="font:MediumSystemFont"
+                translation="[450,500]"
+                horizAlign="center"
+                vertAlign="top"
+                wrap="true" />
+
+            <Poster id="rewind" visible="true" width="60" height="60" translation="[683,789]"
+                uri="pkg:/images/rewind.png" opacity="0.8" />
+
+            <Poster id="controlposter" visible="true" width="60" height="60"
+                translation="[936,789]" uri="" />
+
+
+            <Poster id="fastForward" visible="true" width="60" height="60"
+                translation="[1199,789]" uri="pkg:/images/fastforward.png" opacity="0.8" />
+
+        </Rectangle>
+    </children>
+</component>          

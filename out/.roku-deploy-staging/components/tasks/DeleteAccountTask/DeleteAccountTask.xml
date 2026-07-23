@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="DeleteAccountTask" extends="Task">
+    <interface>
+        <field id="deleteAccountRequest" alwaysnotify="true" type="String"/>
+        <field id="deleteAccountResponse" alwaysnotify="true" type="assocarray" />
+        
+        <function name="runDeleteAccountTask" />
+        <function name="stopDeleteAccountTask" />
+    </interface>
+    
+    <script type="text/brightscript" uri="pkg:/components/tasks/DeleteAccountTask/DeleteAccountTask.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+</component>

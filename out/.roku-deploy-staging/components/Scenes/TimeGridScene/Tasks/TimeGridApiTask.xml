@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="TimeGridApiTask" extends="Task">
+	<interface>
+
+
+		<field id="TimeGridApiTaskContent" alwaysnotify="true"
+			type="node" />
+		<field id="TimeGridApiTaskContentCOPY" alwaysnotify="true"
+			type="node" />
+		<field id="TimeGridApiTaskListStatus" alwaysnotify="true" type="Boolean" />
+		<field id="responseDataTimeGridApiTaskList" type="roAssociativeArray" alwaysnotify="true" />
+
+		<function name="runTimeGridApiTask" />
+		<function name="stopTimeGridApiTask" />
+	</interface>
+
+	<script type="text/brightscript"
+		uri="pkg:/components/Scenes/TimeGridScene/Tasks/TimeGridApiTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Util.brs" />
+	<!-- <script type="text/brightscript" uri="pkg:/components/Scenes/LaunchScene/LaunchScene.brs"
+	/>
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" /> -->
+</component>

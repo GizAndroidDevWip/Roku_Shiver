@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="EventLaunch" extends="Task">
+
+
+<interface>
+    <field id="EventRequest" alwaysnotify="true" type="String"/>
+    <field id="user_id" alwaysnotify="true" type="String" />
+    <field id="event_type" alwaysnotify="true" type="String" />
+    
+    <function name="runEventLaunch" />
+    <function name="stopEventLaunch" />
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/tasks/EventLaunch.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+</component>

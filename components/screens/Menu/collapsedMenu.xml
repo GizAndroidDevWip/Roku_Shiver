@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="CollapsedMenu" extends="Group">
+
+    <interface>
+        <field id="profile" type="node" onChange="onProfileChanged" />
+        <function name="expandMenu" />
+        <function name="collapseMenu" />
+        <field id="start" type="bool" alwaysnotify="true" />
+        <field id="itemSelected" type="node" alwaysnotify="true" />
+        <field id="loginlogout" type="String" alwaysnotify="true" onChange="onLoginChanged" />
+        <field id="jumpToItemIndexInSideMenu" type="integer" alwaysnotify="true" onChange="jumpToItem" />
+    </interface>
+
+
+    <script type="text/brightscript" uri="collapsedMenu.brs" />
+    <!-- <script type="text/brightscript" uri="pkg:/source/apis.brs" /> -->
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+
+    <children>
+        <Label>
+            <Font id="MenuFont" role="font" uri="pkg:/fonts/Netflix-Regular.ttf" size="35" />
+        </Label>
+
+
+        <Poster
+            id="shade"
+            width="850"
+            height="1080"
+            uri="pkg:/images/gradi.png"
+            translation="[0,0]"
+            visible="false" />
+
+
+        <Label
+            id="uname"
+            width="350"
+            horizAlignment="left"
+            translation="[30, 120]"
+            color="#ffffff"
+            wrap="true"
+            lineSpacing="0.1"
+            visible="false"
+            height="90" />
+
+
+        <MarkupGrid
+            id="markupGrid"
+            translation="[0, 350]"
+            itemComponentName="MenuItem"
+            numColumns="1"
+            drawFocusFeedbackOnTop="false"
+            focusBitmapUri=""
+            numRows="7"
+            itemSize="[ 500, 50 ]"
+            itemSpacing="[ 0, 60 ]"
+            drawFocusFeedback="true"
+            vertFocusAnimationStyle="floatingFocus" />
+
+    </children>
+</component>
+
+
+

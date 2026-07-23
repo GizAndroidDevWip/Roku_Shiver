@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Landing" extends="Group"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+    <interface>
+        <field id="show" type="boolean" value="false" alwaysNotify="true" onChange="On_show" />
+        <field id="posterSplash" type="node" />
+        <field id="sceneName" type="String" value="Landing" />
+        <field id="Login4BtrExprnce" type="node" />
+        <field id="LinkText" type="node" />
+        <field id="or_text" type="node" />
+        <field id="signcreateaccntText" type="node" />
+        <field id="Androidiostext" type="node" />
+        <field id="selecttvactivation" type="node" />
+        <field id="buttonLogin" type="node" />
+        <field id="buttonLogin2" type="node" />
+        <field id="buttonForgot" type="node" />
+        <field id="buttonSignup" type="node" />
+        <field id="buttonGuest" type="node" />
+        <field id="kbdialogName" type="node" />
+        <field id="kbdialogOtpReg" type="node" />
+        <field id="kbdialogOtp" type="node" />
+        <field id="kbdialogCode" type="node" />
+        <field id="dialogErrName" type="node" />
+        <field id="dialogAuthExceed" type="node" />
+        <field id="kbdialogEmail" type="node" />
+        <field id="dialogForgot" type="node" />
+        <field id="dialogErrEmail" type="node" />
+        <field id="kbdialogPassword" type="node" />
+        <field id="singinViaEmailLabel" type="node" />
+        <field id="forgotLabel" type="node" />
+        <field id="NewUser" type="node" />
+        <field id="loading" type="node" />
+        <field id="skipLogin" type="node" />
+        <field id="dialogErrPassword" type="node" />
+        <field id="dialogForgotFailed" type="node" />
+        <field id="dialogAuthExists" type="node" />
+        <field id="dialogErrEmailForgot" type="node" />
+        <field id="kbdialogEmailForgot" type="node" />
+        <field id="kbdialogEmailReg" type="node" />
+        <field id="dialogErrEmailReg" type="node" />
+        <field id="kbdialogPasswordReg" type="node" />
+        <field id="dialogErrPasswordReg" type="node" />
+        <field id="pdialogAuth" type="node" />
+        <field id="dialogAuthFailed" type="node" />
+        <field id="dialogAuthFailedReg" type="node" />
+        <field id="dialogAuthFailedCode" type="node" />
+        <field id="dialogAuthFailedRegOtpResend" type="node" />
+        <field id="dialogAuthFailedRegOtpResendSuccess" type="node" />
+        <field id="LoginFinish" type="String" alwaysNotify="true" />
+        <field id="RegFinish" type="String" alwaysNotify="true" />
+        <field id="regexEmail" type="string" value="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" />
+        <field id="regexPassword" type="string" value=".{6,}" />
+        <field id="regexName" type="string" value="[a-zA-Z][a-zA-Z ]*" />
+        <field id="gotoLandingScene" type="string" alwaysnotify="true" />
+        <field id="gotoLaunchScreen" type="string" alwaysnotify="true" />
+        <field id="closethispage" type="string" alwaysnotify="true" />
+        <field id="goToHomeScene" type="string" alwaysnotify="true" />
+        <field id="gotoRegisterLoginScene" type="string" alwaysnotify="true" />
+        <field id="gotoEmailLoginScene" type="string" alwaysnotify="true" />
+        <field id="triggerForgotPassword" type="bool" alwaysnotify="true" />
+
+
+    </interface>
+    <script type="text/brightscript" uri="pkg:/components/Scenes/Landing/Landing.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/main.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <children>
+        <Label>
+            <Font id="DescFont" role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="18" />
+        </Label>
+        <!-- <Label id="OptionsLabel" translation="[-40, 900]" visible="false" width="400"
+        horizAlign="right" font="font:SmallestBoldSystemFont"
+                color = "#FFFFFF" text="Copyright © 2022 ISG " /> -->
+        <!-- <Poster id="AppBanner" uri = "pkg:/images/App_LogoBanner.png" width="1520" height="855"
+        translation="[400,0]" /> -->
+        <!-- <Poster id="AppBackground" uri = "pkg:/images/home_gradient2.png" width="1920"
+        height="1080" translation="[0,0]" /> -->
+        <!-- <Label id="signInToTvLabel1" size = "28" text = "Sign In to Your Account"
+        color="#000000" font="font:LargeBoldSystemFont" translation="[680,380]" /> -->
+        <!-- <Label id="signInToTvLabel" width="600" height="36" text="Sign In to Your Account"
+        horizAlign="center" vertAlign="center" visible="true" translation="[660,420]"
+        color="#FFFFFF">
+                    <Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="50" />
+                </Label> -->
+        <!-- <Poster id="firstName_poster" focusable="true" loadDisplayMode="scaleToFill"
+                    visible="true" width="310" height="45" loadWidth="500"
+                    loadHeight="45" translation="[130,220]" color="#FFFFFF"
+                    uri="pkg:/images/label.png" useHandCursor="true" /> -->
+
+        <Rectangle id="AppBackground" width="1920" height="1080" translation="[0,0]" />
+        <!-- <Poster id="AppBackgroundPoster" width="1920" height="1080" uri="pkg:/images/design_assets/bg_radial_color_gradient.png" translation="[0,0]" /> -->
+
+
+        <TextEditBox id="TVCodeTextEditBox" width="500" height="90"
+            horizAlign="left" vertAlign="center" visible="false"
+            textColor="#FFFFFF" clearOnDownKey="false"
+            translation="[225,638]" hintText="Enter TV Code" fontSize="30"></TextEditBox>
+        <Rectangle id="LineUnderfirstname_textbox" width="490" height="3" color="#8C8C8C"
+            visible="false"
+            translation="[231, 728]" />
+        <Rectangle id="verticalLine" width="3" height="830" color="#8C8C8C" visible="false"
+            translation="[1050, 148]" />
+        <TextEditBox id="EmailAddress_texteditbox" width="500" height="90"
+            horizAlign="left" vertAlign="center" visible="true" clearOnDownKey="false"
+            fontSize="30" textColor="#FFFFFF"
+            translation="[750,260]" hintText=""></TextEditBox>
+        <Rectangle id="LineUnderemailaddress_textbox" width="491" height="3" color="#8C8C8C"
+            translation="[750, 347]" visible="false" />
+        <TextEditBox id="password_TextEditBox" width="500" height="90"
+            horizAlign="left" vertAlign="center" visible="true" secureMode="true"
+            fontSize="30" textColor="#FFFFFF" clearOnDownKey="false"
+            translation="[750,385]" hintText=""></TextEditBox>
+        <Rectangle id="LineUnderpassword_textbox" width="491" height="3" color="#8C8C8C"
+            translation="[750, 472]" visible="false" />
+        <Timer
+            id="Timer"
+            repeat="true"
+            duration="23" />
+        <!-- <MiniKeyboard id = "exampleMiniKeyboard" visible="false"
+        backgroundUri="pkg:/images/black.jpg" /> -->
+
+        <LabelList id="buttonsLabelList" visible="true" textHorizAlign="center"
+            translation="[794,736]" font="font:SmallestSystemFont"
+            focusedColor="#ffffff"
+            numRows="4"
+            vertFocusAnimationStyle="floatingFocus"
+            itemSize="[400,63]">
+        </LabelList>
+
+
+    </children>
+</component>

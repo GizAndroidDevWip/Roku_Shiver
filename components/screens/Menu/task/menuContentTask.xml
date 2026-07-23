@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="MenuContentTask" extends="Task" >
+    <interface>
+    <field id = "content" alwaysnotify="true" type = "node" />
+  </interface>
+  <script type="text/brightscript" uri="menuContentTask.brs" />
+  <script type="text/brightscript" uri="pkg:/source/apis.brs"/>
+  <script type="text/brightscript" uri="pkg:/source/Strings.brs"/>
+<script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+</component>

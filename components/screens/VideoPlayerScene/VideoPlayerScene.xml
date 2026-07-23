@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="VideoPlayerScene" extends="Group"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+    <script type="text/brightscript"
+        uri="pkg:/components/screens/VideoPlayerScene/VideoPlayerScene.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+
+    <interface>
+
+        <field id="selectedIndex" type="array" alwaysnotify="true" />
+        <field id="selectedIndexInteger" type="Integer" alwaysnotify="true" />
+        <field id="videoId" type="string" onChange="runUserSubscriptionTask" />
+        <field id="ai_type" type="string" alwaysnotify="true" />
+        <field id="show_id" type="string" alwaysnotify="true" />
+
+        <field id="autoplay_show_id" type="string" alwaysnotify="true" />
+
+        <field id="show_id_playlist" type="string" alwaysnotify="true" />
+
+        <field id="video_type" type="string" alwaysnotify="true" />
+        <field id="previous_videoId" type="string" />
+        <field id="URL" type="string" onChange="playUsingURL" />
+        <field id="eventId" type="string" />
+        <field id="videoDuration" type="integer" />
+        <field id="nextIndexToBeplayed" type="integer" />
+        <field id="videoListContent" type="node" alwaysnotify="true" />
+        <field id="control" type="string" alwaysNotify="true" onChange="controlChanged" />
+
+        <field id="subscriptionDialog" type="node" />
+        <field id="loginDialog" type="node" />
+        <field id="dialogAuthExceed" type="node" />
+        <field id="sessionExpiredPopUp" type="node" />
+
+        <field id="goToShowScreen" type="string" alwaysnotify="true" />
+        <field id="gotoLandingScene" type="bool" alwaysnotify="true" />
+        <field id="gotoLaunchScreen" type="string" alwaysnotify="true" />
+        <field id="goToPaymentDescriptionScreen" type="string" alwaysnotify="true" />
+        <field id="goToPaymentDescriptionScreenForEvent" type="string" alwaysnotify="true" />
+        <field id="closethispage" type="bool" alwaysnotify="true" />
+        <field id="goToVideoDetailScene" type="string" alwaysnotify="true" />
+        <field id="goToShowMoreScene" type="intarray" alwaysnotify="true" />
+        <field id="goToLandingSceneAndCloseAllScreens" type="intarray" alwaysnotify="true" />
+        <field id="gotoShowScrnFrmShwDtlScrnWhenClckingUMayAlsoLikeVideo" type="string" />
+        <field id="reloadvideoPlayerScene" type="string" alwaysNotify="true" />
+        <field id="reloadvideoPlayerScene2" type="string" alwaysNotify="true" />
+        <field id="showid_2" type="string" alwaysNotify="true" />
+        <field id="needToShowContinueWatchingDialog" type="bool" alwaysNotify="true" />
+        <field id="calendarid" type="string" alwaysNotify="true" />
+        <field id="isGoadsFreeclicked" type="bool" alwaysnotify="true" value="false"/>
+        <field id="dialogResult" type="assocarray" onChange="OnDialogAction" />
+
+    </interface>
+
+    <children>
+
+        <Rectangle id="main_rect" width="1920" height="1080"
+            translation="[0,0]" color="#000000" visible="true">
+
+
+            <Video id="videoPlayer" width="1920" height="1080"
+                translation="[0,0]" enableUI="true" visible="false" loop="false" />
+
+
+            <!-- Dialog rectangle -->
+            <Rectangle id="dialogbg_rect" width="1920" height="1080" translation="[0,0]"
+                color="#00000099" visible="false">
+
+                <Rectangle id="dialogmain_rect" width="750" height="365" translation="[587,360]"
+                    color="#00000000" visible="true">
+
+                    <Poster id="dialogbanner_poster" loadDisplayMode="noScale" width="750"
+                        height="365"
+                        loadWidth="498" loadHeight="280" translation="[0,0]"
+                        uri="pkg:/images/img_newbg.9.png" visible="true" />
+
+
+                    <Label id="dialogmessage_label" width="750" height="36" text=""
+                        horizAlign="center" vertAlign="center" visible="true" translation="[0,60]"
+                        color="#080808">
+                        <Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="30" />
+                    </Label>
+
+                    <Button id="NoButton" text="" height="80" visible="true"
+                        showFocusFootprint="true"
+                        minWidth="330" translation="[30,200]" iconUri="" focusedIconUri=""
+                        focusFootprintBitmapUri="pkg:/images/img_itemcatbg.png"
+                        focusBitmapUri="pkg:/images/img_itemcatbg_selected.png" textColor="#ffffff"
+                        focusedTextColor="#ffffff">
+                        <ScrollingLabel id="cancelbutton_Label" height="80" width="330" text=""
+                            maxWidth="330" repeatCount="-1"
+                            vertAlign="center" horizAlign="center" color="#ffffff">
+                            <Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="26" />
+                        </ScrollingLabel>
+                    </Button>
+
+
+                    <Button id="YesButton" text="" height="80" visible="true"
+                        showFocusFootprint="true"
+                        minWidth="330" translation="[386,200]" iconUri="" focusedIconUri=""
+                        focusFootprintBitmapUri="pkg:/images/img_itemcatbg.png"
+                        focusBitmapUri="pkg:/images/img_itemcatbg_selected.png" textColor="#ffffff"
+                        focusedTextColor="#ffffff">
+                        <ScrollingLabel id="exitbutton_Label" height="80" width="330" maxWidth="330"
+                            text="" repeatCount="-1"
+                            vertAlign="center" horizAlign="center" color="#ffffff">
+                            <Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="26" />
+                        </ScrollingLabel>
+                    </Button>
+                </Rectangle>
+            </Rectangle>
+
+
+            <!-- up next section -->
+            <Rectangle id="UpNext_rect" width="1920" height="1080" color="#000000"
+                visible="false">
+
+                <Rectangle id="UpNext_rect2" width="1920" height="1080" color="00FFFFFF"
+                    translation="[0,-100]"
+                    visible="true">
+
+                    <Poster id="upnext_poster" width="645" height="363" translation="[285, 330]"
+                        uri="pkg:/images/live.png" visible="true"
+                        loadingBitmapUri="pkg:/images/logos/BHD_LOGO_Face_Of_APP_1920X1080.png"
+                        failedBitmapUri="pkg:/images/logos/BHD_LOGO_Face_Of_APP_1920X1080.png" />
+
+                    <Poster id="cornerRounded" width="645" height="363"
+                        translation="[285, 330]"
+                        uri="pkg:/images/cornerRounded.png" visible="true" />
+
+                    <Rectangle id="verticalLine" width="2" height="630" translation="[975, 195]"
+                        color="#808080" visible="true" />
+
+                    <Label id="Upnext_mainTitle" translation="[1020, -85]" height="1080"
+                        width="1920"
+                        font="font:LargeBoldSystemFont" visible="true" horizAlign="left"
+                        wrap="true"
+                        vertAlign="center" text="Up Next"
+                        color="#E3E3E3" size="75" />
+
+                    <Label id="upnext_video_name" translation="[1020, 509]" height="120" width="720"
+                        font="font:MediumBoldSystemFont" visible="true" horizAlign="left"
+                        wrap="true"
+                        vertAlign="top" text=""
+                        color="#E3E3E3" size="40" />
+
+                    <Label id="upnext_counter_text" translation="[1020, 629]" height="120"
+                        width="720"
+                        font="font:MediumBoldSystemFont" visible="true" horizAlign="left"
+                        wrap="true"
+                        vertAlign="top" text=""
+                        color="#E3E3E3" size="40" />
+                </Rectangle>
+            </Rectangle>
+
+        </Rectangle>
+        <Loading id="loading" />
+
+
+        <Timer
+            id="upNextTimer"
+            repeat="true"
+            duration="1" />
+
+    </children>
+
+</component>

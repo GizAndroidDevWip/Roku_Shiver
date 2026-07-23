@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ScheduleFetcher" extends="Task">
+
+<interface>
+  	<field id="ScheduleRequest" alwaysnotify="true" type="String"/>
+    <field id="content" alwaysnotify="true" type="node" />
+    <field id="video_title" alwaysnotify="true" type="string" />
+    <field id="video_thumbnail" alwaysnotify="true" type="string" />
+    <field id="linear_channel_id" alwaysnotify="true" type="string" />
+	
+
+	
+	<function name="runScheduleFetcherTask" />
+	<function name="stopScheduleFetcherTask" />
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/tasks/ScheduleFetcher/ScheduleFetcher.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	
+</component>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="LazyLoadingSubCategoryTask" extends="Task">
+	<interface>
+
+		
+
+		<field id="LazyLoadingSubCategoryContent" alwaysnotify="true"
+			type="node" />
+		<field id="LazyLoadingSubCategoryListStatus" alwaysnotify="true" type="Boolean" />
+		<field id="offsetCount"  type="Integer" />
+		<field id="currentRowWhichNeedsToUpdate"  type="Integer" />
+		<field id="currentCategoryIdWhichNeedsToUpdate"  type="Integer" />
+		
+		<function name="runLazyLoadingSubCategory" />
+		<function name="stopLazyLoadingSubCategory" />
+	</interface>
+
+	<script type="text/brightscript" uri="pkg:/components/Scenes/GridScreen/LazyLoadingSubCategoryTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Util.brs" />
+</component>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="PaymentFetcherForAppSubscription" extends="Task">
+<interface>
+    <field id="videoID" type="String" alwaysnotify="true"/>
+      <field id="channelID" type="String" alwaysnotify="true"/>
+    <field id="PayContent" type="node"/>
+
+	<function name="runPaymentFetcherTask" />
+    <function name="stopPaymentFetcherTask" /> 
+</interface>
+        <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components/tasks/PaymentFetcherForAppSubscription/PaymentFetcherForAppSubscription.brs" />
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+</component>

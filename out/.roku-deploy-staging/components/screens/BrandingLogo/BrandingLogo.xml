@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="BrandingLogo" extends="Group"
+  xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+  <script type="text/brightscript" uri="pkg:/components/screens/BrandingLogo/BrandingLogo.brs" />
+  <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+
+  <interface>
+    <field id="uri" type="string" alwaysNotify="true" alias="logoPoster.uri" />
+  </interface>
+
+  <children>
+    <Poster
+      id="logoPoster"
+      uri=""
+      visible="true"
+      loadDisplayMode="scaleToFit"
+      failedBitmapUri = "pkg:/images/watermarklogo.png"
+      loadingBitmapUri = "pkg:/images/watermarklogo.png"
+      translation="[1635,20]"
+      width="240"
+      height="135" />
+  </children>
+
+</component>

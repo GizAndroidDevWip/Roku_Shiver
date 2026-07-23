@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ShowMoreFetcher" extends="Task">
+	<interface>
+  	  <field id="ShowMoreRequest" alwaysnotify="true" type="String"/>
+      <field id="ShowMoreContent" type="node" />
+      <field id="ShowMoreBoolean" type="boolean" alwaysNotify="true"/>
+      <field id="ShowMoreFilter" type="String" alwaysNotify="true"/>
+      <field id="categoryId" type="String" alwaysNotify="true"/>
+      <field id="ITEMTYPE" type="String" alwaysNotify="true"/>
+      
+	<!-- <function name="runShowMoreTask" />
+    <function name="stopShowMoreTask" /> -->
+    </interface>
+
+	<!-- <script type="text/brightscript" uri="pkg:/source/apiUtils.brs" />
+	<script type="text/brightscript" uri="pkg:/components/scenes/ShowMore/Task/ShowMoreFetcher.brs" />
+	<script type="text/brightscript" uri="pkg:/source/utils.brs" /> -->
+</component>

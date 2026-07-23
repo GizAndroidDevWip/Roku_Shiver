@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<component name="GridScreen" extends="Group" initialFocus="RowList"
+	xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<interface>
+		<!-- Grid Content Node -->
+
+		<field id="homeType" type="String" alwaysnotify="true" />
+
+		<field id="content" type="node" alias="RowList.content" onChange="onContentChange" />
+
+		<field id="selectedlanguageid" type="String" alwaysnotify="true" />
+
+		<field id="channelid" type="String" alwaysnotify="true" />
+
+		<!-- Row item selection handler -->
+		<field id="rowItemSelected" type="intarray" alwaysnotify="true"
+			alias="RowList.rowItemSelected" onChange="OnItemSelected" />
+
+		<!-- Row item focused handler -->
+		<field id="itemFocused" type="intarray" alias="RowList.rowItemFocused"
+			 />
+		<!-- 
+			<field id="itemUnFocused" type="intarray" alias="RowList.rowItemUnFocused"
+			onChange="OnItemUnFocused" /> -->
+
+		<!-- Interface to focused item (Content Node) -->
+		<field id="focusedContent" type="node" />
+
+		<field id="focusedRow" type="intarray" alwaysnotify="true" />
+
+		<field id="GloBoolean" type="boolean" alwaysNotify="true" />
+		<field id="stopAutobannerScroll" type="boolean" alwaysNotify="true"
+			onChange="stopAutobannerScroll" />
+
+		<field id="focusBitmapUri" type="uri" alias="RowList.focusBitmapUri" alwaysNotify="true" />
+		<field id="liveLinkIfLiveVideoAvailable" type="bool" alwaysNotify="false" />
+		<field id="goToTimeGridScene" type="bool" alwaysNotify="true" />
+		<field id="onDeepLinkLaunchedGotoShowScene" type="String" alwaysNotify="true" />
+		<field id="releasePlayer" type="bool" alwaysNotify="true" onChange="OnreleasePlayer" />
+		<field id="callHomeEnlargeAnimation" type="bool" alwaysNotify="true"
+			onChange="onHomeEnlargeAnimationCalled" />
+		<field id="callHomeShrinkAnimation" type="bool" alwaysNotify="true"
+			onChange="onHomeShrinkAnimationCalled" />
+		<field id="lastFocusedNode" type="string" alwaysNotify="true" />
+		<field id="selectedBannerItem" type="roAssociativeArray" alwaysnotify="true" />
+		<field id="categorynodefocus" type="boolean" alwaysnotify="true" />
+		<field id="setFocusToTopMenu" type="boolean" alwaysnotify="true" />
+
+	</interface>
+
+	<!-- main handler -->
+	<script type="text/brightscript" uri="pkg:/components/Scenes/GridScreen/GridScreen.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+
+	<children>
+		<Timer
+			id="trailerTimer"
+			repeat="false"
+			duration="2" />
+
+		<Video id="videoPlayer2" visible="false" translation="[400,0]"
+			width="900" height="550" />
+
+		<!-- <Poster id="backGround_overlay" width="1920" height="1080" translation="[0, 0]" /> -->
+
+		<Video
+			id="Video1" visible="false"
+			translation="[0,0]"
+			width="1920"
+			height="1080"
+			enableUI="true"
+			loop="true" />
+
+		<!-- <ParallelAnimation id="bannerAnimation"> -->
+		<Animation id="zoomInWidth" duration=".4" repeat="false"
+			easeFunction="inQuad">
+			<FloatFieldInterpolator id="HFadeOutInterp" key="[0,1]" keyValue="[1.0, 0.0]"
+				fieldToInterp="HeroScreen.opacity" />
+		</Animation>
+		<Animation
+			id="zoomInHeight" duration=".4" repeat="false" easeFunction="inQuad">
+			<Vector2DFieldInterpolator id="DSFadeOutInterp"
+				key="[0.0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1]"
+				keyValue="[2280,2260,2240,2200,2180,2160,2140,2120,2110, 2100,1080]"
+				fieldToInterp="bannerPoster.height" />
+		</Animation>
+		<!-- </ParallelAnimation> -->
+
+		<Group
+			id="bannerContainer"
+			width="1440"
+			height="810"
+			translation="[410,0]">
+
+			<Poster
+				id="bannerPoster"
+				width="1440"
+				height="810"
+				loadDisplayMode="limitSize"
+				loadWidth="1440"
+				loadHeight="810"
+				uri=""
+				translation="[0,0]"
+				visible="true" />
+			<Poster
+				id="bannerPoster_Bottom_gradient"
+				width="1440"
+				height="60"
+				uri="pkg:/images/bottom_Gradient.png"
+				translation="[0,750]"
+				visible="true" />
+
+			<Poster id="gradientOverlayForBackgroundPlayer"
+				width="1500"
+				height="2000"
+				opacity="1"
+				enableColorBlending="true"
+				uri="pkg:/images/home_gradient2.png"
+				loadDisplayMode="noScale"
+				translation="[-540, 0]" />
+			<!-- trailerPlayer will be inserted programmatically here -->
+		</Group>
+
+		<Rowlist
+			id="bannerDots"
+			itemSize="[200,20]"
+			visible="false"
+			RowItemSize="[[10,10]]"
+			translation="[865,940]"
+			focusBitmapUri="pkg:/images/focus_grid.9.png"
+			itemSpacing="[10,10]"
+			horizAlign="center"
+			rowItemSpacing="[[10, 10]]"
+			rowHeights="[10, 10, 10, 10, 10]"
+			vertAlign="center"
+			itemComponentName="BannerDotItemComponentFile"
+		/>
+
+		<Label>
+			<Font id="RowListFont" role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="18" />
+		</Label>
+		<ThumbBackground
+			id="Background" width="1920" height="1080" visible="false"
+			translation="[1310,20]" />
+
+		<!-- <Poster id="bannerPoster"
+			width="1520"
+			height="855"
+			uri=""
+			translation="[400,0]" /> -->
+
+		<ThumbBackground id="backGroundColor"
+			uri="pkg:/images/new_gradient.png" width="1920"
+			height="1080" visible="false" translation="[0,0]" />
+		<!-- 
+		<Poster id="bannerPoster"
+			width="1920"
+			height="1080"
+			color="#FFFFFF"
+			uri="pkg:/images/home_gradient2.png"
+			loadDisplayMode="noScale"
+			translation="[0,0]" /> -->
+
+		<RowList id="RowList"
+			itemComponentName="customItemhome"
+			focusBitmapUri="pkg:/images/focus_grid.9.png"
+			translation="[0,585]"
+			itemSize="[1920, 518]"
+			itemClippingRect="[100, 0, 2000, 1080]"
+			numRows="2"
+			variableWidthItems="[true]"
+			itemSpacing="[10, 10]"
+			focusXOffset="[[110],[110],[110],[110],[110],[110],[110],[110],[110]]"
+			rowFocusAnimationStyle="fixedFocus"
+			rowItemSize="[[320, 180]]"
+			rowItemSpacing="[[5, 5]]"
+			drawFocusFeedbackOnTop="true"
+			showRowLabel="true"
+			showRowCounter="false"
+			rowHeights="[320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320,320]"
+			rowLabelOffset="[[110,5]]" />
+
+		<!-- <Poster id="bannerPoster1"
+			width="1920"
+			height="200"
+			uri="pkg:/images/bottomShadow.png"
+			loadDisplayMode="noScale"
+			translation="[0,900]" /> -->
+
+		<Label
+			id="Hint"
+			height="30"
+			width="670"
+			text=""
+			font="font:SmallBoldSystemFont"
+			translation="[1180,50]" size="20" />
+
+		<Label
+			id="playing"
+			height="30"
+			width="670"
+			font="font:SmallBoldSystemFont"
+			translation="[1180,100]" size="20" />
+
+		<Loading id="loading" visible="false" />
+
+		<Label
+			id="Hint2"
+			height="30"
+			width="560"
+			font="font:SmallBoldSystemFont"
+			translation="[1280,100]" size="20" />
+
+
+		<Hud
+			id="Hud" visible="false" />
+
+
+		<Rectangle
+			id="MetaDataContainer"
+			width="1920"
+			height="1080"
+			color="#00000000"
+			translation="[0,0]">
+
+
+			<!-- <Poster id="imageTitlePoster"
+				visible="false"
+				width="600"
+				height="120"
+				translation="[120,170]"
+				loadDisplayMode="scaleToFit"
+				uri="" /> -->
+				
+
+
+			<LayoutGroup
+				id="MetaDataContainerLayoutGroup"
+				width="1920"
+				height="1080"
+				translation="[120,520]"
+				layoutDirection="vert"
+				itemSpacings="[20,10,25,-23]"
+				horizAlignment="left"
+				vertAlignment="bottom">
+				<!-- [20,25,-23] -->
+
+				<Label id="Title"
+					visible="true"
+					maxWidth="600"
+					width="600"
+					translation="[0,0]"
+					wrap="true"
+					numLines="2"
+					maxLines="2"
+					lineSpacing="-17"
+					horizAlign="left"
+					vertAlign="bottom"
+					color="#ffffff"
+					text="">
+					<Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="58" />
+				</Label>
+
+				<Label id="category_name"
+					visible="true"
+					width="800"
+					wrap="true"
+					maxWidth="800"
+					numLines="1"
+					maxLines="1"
+					translation="[0,0]"
+					horizAlign="left"
+					vertAlign="center"
+					color="#ffffff"
+					text="">
+					<Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="24" />
+				</Label>
+
+
+				<Label id="resolution"
+					visible="true"
+					width="600"
+					wrap="true"
+					numLines="0"
+					maxLines="2"
+					lineSpacing="6"
+					horizAlign="left"
+					vertAlign="top"
+					color="#cccccc"
+					text="">
+					<Font role="font" uri="pkg:/fonts/AvenirNextCyr-Regular.ttf" size="26" />
+				</Label>
+
+				<Rectangle id="homePlayMoreInfoLabelList_container" color="#00000000">
+					<LabelList
+						id="homePlayMoreInfoLabelList"
+						itemSize="[120,50]"
+						translation="[0,0]"
+						visible="true">
+						<ContentNode role="content">
+							<ContentNode title="More Info" />
+						</ContentNode>
+					</LabelList>
+				</Rectangle>
+
+
+			</LayoutGroup>
+
+			<!-- 🔥 IMAGE (POSITIONED ABOVE TEXT) -->
+			<Poster
+				id="imageTitlePoster"
+				visible="false"
+				width="600"
+				translation="[120,0]"
+				loadDisplayMode="scaleToFit" />
+		</Rectangle>
+
+
+		<Label
+			id="year"
+			visible="false"
+			width="600"
+			wrap="true"
+			numLines="1"
+			maxLines="1"
+			horizAlign="left"
+			vertAlign="top"
+			color="#ffffff"
+			text="">
+			<Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="22" />
+		</Label>
+
+		<Label
+			id="duration"
+			visible="false"
+			width="600"
+			wrap="true"
+			numLines="1"
+			maxLines="1"
+			horizAlign="left"
+			vertAlign="top"
+			color="#ffffff"
+			text="">
+			<Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="22" />
+		</Label>
+
+
+		<Label
+			id="director"
+			color="#ffffff"
+			text="" />
+
+
+		<Timer
+			id="autoBannerScrollTimer"
+			repeat="true"
+			duration="8" />
+
+		<Animation id="homeEnLargeAnimation" duration="0.4" easeFunction="inOutQuad">
+			<Vector2DFieldInterpolator
+				key="[0.0, 1.0]"
+				keyValue="[[0,585], [0,965]]"
+				fieldToInterp="Rowlist.translation" />
+
+			<Vector2DFieldInterpolator
+				key="[0.0, 1.0]"
+				keyValue="[[410,0], [100,0]]"
+				fieldToInterp="bannerContainer.translation" />
+
+			<Vector2DFieldInterpolator
+				key="[0.0, 1.0]"
+				keyValue="[[1.0,1.0], [1.3, 1.3]]"
+				fieldToInterp="bannerContainer.scale" />
+
+			<Vector2DFieldInterpolator
+				key="[0.0, 1.0]"
+				keyValue="[[0,0], [0,400]]"
+				fieldToInterp="MetaDataContainer.translation" />
+		</Animation>
+
+		<Animation id="homeShrinkAnimation" duration="0.4" easeFunction="inOutQuad">
+			<Vector2DFieldInterpolator
+				key="[0.0, 1.0]"
+				keyValue="[[0,965], [0,585]]"
+				fieldToInterp="Rowlist.translation" />
+
+			<Vector2DFieldInterpolator
+				key="[0.0, 1.0]"
+				keyValue="[[100,0], [410,0]]"
+				fieldToInterp="bannerContainer.translation" />
+
+			<Vector2DFieldInterpolator
+				key="[0.0, 1.0]"
+				keyValue="[[1.3, 1.3], [1.0,1.0]]"
+				fieldToInterp="bannerContainer.scale" />
+
+			<Vector2DFieldInterpolator
+				key="[0.0, 1.0]"
+				keyValue="[[0,400], [0,0]]"
+				fieldToInterp="MetaDataContainer.translation" />
+		</Animation>
+
+		<Animation
+			id="fadeInAnim"
+			duration="0.5" easeFunction="linear" repeat="false">
+			<FloatFieldInterpolator
+				key="[0.0, 1.0]"
+				keyValue="[0.0, 1.0]"
+				fieldToInterp="bannerPoster.opacity" />
+		</Animation>
+	</children>
+</component>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="MarkCompletedTask" extends="Task">
+	<interface>
+  	  <field id="calendarId" alwaysnotify="true" type="String"/>
+      <field id="isCompletedBoolean" type="bool"  alwaysNotify="true"/>
+      <field id="completedContent" type="bool"  alwaysNotify="true"/>
+      
+	<function name="runMarkCompletedTask" />
+    <function name="stopMarkCompletedTask" />
+    </interface>
+
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components\screens\VideoPlayerScene\Tasks\MarkCompletedTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+	<script type="text/brightscript" uri="pkg:/source/Util.brs"/>
+</component>

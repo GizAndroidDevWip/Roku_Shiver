@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="RegTask" extends="Task">
+<interface>
+  	<field id="RegRequest" alwaysnotify="true" type="String"/>
+  	<field id="user_email" type="String"/>
+  	<field id="password" type="String"/>
+  	<field id="Fullname" type="String"/>
+  	<field id="device_id" type="String"/>
+    <field id="RegResponse" alwaysnotify="true" type="String" />
+    
+		<function name="runRegTask" />
+		<function name="stopRegTask" />  
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/Scenes/Register/Tasks/RegTask/RegTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+</component>

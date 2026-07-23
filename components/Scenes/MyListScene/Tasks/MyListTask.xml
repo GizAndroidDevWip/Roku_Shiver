@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="MyListTask" extends="Task">
+	<interface>
+  	  <field id="SearchRequest" alwaysnotify="true" type="String"/>
+      <field id="MyListTaskContent" type="node" />
+      <field id="SearchBoolean" type="boolean" alwaysNotify="true"/>
+      
+	<function name="runMyListTask" />
+    <function name="stopMyListTask" />
+    </interface>
+
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Scenes/MyListScene/Tasks/MyListTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+</component>

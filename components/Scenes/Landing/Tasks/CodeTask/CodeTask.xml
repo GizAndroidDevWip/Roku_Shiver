@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="CodeTask" extends="Task">
+<interface>
+  	<field id="CodeRequest" alwaysnotify="true" type="String"/>
+  	<field id="code" type="String"/>
+    <field id="CodeResponse" alwaysnotify="true" type="String" />
+        
+	<function name="runCodeTask" />
+    <function name="stopCodeTask" />  
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/Scenes/Landing/Tasks/CodeTask/CodeTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+</component>

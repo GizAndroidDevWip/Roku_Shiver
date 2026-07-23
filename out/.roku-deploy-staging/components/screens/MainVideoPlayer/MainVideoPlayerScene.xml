@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="MainVideoPlayerScene" extends="Group"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+    <script type="text/brightscript"
+        uri="pkg:/components/screens/MainVideoPlayer/MainVideoPlayerScene.brs" />
+
+    <interface>
+
+        <field id="selectedIndex" type="array" alwaysnotify="true" />
+        <field id="playLive" type="bool" alwaysnotify="true"
+            onChange="checkLiveNowSubscriptionForMenuClick" />
+        <field id="selectedIndexInteger" type="Integer" alwaysnotify="true" />
+        <field id="videoId" type="string" onChange="runGetVideoDetailstask" />
+        <field id="URL" type="string" onChange="playUsingURL" />
+        <field id="timeGridSceneInputData" alwaysnotify="true" type="roAssociativeArray"
+            onChange="playTimeGridLive" />
+        <field id="eventId" type="string" />
+        <field id="videoDuration" type="integer" />
+        <field id="nextIndexToBeplayed" type="integer" />
+        <field id="videoListContent" type="node" alwaysnotify="true" />
+        <field id="control" type="string" alwaysNotify="true" onChange="controlChanged" />
+        <field id="closethispage" type="bool" alwaysNotify="true" />
+        <field id="goToLandingScene" type="bool" alwaysnotify="true" />
+        <field id="goToLandingSceneAndCloseAllScreens" type="bool" alwaysnotify="true" />
+        <field id="goToPaymentDescriptionScreenForEvent" type="string" alwaysnotify="true" />
+        <field id="closeAndgoToHomeScene" type="bool" alwaysNotify="true" />
+        <field id="deepLinkSampleVideo" type="string" onChange="playDeeplinkVideo" />
+    </interface>
+
+
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <children>
+
+        <Rectangle id="main_rect" width="1920" height="1080"
+            translation="[0,0]" color="#000000" visible="true">
+
+
+            <Video id="videoPlayer" width="1920" height="1080"
+                translation="[0,0]" enableUI="true" visible="false" loop="false" />
+
+            <Loading id="loading" />
+        </Rectangle>
+
+    </children>
+
+</component>

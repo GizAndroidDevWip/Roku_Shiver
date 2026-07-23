@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="CategoryListingItems" extends="Group">
+
+	<interface>
+		<field id="width" type="float" />
+		<field id="height" type="float" />
+		<field id="itemContent" type="node" onChange="itemContentChanged" />
+
+		<field id="showHomeScreen" type="String" alwaysnotify="true" />
+		<field id="gotoRegisterLoginscene" type="bool" alwaysnotify="true" />
+		<field id="SearchString" type="string" alwaysnotify="true" onChange="onSearchStringChanged" />
+		<field id="backToHomeSceneNotifier" alwaysnotify="true" type="String"
+			onChange="backToHomeSceneNotifier" />
+		<field id="gotoonDemandScene" type="bool" alwaysnotify="true" />
+		<field id="goToMyListScene" type="bool" alwaysnotify="true" />
+		<field id="goToLiveScene" type="bool" alwaysnotify="true" />
+		<field id="gotoMyAccountScreen" type="bool" alwaysnotify="true" />
+		<field id="goToVideoPlayerScene" type="string" alwaysnotify="true" />
+		<field id="goToVideoPlayerSceneWithVideoId" type="string" alwaysnotify="true" />
+		<field id="gotolivevideoplayer" type="string" alwaysnotify="true" />
+		<field id="goToCategoryScreen" type="String" alwaysnotify="true" />
+		<field id="goToSearchScreen" type="String" alwaysnotify="true" />
+		<field id="goToMyListScreen" type="String" alwaysnotify="true" />
+		<field id="goToShowDetailsScreen" type="intarray" alwaysnotify="true" />
+		<field id="goToSubscriptionListScreen" type="String" alwaysnotify="true" />
+		<field id="goToCatchUpScreen" type="bool" alwaysnotify="true" />
+	</interface>
+
+	<script type="text/brightscript"
+		uri="pkg:/components/Scenes/CategoryListing/ItemComponentFiles/CategoryListingItems.brs" />
+
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+
+	<children>
+
+		<Rectangle id="main_rect" color="00FFFFFF">
+			<!-- <Poster id="selectionPoster"
+                width="320" opacity="0.4"
+                height="180" horizAlign="left" vertAlign="center"
+                uri="pkg:/images/img_newbg.9.png"
+                loadDisplayMode="noScale" visible="true"
+                translation="[0,0]" /> -->
+			<Label id="title" height="55" width="310" wrap="true" lineSpacing="1"
+				horizAlign="left"
+				vertAlign="top" font="font:SmallestBoldSystemFont" translation="[10,800]"
+				numLines="2"
+				maxLines="2">
+			</Label>
+
+			<Poster id="showMoreDetail_poster" translation="[0,0]" width="320" height="180"
+				loadWidth="400"
+				loadHeight="180"
+				uri=""
+				loadDisplayMode="limitSize" loadSync="true" />
+			<!-- <Label id="TagTitle" height="50" width="600" wrap="true" numLines="1"
+                    maxLines="1" lineSpacing="0.1" horizAlign="left" vertAlign="top"
+                    color="#ffffff" text="">
+                    <Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="26" />
+                </Label> -->
+			<Poster id="CornerRounded" uri="pkg:/images/cornerRounded.png"
+				visible="false"
+				translation="[0,0]" width="320" height="180" />
+
+
+			<Poster id="free_icon" uri="pkg:/images/free_icon.png" visible="false"
+				translation="[15,15]" width="30" height="30" />
+			<Poster id="lock_icon" uri="pkg:/images/icons/lock_icon.png" visible="false"
+				translation="[15,15]" width="30" height="30" />
+
+			<Label id="showMoreDeat_label" height="55" width="310" wrap="true" lineSpacing="1"
+				horizAlign="left"
+				vertAlign="top" font="font:SmallestBoldSystemFont" translation="[10,800]"
+				numLines="2"
+				maxLines="2">
+			</Label>
+
+			<Label id="TagTitle" height="180" width="320" wrap="true" color="#ffffff"
+				horizAlign="center" vertAlign="center"
+				text="">
+				<Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="28" />
+			</Label>
+		</Rectangle>
+
+	</children>
+
+</component>

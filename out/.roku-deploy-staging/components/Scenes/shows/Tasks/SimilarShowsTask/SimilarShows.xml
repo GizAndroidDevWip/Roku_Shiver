@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="SimilarShows" extends="Task">
+	<interface>
+  	  <field id="similarShowsApiListContent" alwaysnotify="true" type="node"/>
+  	  <field id="show_id" alwaysnotify="true" type="String"/>
+
+
+     
+      
+	<function name="runSimilarShowsTask" />
+    <function name="stopSimilarShowsTask" />
+    </interface>
+
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Scenes/shows/Tasks/SimilarShowsTask/SimilarShows.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+</component>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="LiveTV" extends="Group"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<interface>
+		<field id="start" type="string" alwaysnotify="true" onChange="onStarted" />
+		<field id="LoginFinish" type="String" alwaysNotify="true" />
+		<field id="GloBoolean" type="boolean" alwaysNotify="true" />
+		<field id="liveUrl" type="String" />
+		<field id="video_title" type="String" />
+		<field id="linear_channel_id" type="String" />
+
+	</interface>
+
+	<script type="text/brightscript" uri="pkg:/components/screens/LiveTV/LiveTV.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<children>
+		<Video
+			id="Video"
+			translation="[0,0]"
+			width="1920"
+			height="1080"
+			enableUI="true"
+			loop="true" />
+		<Rectangle
+			id="BottomBar"
+			translation="[30,1080]"
+			width="1920"
+			height="600"
+			color="0x000000FF"
+			opacity="0.7">
+			<RowList
+				id="RowList" focusBitmapUri="pkg:/images/focus_grid.9.png"
+				itemComponentName="RowListItemss"
+				translation="[100,120]"
+				numRows="0"
+				rowItemSize="[[320, 211]]"
+				rowItemSpacing="[[20, 20]]"
+				itemSize="[1720,375]" rowFocusAnimationStyle="floatingFocus">
+			</RowList>
+		</Rectangle>
+		
+		<Animation
+			id="ShowBar"
+			repeat="false"
+			duration=".2"
+			easeFunction="linear">
+			<Vector2DFieldInterpolator
+				fieldToInterp="BottomBar.translation"
+				key="[0,1]"
+				keyValue="[[0,1080],[0,650]]" />
+		</Animation>
+
+		<Animation
+			id="HideBar"
+			repeat="false"
+			duration=".2"
+			easeFunction="linear">
+			<Vector2DFieldInterpolator
+				fieldToInterp="BottomBar.translation"
+				key="[0,1]"
+				keyValue="[[0,650],[0,1080]]" />
+		</Animation>
+		<Label
+			id="Hint"
+			height="50"
+			width="400"
+			text=""
+			font="font:SmallBoldSystemFont"
+			translation="[1500,50]" />
+
+		<!-- <Label
+			id = "nowPlaying"
+			height = "50"
+			width = "400"
+			text = "Now Playing:"
+			font = "font:SmallBoldSystemFont"
+			translation = "[1500,80]" font.size="17" /> -->
+
+		<Label
+			id="playing"
+			height="0"
+			width="300"
+			numLines="3"
+			wrap="true"
+			maxLines="3"
+			font="font:SmallBoldSystemFont"
+			translation="[1500,100]" size="20" />
+
+		<Label
+			id="title"
+			height="30"
+			width="400" color="##10c1d0"
+			visible="false"
+			font="font:MediumBoldSystemFont"
+			translation="[1450,800]" />
+
+
+		<Label id="live" translation="[80, 1019]" width="150" horizAlign="right"
+			font="font:SmallestBoldSystemFont"
+			color="##10c1d0" />
+
+		<Poster id="livetv" enableColorBlending="true" translation="[50, 40]" width="85" height="46"
+			uri="pkg:/images/live.png" />
+
+		<Label id="next" translation="[260, 1020]" width="150" horizAlign="right"
+			font="font:SmallestBoldSystemFont"
+			color="##10c1d0" />
+		<Timer
+			id="Timer"
+			repeat="false"
+			duration="3" />
+		<Timer
+			id="AdTimer"
+			repeat="true"
+			duration="1200" />
+
+		<Timer
+			id="scheduleTimer"
+			repeat="true"
+			duration="60" />
+	</children>
+</component>

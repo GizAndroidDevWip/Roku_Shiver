@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="VideoPage" extends="Group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+  <interface>
+	<field id="start" type="string" alwaysnotify="true" onChange="onStarted"/>
+	 <field id="Content" alwaysnotify="true" type="node" />
+	  <field id="ShowsSub" alwaysnotify="true" type="boolean" />
+	  <field id="Title"           type="node"/>
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/screens/VideoPage/VideoPage.brs" />
+	
+	<children>
+
+          
+         
+         
+         
+          <ThumbBackground
+            id="Background"
+            width="1920"
+            height="1080"
+            translation="[0,0]"/> 
+            
+             <Label
+            id="Title"
+            color="##10c1d0"
+  			font="font:LargeBoldSystemFont"
+            text="Set up to Sell"
+            translation="[30,60]"/>
+            
+              <Label
+            id="duration"
+            color="##10c1d0"
+  			font="font:MediumBoldSystemFont"
+            text="1 x 51 Min HD Documentary"
+            translation="[90,90]"/>
+            
+              <Label
+            id="Title"
+            color="##10c1d0"
+  			font="font:MediumBoldSystemFont"
+            text="Set up to Sell"
+            translation="[50,60]"/>
+            
+              <Label
+            id="Title"
+            color="##10c1d0"
+  			font="font:MediumBoldSystemFont"
+            text="Set up to Sell"
+            translation="[50,60]"/>
+   	     <Video
+			id = "Video"
+			visible="false"
+			translation = "[0,0]"
+			width = "1920"
+			height = "1080"
+			enableUI = "true"
+			loop = "true"/>
+			
+	  <PaymentDescription
+	    id="PaymentDescription"
+	    visible="false"/>
+			
+			
+		<Rectangle
+			id = "BottomBar"
+			translation = "[0,1920]"
+			width = "1920"
+			height = "350"
+			color = "0x000000FF"
+			opacity = "0.7">
+			
+			<RowList
+				id = "RowList"
+		        itemComponentName="customItemhome"
+				translation = "[20,30]"
+				numRows = "1"
+				rowItemSize = "[[367,250]]"
+				rowItemSpacing = "[[30,0]]"
+				itemSize = "[1920,400]"
+				rowFocusAnimationStyle = "floatingFocus">
+			</RowList>
+		</Rectangle>
+		<Animation
+			id = "ShowBar"
+			repeat = "false"
+			duration = ".2"
+			easeFunction = "linear">
+			<Vector2DFieldInterpolator 
+				fieldToInterp = "BottomBar.translation"
+				key = "[0,1]"
+				keyValue = "[[0,1080],[0,780]]"
+			/>
+		</Animation>
+		<Animation
+			id = "HideBar"
+			repeat = "false"
+			duration = ".2"
+			easeFunction = "linear">
+			<Vector2DFieldInterpolator 
+				fieldToInterp = "BottomBar.translation"
+				key = "[0,1]"
+				keyValue = "[[0,780],[0,1080]]"
+			/>
+		</Animation>
+		
+		<Timer
+			id = "Timer"
+			repeat = "false"
+			duration = "3"
+		/>
+		<Timer
+			id = "AdTimer"
+			repeat = "true"
+			duration = "3"
+		/>
+		
+	
+            
+          
+</children>
+	
+	
+</component>

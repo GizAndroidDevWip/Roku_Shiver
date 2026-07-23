@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Show" extends="Group"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+	<interface>
+		<field id="start" type="string" alwaysnotify="true" onChange="onStarted" />
+		<field id="upcomingEventId" type="string" alwaysnotify="true" />
+		<field id="synopsis" type="string" alwaysnotify="true" />
+		<field id="showId" type="string" alwaysnotify="true" />
+		<field id="subscontent" type="String" alwaysnotify="true" />
+		<field id="Content" alwaysnotify="true" type="node" />
+		<field id="rowlistContentCopy" alwaysnotify="true" type="node" />
+		<field id="rowListSingleVideoData" alwaysnotify="true" type="node" />
+		<field id="tagsRowlistContent" alwaysnotify="true" type="node" />
+		<field id="ShowsSub" alwaysnotify="true" type="boolean" />
+		<field id="buttonPlaylist" type="node" />
+		<field id="buttonPlaylistremove" type="node" />
+		<field id="buttonTrailer" type="node" />
+		<field id="buttonRating" type="node" />
+		<field id="Title" type="node" />
+		<field id="dialogAuthExceed" type="node" />
+		<field id="sessionExpiredPopUp" type="node" />
+		<field id="dialogRating" type="node" />
+		<field id="dialogRatingFeed" type="node" />
+		<field id="dialogRatingFeedError" type="node" />
+		<field id="subscriptionDialog" type="node" />
+		<field id="loginDialog" type="node" />
+		<field id="logout" type="bool" alwaysnotify="true" />
+		<field id="playlistAdd" type="boolean" />
+		<field id="playlistRemove" type="boolean" />
+		<field id="ratingBoolean" type="boolean" />
+		<field id="itemType" type="string" />
+		<field id="rowItemSelected" type="intarray" alwaysnotify="true"
+			alias="RowList.rowItemSelected" />
+		<field id="isRowlistOrLabelListIsInFocusNow" type="string" alwaysnotify="true"
+			value="ROWLIST" />
+		<field id="goToShowScreen" type="string" alwaysnotify="true" />
+		<field id="goToSearchScreen" type="bool" alwaysnotify="true" />
+		<field id="gotoLandingScene" type="bool" alwaysnotify="true" />
+		<field id="gotoLaunchScreen" type="string" alwaysnotify="true" />
+		<field id="goToPaymentDescriptionScreen" type="string" alwaysnotify="true" />
+		<field id="goToPaymentDescriptionScreenForEvent" type="string" alwaysnotify="true" />
+		<field id="close_this_screen" type="bool" alwaysnotify="true" />
+		<field id="closethispage" type="string" alwaysnotify="true" />
+		<field id="goToVideoDetailScene" type="string" alwaysnotify="true" />
+		<field id="goToShowMoreScene" type="intarray" alwaysnotify="true" />
+		<field id="goToLandingSceneAndCloseAllScreens" type="intarray" alwaysnotify="true" />
+		<field id="gotoShowScrnFrmShwDtlScrnWhenClckingUMayAlsoLikeVideo" type="string"
+			alwaysnotify="true" />
+		<field id="goToVideoPlayerScene" type="string" alwaysnotify="true" />
+		<field id="ai_type" type="string" alwaysnotify="true" />
+		<field id="isStartOverButtonClicked" type="bool" alwaysnotify="true" value="false" />
+		<field id="isGoadsFreeclicked" type="bool" alwaysnotify="true" value="false" />
+		<field id="GOTO_HOME_AND_LOAD_SMARTHOME" type="string" alwaysnotify="true" />
+		<field id="SET_DEFAULT_FOCUS" type="bool" alwaysnotify="true" onChange="onSetDefaultFocus" />
+
+
+	</interface>
+	<script type="text/brightscript" uri="pkg:/components/Scenes/shows/Show.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+
+	<children>
+
+		<Rectangle id="main_rect">
+
+			<Label>
+				<Font id="DescFont" role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="35" />
+			</Label>
+
+			<Poster id="bannerPoster"
+				width="1920"
+				height="1080"
+				uri="pkg:/images/home_gradient2.png"
+				translation="[0,0]"
+				loadDisplayMode="limitSize"
+				loadWidth="1920"
+				loadHeight="1080" />
+
+			<Video
+				id="Video1" visible="true"
+				translation="[0,0]"
+				width="1920"
+				height="1080" contentIsPlaylist="true" />
+
+
+			<!-- <PaymentDescription id="PaymentDescription" visible="false" /> -->
+
+			<Rectangle
+				id="BottomBar"
+				translation="[0,0]"
+				width="1920"
+				height="1080"
+				color="0x000000FF">
+
+
+				<Rectangle id="backgroundVideoPlayerRectangle">
+					<Video
+						id="backGroundVideo" visible="false"
+						translation="[400,0]"
+						width="1520"
+						enableUI="false"
+						height="855" contentIsPlaylist="true" />
+
+					<Poster id="backGroundBannerPoster"
+						width="1920"
+						height="1080"
+						visible="false"
+						uri=""
+						translation="[0,0]" />
+
+					<Poster id="gradientOverlayForBackgroundPlayer"
+						width="2340"
+						height="1080"
+						opacity="0.9"
+						uri="pkg:/images/home_gradient2.png"
+						loadDisplayMode="noScale"
+						translation="[-420,0]" />
+				</Rectangle>
+
+
+				<GridScreen id="GridScreen" visible="false" translation="[0,0]" />
+
+
+				<Poster id="autoThumb" translation="[0,0]" width="1920" height="1080"
+					visible="false"
+					opacity="0.9" />
+
+
+				<ScrollingLabel id="autoplaylabel" maxWidth="800" color="##10c1d0"
+					font="font:LargeBoldSystemFont" translation="[670,650]" text=""
+					horizAlign="left" />
+
+
+				<Label id="rating" color="#ffffff" font="font:SmallestBoldSystemFont"
+					translation="[250,170]" text="" />
+
+
+				<Label id="years" color="#ffffff" font="font:SmallestBoldSystemFont"
+					translation="[510,170]" text="" />
+
+
+				<Label id="prod" color="#ffffff" font="font:SmallestBoldSystemFont"
+					translation="[1400,170]" text="" />
+
+
+				<Label id="Episode" color="#ffffff" font="font:SmallestBoldSystemFont"
+					translation="[1400,170]" width="260" text="" />
+
+
+				<Label id="descri_title" color="#ffffff" font="font:SmallestBoldSystemFont"
+					translation="[100,280]" text="" size="26" />
+
+
+				<Rectangle id="rectangleForSmallDetails">
+
+
+					<Poster
+						id="imageTitlePoster"
+						visible="false"
+						uri=""
+						width="600"
+						height="120"
+						translation="[95, 107]"
+						loadDisplayMode="fill" />
+
+
+					<LayoutGroup id="LabelGroup" translation="[95, 107]" layoutDirection="vert"
+						vertAlignment="top" itemSpacings="[30,0,0,30,30,30,30,30,30,30]">
+
+						<Label
+							id="Title1"
+							visible="true"
+							maxWidth="900"
+							width="900"
+							translation="[0,0]"
+							wrap="true"
+							numLines="2"
+							maxLines="2"
+							lineSpacing="-17"
+							horizAlign="left"
+							vertAlign="bottom"
+							color="#ffffff">
+							<Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="55" />
+						</Label>
+
+
+						<Label id="resolution" width="1200" horizAlign="left" vertAlign="top"
+							color="#ffffff" text="">
+							<Font role="font" uri="pkg:/fonts/Roboto-Medium.ttf" size="24" />
+						</Label>
+
+
+						<Label id="time" color="#ffffff" font="font:SmallestBoldSystemFont"
+							translation="[95,228]" text="" />
+
+						<Label id="descri" width="850" wrap="true" numLines="2" maxLines="1"
+							height="90" ellipsisText="...    Press (*) for more"
+							lineSpacing="0" horizAlign="left" vertAlign="top" color="#cccccc"
+							text="">
+							<Font role="font" uri="pkg:/fonts/AvenirNextCyr-Regular.ttf" size="25" />
+						</Label>
+
+						<Button id="show_more_button" height="33" visible="true"
+							showFocusFootprint="true" width="30" focusedColor="#ffffff"
+							minWidth="1" text="" textColor="#ffffff"
+							iconUri="" focusedIconUri="" focusedTextColor="#ffffff"
+							focusFootprintBitmapUri="pkg:/images/img_loginbg1.png"
+							focusBitmapUri="pkg:/images/img_loginbg1.png" />
+
+
+						<Label id="categories" width="1200" horizAlign="left" vertAlign="top"
+							color="#6b6b6b" text="">
+							<Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="24" />
+						</Label>
+
+
+						<LayoutGroup layoutDirection="horiz" horizAlignment="left" visible="false">
+
+							<Label id="casting" horizAlign="left" vertAlign="top"
+								color="#6b6b6b" text="Starring    ">
+								<Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="24" />
+							</Label>
+
+							<Label id="cast" horizAlign="left" width="700"
+								color="#ffffff" text="">
+								<Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="24" />
+							</Label>
+
+						</LayoutGroup>
+
+
+						<LayoutGroup layoutDirection="horiz" horizAlignment="left" visible="false">
+
+							<Label id="direct" horizAlign="left"
+								color="#6b6b6b" text="Directed by    ">
+								<Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="24" />
+							</Label>
+
+							<Label id="Director" horizAlign="left"
+								color="#ffffff" text="">
+								<Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="24" />
+							</Label>
+						</LayoutGroup>
+
+
+						<Label id="starValue" color="#ffffff" font="font:SmallestBoldSystemFont"
+							text="" />
+
+						<Label id="Year" height="50" width="600" wrap="true" numLines="1"
+							maxLines="1"
+							lineSpacing="0.1" horizAlign="left" vertAlign="top" color="#ffffff"
+							text="2019">
+							<Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="26" />
+						</Label>
+
+						<Label id="Duration" height="50" width="600" wrap="true" numLines="1"
+							maxLines="1" lineSpacing="0.1" horizAlign="left" vertAlign="top"
+							color="#ffffff" text="">
+							<Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="26" />
+						</Label>
+
+
+					</LayoutGroup>
+
+
+					<!-- buttons, subscriptionlist-->
+					<Rectangle id="buttonRectangle" translation="[0,0]">
+
+						<!-- 
+						<LabelList
+							id="buttonsLabelList" visible="false"
+							translation="[111,630]"
+							focusedColor="#ffffff"
+							numRows="3"
+							vertFocusAnimationStyle="floatingFocus"
+							itemSize="[400,70]">
+						</LabelList> -->
+
+						<RowList
+							id="buttonsLabelList"
+							itemComponentName="ActionButtonItemComponentFile"
+							itemSize="[1700, 60]"
+							variablewidthitems="[true]"
+							drawFocusFeedbackOnTop="false"
+							focusBitmapUri="pkg:/images/img_newbg.9.png"
+							itemSpacing="[40,30]"
+							rowItemSpacing="[[40, 50]]"
+							translation="[90,593]"
+							numRows="1"
+							rowItemSize="[[200, 70]]"
+							rowHeights="[130]" />
+
+
+						<RowList
+							id="subscriptionList" visible="false"
+							itemComponentName="customItemForSubscriptionListInShowDeatilPage"
+							translation="[90,465]"
+							numRows="4"
+							rowHeights="[70]" rowWidth="[250]" rowItemSize="[[325, 70]]"
+							rowItemSpacing="[[20, 30]]"
+							showRowLabel="false"
+							itemSize="[1920, 518]" rowLabelOffset="[[0, 15]]"
+							rowFocusAnimationStyle="floatingFocus" />
+					</Rectangle>
+
+
+					<RowList
+						id="RowList" label="" focusBitmapUri="pkg:/images/focus_grid.9.png"
+						itemComponentName="customItemShowDetails"
+						translation="[80,780]"
+						numRows="4" rowLabelFont="font:SmallBoldSystemFont"
+						rowHeights="[300,300]" rowItemSize="[[320, 180]]"
+						rowItemSpacing="[[25, 15]]"
+						itemSpacing="[10, 10]"
+						showRowLabel="true"
+						itemSize="[1860, 518]" rowLabelOffset="[[0, 15]]"
+						rowFocusAnimationStyle="floatingFocus">
+					</RowList>
+
+					<!-- <Label id="cast1" horizAlign="left" width="700"
+								color="#ffffff" text="">
+								<Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="24" />
+							</Label> -->
+				</Rectangle>
+
+				<Poster id="bannerPoster1"
+					width="1920"
+					height="200"
+					uri="pkg:/images/bottomShadow.png"
+					loadDisplayMode="noScale"
+					translation="[0,900]" />
+
+
+
+				<!-- <Label id="labelForSpecialPages" height="50" width="600" wrap="true"
+				numLines="1"
+					maxLines="1" lineSpacing="0.1" horizAlign="left" vertAlign="top" color="#ffffff"
+					text="" translation="[95, 215]">
+					<Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="30" />
+				</Label> -->
+
+
+				<!-- 
+			<Landing id="Landing" visible="false" translation="[0,0]" /> -->
+
+				<Rectangle id="tagsRect" color="00FFFFFF" visible="false" width="1920" height="1080">
+					<Rectangle color="#000000" height="1080" width="1920" opacity="0.9" />
+
+					<Poster id="TagsBgPoster" uri="pkg:/images/img_newbg.9.png"
+						width="1920" height="1080" translation="[0, 0]" />
+
+					<RowList
+						id="RowList" label="" focusBitmapUri="pkg:/images/focus_grid.9.png"
+						itemComponentName="customItemShowDetails"
+						translation="[80,949]"
+						numRows="4" rowLabelFont="font:SmallBoldSystemFont"
+						rowHeights="[300,300]" rowItemSize="[[320, 180]]"
+						rowItemSpacing="[[45, 45]]"
+						showRowLabel="true"
+						itemSize="[1860, 518]" rowLabelOffset="[[0, 15]]"
+						rowFocusAnimationStyle="floatingFocus">
+					</RowList>
+					
+					<RowList
+						id="tagsRowlist" label="" drawFocusFeedbackOnTop="false"
+						focusBitmapUri="pkg:/images/img_newbg.9.png"
+						itemComponentName="tagsListItemComponentFile"
+						translation="[100,145]"
+						numRows="7"
+						rowHeights="" rowItemSize="" focusXOffset="[0]"
+						rowItemSpacing="[[30, 20], [30, 20]]" variableWidthItems="[true]"
+						showRowLabel="true" itemSpacing="[0, 33]"
+						itemSize="[1920, 106]" rowLabelOffset="[[0, 10]]"
+						vertFocusAnimationStyle="floatingFocus"
+						rowFocusAnimationStyle="floatingFocus">
+					</RowList>
+				</Rectangle>
+			</Rectangle>
+
+
+			<!-- Dialog rectangle -->
+			<Rectangle id="dialogbg_rect" width="1920" height="1080" translation="[0,0]"
+				color="#00000099" visible="false">
+
+				<Rectangle id="dialogmain_rect" width="750" height="365" translation="[587,360]"
+					color="#00000000" visible="true">
+
+					<Poster id="dialogbanner_poster" loadDisplayMode="noScale" width="750"
+						height="365"
+						loadWidth="498" loadHeight="280" translation="[0,0]"
+						uri="pkg:/images/img_newbg.9.png" visible="true" />
+
+
+					<Label id="dialogmessage_label" width="750" height="36" text=""
+						horizAlign="center" vertAlign="center" visible="true" translation="[0,60]"
+						color="#080808">
+						<Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="30" />
+					</Label>
+
+					<Button id="NoButton" text="" height="80" visible="true"
+						showFocusFootprint="true"
+						minWidth="300" translation="[19,200]" iconUri="" focusedIconUri=""
+						focusFootprintBitmapUri="pkg:/images/img_loginbg.png"
+						focusBitmapUri="pkg:/images/img_loginbg_selected.png" textColor="#ffffff"
+						focusedTextColor="#ffffff">
+						<ScrollingLabel id="cancelbutton_Label" height="80" width="300"
+							maxWidth="290" text="" repeatCount="-1"
+							vertAlign="center" horizAlign="center" color="#ffffff">
+							<Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="28" />
+						</ScrollingLabel>
+					</Button>
+
+
+					<Button id="YesButton" text="" height="80" visible="true"
+						showFocusFootprint="true"
+						minWidth="300" translation="[394,200]" iconUri="" focusedIconUri=""
+						focusFootprintBitmapUri="pkg:/images/img_loginbg.png"
+						focusBitmapUri="pkg:/images/img_loginbg_selected.png" textColor="#ffffff"
+						focusedTextColor="#ffffff">
+						<ScrollingLabel id="exitbutton_Label" height="80" width="300" maxWidth="250"
+							text="" repeatCount="-1"
+							vertAlign="center" horizAlign="center" color="#ffffff">
+							<Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="28" />
+						</ScrollingLabel>
+					</Button>
+
+
+					<!-- <Label id="dialogmessage_label" width="750" height="36" text=""
+						horizAlign="center" vertAlign="center" visible="true" translation="[0,60]"
+						color="#080808">
+						<Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="24" />
+					</Label>
+
+					<Button id="NoButton" text="" height="60" visible="true"
+						showFocusFootprint="true"
+						minWidth="180" translation="[79,210]" iconUri="" focusedIconUri=""
+						focusFootprintBitmapUri="pkg:/images/img_loginbg.png"
+						focusBitmapUri="pkg:/images/img_loginbg_selected.png" textColor="#ffffff"
+						focusedTextColor="#ffffff">
+						<Label id="cancelbutton_Label" height="60" width="180" text=""
+							vertAlign="center" horizAlign="center" color="#ffffff">
+							<Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="24" />
+						</Label>
+					</Button>
+
+
+					<Button id="YesButton" text="" height="60" visible="true"
+						showFocusFootprint="true"
+						minWidth="180" translation="[454,210]" iconUri="" focusedIconUri=""
+						focusFootprintBitmapUri="pkg:/images/img_loginbg.png"
+						focusBitmapUri="pkg:/images/img_loginbg_selected.png" textColor="#ffffff"
+						focusedTextColor="#ffffff">
+						<Label id="exitbutton_Label" height="60" width="180" text=""
+							vertAlign="center" horizAlign="center" color="#ffffff">
+							<Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="24" />
+						</Label>
+					</Button> -->
+				</Rectangle>
+
+			</Rectangle>
+
+
+			<!-- up next section -->
+			<Rectangle id="UpNext_rect" width="1920" height="1080" color="#000000" visible="false">
+				<Label id="Upnext_mainTitle" translation="[0, -150]" height="1080" width="1920"
+					font="font:LargeBoldSystemFont" visible="true" horizAlign="center" wrap="true"
+					vertAlign="center" text=""
+					color="#E3E3E3" size="40" />
+
+				<Label id="upnext_video_name" translation="[460, 0]" height="1080" width="1000"
+					font="font:MediumBoldSystemFont" visible="true" horizAlign="center" wrap="true"
+					vertAlign="center" text=""
+					color="#E3E3E3" size="40" />
+			</Rectangle>
+
+
+			<Animation
+				id="ShowBar"
+				repeat="false"
+				duration="1"
+				easeFunction="inOutQuad">
+				<Vector2DFieldInterpolator
+					fieldToInterp="BottomBar.translation"
+					key="[0,1]"
+					keyValue="[[0,0],[0,0]]" />
+			</Animation>
+
+			<Animation
+				id="HideBar"
+				repeat="false"
+				duration="1"
+				easeFunction="inOutQuad">
+				<Vector2DFieldInterpolator
+					fieldToInterp="BottomBar.translation"
+					key="[0,1]"
+					keyValue="[[0,780],[0,1080]]" />
+			</Animation>
+
+			<Timer
+				id="Timer"
+				repeat="false"
+				duration="3" />
+
+			<Timer
+				id="Timer2"
+				repeat="false"
+				duration="9" />
+			<Timer
+				id="AdTimer"
+				repeat="true"
+				duration="20" />
+
+			<Timer
+				id="upNextTimer"
+				repeat="false"
+				duration="2" />
+
+			<!-- timers -->
+			<Timer id="mainrectscrollupTimer" duration="0.01"
+				repeat="false" />
+
+			<Timer id="mainrectscrolldownTimer" duration="0.01"
+				repeat="false" />
+
+
+			<Rectangle id="descr_rect" width="1920" height="1080" color="0x000000FF" visible="false">
+
+				<Rectangle id="descr_rect_color_rect" width="1920" height="1080" color="#000000" />
+
+				<ScrollableText
+					translation="[200, 200]"
+					id="ScrollableText"
+					width="1600"
+					height="800"
+					color="0xFFFFFFFF"
+					text="" visible="false"
+				/>
+			</Rectangle>
+
+			<!-- animation sections -->
+			<Animation id="scrollup_animation" duration="0.2"
+				easeFunction="inOutQuad">
+				<Vector2DFieldInterpolator
+					id="testVector2D"
+					key="[0.0, 1.0]"
+					keyValue="[[0, 0],[0, -300]]"
+					fieldToInterp="rectangleForSmallDetails.translation" />
+
+			</Animation>
+
+			<Animation id="scrolldown_animation" duration="0.2"
+				easeFunction="inOutQuad">
+				<Vector2DFieldInterpolator
+					id="testVector2D"
+					key="[0.0,  1.0]"
+					keyValue="[[0, -300], [0, 0]]"
+					fieldToInterp="rectangleForSmallDetails.translation" />
+
+			</Animation>
+
+			<Loading id="loading" />
+
+
+		</Rectangle>
+	</children>
+
+</component>

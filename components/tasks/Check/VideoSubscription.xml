@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="VideoSubscription" extends="Task">
+
+<interface>
+  	<field id="request" alwaysnotify="true" type="String"/>
+    <field id="videoID" alwaysnotify="true" type="String" />
+    <field id="videoSubs" alwaysnotify="true" type="bool" />
+    
+	<function name="runVideoSubscription" />
+    <function name="stopVideoSubscription" />
+</interface>
+
+	<script type="text/brightscript" uri="pkg:/components/tasks/Check/VideoSubscription.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+</component>

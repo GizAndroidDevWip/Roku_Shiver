@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="customItemhome" extends="Group">
+
+  <interface>
+    <field id="width" type="float" onChange="updateLayout" />
+    <field id="height" type="float" onChange="updateLayout" />
+    <field id="itemContent" type="node" onChange="itemContentChanged" />
+    <field id="itemHasFocus" type="bool" onChange="onitemHasFocus" />
+  </interface>
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+  <script type="text/brightscript"
+    uri="pkg:/components/Scenes/HomeScene/ItemComponentFiles/customItemhome.brs" />
+  <script type="text/brightscript">
+    <!-- <script type="text/brightscript" uri ="pkg:/source/commonUtils.brs"/> -->
+
+
+  </script>
+
+  <children>
+
+
+    <Rectangle id="main_rect" width="320" height="180" translation="[0,0]" color="#000000"
+      visible="true">
+
+      <Label id="topTrendingOrder" visible="false" height="350" width="400" wrap="true"
+        numLines="1"
+        maxLines="1"
+        lineSpacing="0.01" horizAlign="left" vertAlign="top" color="#ffffff" text=""
+        translation="[8,0]">
+        <Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="0" />
+      </Label>
+
+      <Poster id="topTrendingOrderOverlayGradient" translation="[-60,0]" width="60" height="0"
+        loadDisplayMode="limitSize"
+        loadWidth="400" loadHeight="270" uri="pkg:/images/leftwardGradient.png"
+        visible="false"
+        loadSync="true" />
+
+      <MaskGroup
+        id="myMaskGroup"
+        maskUri=""
+        maskSize="[300, 200]">
+        
+        <Poster id="poster" translation="[0,0]" width="400" height="180" loadDisplayMode="limitSize"
+          loadWidth="30" loadHeight="30"
+          visible="true"
+          uri=""
+          loadSync="true" />
+      </MaskGroup>
+
+      <Label
+        id="itemView_Center_Label"
+        translation="[0,0]"
+        width="400"
+        height="180"
+        visible="false"
+        wrap="true"
+        horizAlign="center"
+        vertAlign="center"
+        text=""
+        color="#FFFFFF">
+        <Font role="font" uri="pkg:/fonts/Netflix-Semibold.ttf" size="28" />
+      </Label>
+
+
+      <Poster id="posterForBanner" translation="[0,0]" width="400" height="180"
+        visible="false"
+        uri=""
+        loadSync="true" />
+
+
+      <Poster id="bannerLeftGradient" translation="[0,0]" width="850" height="650"
+        loadWidth="1400"
+        loadHeight="788" visible="false"
+        uri="pkg:/images/bannerLeftGradi.png"
+        loadDisplayMode="limitSize" loadSync="true" />
+
+      <Rectangle id="Progressbar" width="320" height="11" visible="false"
+        color="#ffffff" translation="[0, 169]">
+      </Rectangle>
+
+      <Poster id="playButton" uri="pkg:/images/play.png" visible="false"
+        translation="[120,52]" width="70" height="70" />
+
+
+      <Poster id="free_icon" uri="pkg:/images/free_icon1.png" visible="false"
+        translation="[15,15]" width="53" height="54" />
+
+      <Poster id="lock_icon" uri="pkg:/images/icons/lock_icon.png" visible="false"
+        translation="[15,15]" width="30" height="30" />
+
+
+      <!-- <Poster id="poster_bottom_shadow" uri="pkg:/images/img_newbottomshade.png"
+        translation="[0,104]" width="320" height="77" /> -->
+
+      <Label id="which_week" height="90" width="370" wrap="true" lineSpacing="1" horizAlign="left"
+        vertAlign="top" color="#FFFFFF" visible="false" font="font:MediumBoldSystemFont"
+        translation="[10,165]" numLines="2" maxLines="10">
+      </Label>
+
+      <Label id="title" height="55" width="310" wrap="true" lineSpacing="1" horizAlign="left"
+        vertAlign="top" font="font:SmallestBoldSystemFont" translation="[10,190]" numLines="2"
+        maxLines="2">
+      </Label>
+
+
+      <Label id="type" height="800" width="500" wrap="true" lineSpacing="5" horizAlign="left"
+        vertAlign="top" color="#FFFFFF" visible="false" font="font:MediumBoldSystemFont"
+        translation="[200,300]" numLines="4" maxLines="1">
+      </Label>
+
+
+      <Label id="synopsis" height="350" width="520" wrap="true" lineSpacing="18" horizAlign="left"
+        vertAlign="top" color="#FFFFFF" visible="false" font="font:MediumBoldSystemFont"
+        translation="[0,300]" numLines="6" maxLines="6">
+      </Label>
+
+
+      <Label id="directorAndYear" height="90" width="370" wrap="true" lineSpacing="1"
+        horizAlign="left" vertAlign="top" color="#FFFFFF" visible="false"
+        font="font:MediumBoldSystemFont" translation="[200,390]" numLines="2" maxLines="1">
+      </Label>
+
+
+      <Poster id="bottom_gradient" uri="pkg:/images/bottom_Gradient.png" visible="false"
+        translation="[0,556]" width="1490" height="400" />
+      <!-- 
+      <Poster id="CornerRoundedforHomeScene" uri="pkg:/images/roundCornerMask.png" visible="true"
+        translation="[0,0]" width="320" height="180" /> -->
+
+
+      <Poster id="top_gradient" uri="pkg:/images/top_Gradient.png" visible="false"
+        translation="[0,0]" width="1490" height="400" />
+
+      <Label id="banner_title" height="0" width="500" wrap="true" lineSpacing="0.04"
+        horizAlign="left"
+        vertAlign="top" color="#FFFFFF" visible="false" font="font:LargeBoldSystemFont"
+        translation="[30,120]" numLines="2" maxLines="2">
+      </Label>
+
+      <Poster
+        id="imageTitlePoster"
+        visible="false"
+        width="900"
+        uri="pkg:/images/movie_title.png"
+        height="150"
+        translation="[60,435]"
+        loadDisplayMode="fill" />
+
+
+      <Label
+        id="startingdate"
+        translation="[25,336]"
+        horizAlign="left"
+        text=""
+        lineSpacing="5"
+        width="700"
+        height="71"
+        wrap="true" numLines="2" maxLines="2"
+        visible="true" color="#ffffff">
+      </Label>
+
+      <Label
+        id="endingdate"
+        translation="[10,332]"
+        horizAlign="left"
+        text=""
+        lineSpacing="5"
+        width="700"
+        height="71"
+        wrap="true" numLines="2" maxLines="2"
+        visible="true" color="#ffffff">
+      </Label>
+
+
+      <Label
+        id="descriptionBanner"
+        translation="[105, 615]"
+        horizAlign="left"
+        text=""
+        lineSpacing="5"
+        width="700"
+        height="180"
+        wrap="true" numLines="5" maxLines="2"
+        visible="false" color="#ffffff">
+      </Label>
+
+
+      <Video
+        id="onFocusPlayVideo"
+        width="320"
+        height="180"
+        visible="false"
+        translation="[0,0]"
+        enableUI="false" />
+
+
+    </Rectangle>
+
+
+    <Rectangle id="descriptionZone" color="0x111111" height="60">
+
+      <Poster id="premiumIcon" width="80" height="80" visible="false" translation="[250, 20]"
+        uri="" />
+      <Poster id="live" width="65" height="36" visible="false" translation="[230, 20]"
+        uri="pkg:/images/live.png" />
+
+    </Rectangle>
+
+  </children>
+
+</component>

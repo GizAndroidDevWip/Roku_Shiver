@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="MultiLanguageUserUpdateTask" extends="Task">
+	<interface>
+		<field id="MultiLanguageUserUpdateApiTaskContent" alwaysnotify="true"
+			type="roAssociativeArray" />
+		<field id="MultiLanguageUserUpdateApiTaskListStatus" alwaysnotify="true" type="Boolean" />
+		<field id="language_id"  type="Integer" />
+		
+		<function name="runMultiLanguageUserUpdateApiTask" />
+		<function name="stopMultiLanguageUserUpdateApiTask" />
+	</interface>
+	<script type="text/brightscript" uri="pkg:/components/Scenes/HomeScene/Tasks/MultiLanguageUserUpdateTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Util.brs" />
+	<!-- <script type="text/brightscript" uri="pkg:/components/Scenes/LaunchScene/LaunchScene.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" /> -->
+</component>

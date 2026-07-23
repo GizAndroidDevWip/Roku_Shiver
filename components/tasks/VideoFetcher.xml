@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="VideoFetcher" extends="Task">
+
+<interface>
+  	<field id="CatRequest" type="String"/>
+  	<field id="ContentRequest" type="String" alwaysnotify="true"/>
+    <field id="Content" type="node" />
+    <field id="LabelContent" type="node" alwaysnotify="true"/>
+	    <field id="CategoryListingParsing" type="node" alwaysnotify="true"/>
+    <field id="CatBoolean" type="boolean" alwaysNotify="true"/>
+     
+   <field id="taskType" alwaysnotify="true" type="String" /> 
+        
+	<function name="runVideoFetcherTask" />
+    <function name="stopVideoFetcherTask" />   
+</interface>
+
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Util.brs" />
+	<script type="text/brightscript" uri="pkg:/components/tasks/VideoFetcher.brs" />
+</component>

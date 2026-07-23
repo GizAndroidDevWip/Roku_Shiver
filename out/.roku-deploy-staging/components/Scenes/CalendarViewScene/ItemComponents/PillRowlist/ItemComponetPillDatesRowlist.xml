@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="ItemComponetPillDatesRowlist" extends="Group">
+
+  <interface>
+    <field id="itemContent" type="node" onChange="itemContentChanged" />
+    <field id="width" type="float" onChange="updateLayout" />
+    <field id="height" type="float" onChange="updateLayout" />
+    <field id="focusPercent" type="float" onChange="onItemFocusPercentchanged" />
+    <field id="rowHasFocus" type="bool" onChange="onRowFocusPercentChanged" />
+  </interface>
+
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+  <script type="text/brightscript"
+    uri="pkg:/components/Scenes/CalendarViewScene/ItemComponents/PillRowlist/ItemComponetPillDatesRowlist.brs" />
+
+  <children>
+
+    <!-- Container Rectangle -->
+    <Rectangle id="main_rect" width="200" height="70" translation="[0,0]" color="0x00000000">
+
+      <!-- Pill Poster Background -->
+      <Poster
+        id="pillPoster"
+        uri="pkg:/images/img_long_button_selected (1).png"
+        width="240"
+        height="70"
+        translation="[0,0]"
+        visible="true" />
+
+
+      <!-- <Poster
+        id="streakposter"
+        width="240"
+        height="4"
+        blendColor="#ADD8E6"
+        cornerRadius="20"
+        uri="pkg:/images/img_loginbg1.png"
+        translation="[10, 64]"
+        loadSync="true" /> -->
+
+      <!-- Date Label over the pill -->
+      <Label
+        id="pillDateLabel"
+        width="240"
+        height="70"
+        horizAlign="center"
+        vertAlign="center"
+        font="font:MediumBoldSystemFont"
+        color="#FFFFFF"
+        size="20"
+        translation="[0,0]"
+        text="" />
+
+    </Rectangle>
+
+  </children>
+</component>

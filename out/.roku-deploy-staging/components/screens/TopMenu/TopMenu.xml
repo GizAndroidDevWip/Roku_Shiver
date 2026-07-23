@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--********** Copyright 2016 Roku Corp.  All Rights
+Reserved. **********-->
+
+<component name="TopMenu" extends="Group">
+  <script type="text/brightscript" uri="pkg:/components\screens\TopMenu\TopMenu.brs" />
+  <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+
+  <interface>
+    <field id="SET_FOCUS" type="bool" alwaysNotify="true" onChange="onSetFocus"/>
+    <field id="initialiseTopMenuRowlist" type="bool" alwaysNotify="true" onChange="initialiseTopMenuRowlist"/>
+    <field id="content" type="node" alias="HomeTopMenuRowlist.content" alwaysNotify="true"/>
+    <field id="rowItemFocused" type="intArray"  alwaysNotify="true" onChange="onRowItemFocusedChange"/>
+    <field id="rowItemSelected" type="intArray" alias="HomeTopMenuRowlist.rowItemSelected"  alwaysNotify="true" onChange="onRowItemSelectedChange"/>
+    <field id="jumpToRowItem" type="intArray"  alwaysNotify="true"  onChange="onJumpedToRowItem"/>
+    <field id="SearchIconVisibility" type="bool" onChange="updateSearchIconVisibility"  alwaysNotify="true" />
+  </interface>
+  <children>
+    <Poster id="top_gradient" uri="pkg:/images/top_Gradient.png" visible="true"
+      translation="[0,0]" width="1920" height="270" />
+    <RowList
+      id="HomeTopMenuRowlist"
+      itemSize="[1450,60]"
+      rowItemSize="[[200, 40]]"
+      rowHeights="[70,70]"
+      numRows="1"
+      width="1740"
+      height="70"
+      variablewidthitems="[true]"
+      drawFocusFeedbackOnTop="false"
+      rowFocusAnimationStyle="floatingFocus"
+      focusable="true"
+      rowItemSpacing="[[27, 10]]"
+      focusBitmapUri="pkg:/images/img_newbg.9.png"
+      translation="[200, 20]"
+      itemComponentName="HomeTopMenuRowlistItemComponent"
+    />
+  </children>
+
+</component>

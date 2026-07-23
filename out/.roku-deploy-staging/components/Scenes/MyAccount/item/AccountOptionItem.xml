@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="AccountOptionItem" extends="Group">
+    <interface>
+        <field id="itemContent" type="assocarray"
+            onChange="onItemContentChanged" />
+        <field id="isFocused" type="bool" value="false" alwaysnotify="true"
+            onChange="onFocusStateChanged" />
+    </interface>
+    <script type="text/brightscript" uri="AccountOptionItem.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <children>
+        <Poster id="bgPoster" uri="pkg:/images/img_newbg.9.png"
+            blendColor="#121212" width="1200"
+            height="94" />
+        <Poster id="itemIcon" width="40" height="40"
+            loadDisplayMode="scaleToFit"
+            translation="[28, 27]" />
+        <Label id="itemTitle" width="1040" height="30"
+            translation="[90, 16]" color="0xFFFFFFff">
+            <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="24" />
+        </Label>
+        <Label id="itemSubtitle" width="1040" height="26"
+            translation="[90, 52]" color="0xb3b3b3ff">
+            <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="18" />
+        </Label>
+        <Label id="rightArrow" width="60" height="60"
+            translation="[1128, 17]" text="&#x203A;"
+            horizAlign="center" vertAlign="center">
+            <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="52" />
+        </Label>
+    </children>
+</component>

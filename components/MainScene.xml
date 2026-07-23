@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--********** Copyright 2020 Roku Corp.  All Rights
+Reserved. **********-->
+
+<component name="MainScene" extends="Scene">
+
+    <interface>
+        <field id="orders" type="assocarray" />
+        <field id="appExit" type="bool" alwaysnotify="true" value="false" />
+        <field id="launch_show_screen" type="string" alwaysnotify="true" onChange="launchShowScene" />
+        <field id="purchaseList" type="assocarray" />
+        <field id="extPurchaseList" type="assocarray" />
+        <field id="SMARTHOME_SELECTED" type="string" alwaysnotify="true" />
+        <field id="showCustomDialog" type="assocarray" onChange="OnShowCustomDialog" />
+    </interface>
+
+
+    <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
+    <script type="text/brightscript" uri="pkg:/source/ConfigUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    
+
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/TvCodeSceneLogic.brs" />
+
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/ScreenStackLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/CategorySceneLogic.brs" />
+    <script type="text/brightscript"
+        uri="pkg:/components/ScreenStackLogic/AllCategoryScreenLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/HomeScreenLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/SearchScreenLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/MyListScreenLogic.brs" />
+    <script type="text/brightscript"
+        uri="pkg:/components/ScreenStackLogic/SubscriptionListScreenLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/LandingScreenLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/LaunchScreenLogic.brs" />
+    <script type="text/brightscript"
+        uri="pkg:/components/ScreenStackLogic/VideoSubscriptionListScreenLogic.brs" />
+    <script type="text/brightscript"
+        uri="pkg:/components/ScreenStackLogic/MainVideoPlayerScreenLogic.brs" />
+    <script type="text/brightscript"
+        uri="pkg:/components/ScreenStackLogic/VideoPlayerSceneLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/PodcastScreenLogic.brs" />
+    <script type="text/brightscript"
+        uri="pkg:/components/ScreenStackLogic/PlayerPodCastScreenLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/RegisterScreenLogic.brs" />
+    <script type="text/brightscript"
+        uri="pkg:/components/ScreenStackLogic/VideoDetailSceneLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/ShowMoreSceneLogic.brs" />
+    <script type="text/brightscript"
+        uri="pkg:/components/ScreenStackLogic/EventDetailsSceneLogic.brs" />
+
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/TvCodeSceneLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/ShowScreenStackLogic.brs" />
+    <script type="text/brightscript"
+        uri="pkg:/components/ScreenStackLogic/ShowPageForUpcomingEventScreenStackLogic.brs" />
+    <script type="text/brightscript"
+        uri="pkg:/components/ScreenStackLogic/ShowPageForLiveEventScreenStackLogic.brs" />
+
+    <!-- <script type="text/brightscript"
+    uri="pkg:/components/Scenes/TimeGridScene/TimeGridScene.brs"/> -->
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/TimeGridSceneLogic.brs" />
+    <script type="text/brightscript"
+        uri="pkg:/components/Scenes/TvCodeScene/Tasks/EmailLoginLogic.brs" />
+    <script type="text/brightscript"
+        uri="pkg:/components/ScreenStackLogic/LoginChooseScreenLogic.brs" />
+    <script type="text/brightscript"
+        uri="pkg:/components/ScreenStackLogic/ShowCategorySceneLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/ShortsSceneLogic.brs" />
+    <script type="text/brightscript"
+        uri="pkg:/components/ScreenStackLogic/CalendarViewSceneLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/MicroDramaSceneLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/AccountScreenLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/InfoTextScreenLogic.brs" />
+    <script type="text/brightscript" uri="pkg:/components/ScreenStackLogic/PlanDetailsScreenLogic.brs" />
+
+
+    <children>
+        <!-- <ProductScreen
+        id="productScreen" />
+
+    <PurchaseScreen
+        id="purchaseScreen"
+        visible="false"/>
+
+    <UpgradeScreen
+        id="upgradeScreen"
+        visible="false"/> -->
+        <ChannelStore id="billing" />
+        <TopMenu id="HomeTopMenuRowlist" translation="[0, 0]" />
+        <BrandingLogo id="BrandingLogo" />
+        <Loading id="loadingIndicator" visible="false"/>
+
+    </children>
+
+</component>

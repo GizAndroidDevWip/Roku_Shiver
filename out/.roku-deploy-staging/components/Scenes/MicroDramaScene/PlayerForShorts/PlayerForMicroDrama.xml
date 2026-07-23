@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<component name="PlayerForMicroDrama" extends="Group">
+    <interface>
+        <field id="content" type="node" />
+        <field id="playerContentThatWeResets" type="node" alwaysNotify="true" />
+        <field id="CoinSubscriptionContent" type="roArray" />
+        <field id="visibility" type="bool" alwaysNotify="true" />
+        <field id="state" type="string" alwaysNotify="true" />
+        <field id="playerState" type="string" alwaysNotify="true" />
+        <field id="autoplay" type="bool" alwaysNotify="true" />
+        <field id="subtitles" type="Array" alwaysNotify="true" />
+        <field id="control" type="string" alwaysNotify="true" onChange="controlChanged" />
+        <field id="setFocusToCoinListing" type="bool" alwaysNotify="true"
+            onChange="onSetFocusToCoinListing" />
+        <field id="skipAd" type="bool" />
+        <field id="watched_duration" type="integer" />
+        <field id="VIDEO_LANGUAGE_CHANGED" type="string" alwaysNotify="true" />
+        <field id="closethispage" type="string" alwaysnotify="true" />
+        <field id="menuButtonSelected" type="string" alwaysnotify="true" />
+        <field id="setFocusToSpecificNode" type="string" alwaysnotify="true"
+            onChange="setFocusToSpecificNodeChanged" />
+        <field id="showSubscribeOverlay" type="bool" alwaysnotify="true"
+            onChange="onShowSubscribeOverlayChanged" />
+
+    </interface>
+
+    <script type="text/brightscript"
+        uri="pkg:/components\Scenes\MicroDramaScene\PlayerForShorts\PlayerForMicroDrama.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+
+    <children>
+
+
+        <Rectangle id="dialogbg_rect" width="1920" height="1080" color="#000000"
+            translation="[0,0]">
+
+            <PlayerForMicroDramaExtended
+                id="VideoPlayer" visible="true" translation="[0, 0]" enableUI="true" width="1920"
+                height="1080" />
+
+            <Poster id="playerOverlayPoster" visible="false" translation="[665, 0]" width="608"
+                height="1080" uri="" />
+
+            <Poster id="CornerRoundedforHomeScene" uri="pkg:/images/roundCornerMask.png"
+                visible="false"
+                translation="[665,0]" width="608" height="1080" />
+
+            <Label id="label" height="500" width="500" wrap="true" lineSpacing="3"
+                horizAlign="left"
+                vertAlign="bottom" color="#FFFFFF" font="font:MediumBoldSystemFont"
+                translation="[1342,360]" numLines="7" maxLines="7" />
+
+            <RowList
+                id="buttonsRowlist"
+                itemComponentName="ActionButtonItemComponentFileMicroDramaPlayerMenu"
+                itemSize="[1700, 60]"
+                variablewidthitems="[true]"
+                drawFocusFeedbackOnTop="false"
+                focusBitmapUri="pkg:/images/img_newbg.9.png"
+                itemSpacing="[30,30]"
+                rowItemSpacing="[[30, 30]]"
+                translation="[1343, 900]"
+                numRows="1"
+                rowItemSize="[[200, 70]]"
+                rowHeights="[130]" />
+
+
+            <Rectangle
+                id="SubscribeOverlay"
+                width="1920"
+                height="1080"
+                translation="[0, 0]"
+                color="#00000000">
+
+                <Rectangle id="subscribe_bg_rect" width="660" height="1080" color="#000000"
+                    translation="[615,0]" />
+                <Poster
+                    visible="true"
+                    width="100"
+                    translation="[894, 133]"
+                    height="100"
+                    uri="pkg:/images/icons/lock_icon.png" />
+
+                <LayoutGroup
+                    id="SubscribeOverlayGroup"
+                    translation="[550, 225]"
+                    layoutDirection="vert"
+                    alignment="center"
+                    itemSpacings="[30]">
+
+                    <!-- <Label
+                        id="episode_title"
+                        text=""
+                        font="font:LargeBoldSystemFont"
+                        width="800"
+                        horizAlign="center"
+                        color="#FF4B1F"
+                        vertAlign="center"
+                        wrap="true" /> -->
+
+                    <Label id="episode_title" text="" width="800" 
+                        vertAlign="center" horizAlign="center">
+                        <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Bold.ttf" size="70" />
+                    </Label>
+
+                    <Label
+                        id="sub_overlay_title"
+                        text=""
+                        font="font:LargeBoldSystemFont"
+                        width="800"
+                        horizAlign="center"
+                        color="#ffffff"
+                        vertAlign="center"
+                        wrap="true" />
+
+                    <Label id="sub_overlay_desc"
+                        text=""
+                        width="800"
+                        wrap="true"
+                        numLines="1"
+                        horizAlign="center"
+                        vertAlign="center"
+                        color="#cccccc">
+                        <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Regular.ttf" size="35" />
+                    </Label>
+
+                </LayoutGroup>
+
+                <MarkupGrid
+                    id="CoinSubscriptionsList"
+                    itemComponentName="CoinSubscriptionsListItemComponentScreen"
+                    itemSize="[630, 180]"
+                    translation="[645, 570]"
+                    numColumns="1"
+                    numRows="3"
+                    vertFocusAnimationStyle="floatingfocus"
+                    itemSpacing="[0, 20]"
+                    drawFocusFeedback="false" />
+            </Rectangle>
+
+
+        </Rectangle>
+
+
+        <Animation id="slideUp" duration="0.5" repeat="false" easeFunction="inOutQuintic">
+            <Vector2DFieldInterpolator id="slideupV2" key="[0, 1]"
+                keyValue="[[0, 1080], [0, 0]]"
+                fieldToInterp="dialogbg_rect.translation" />
+        </Animation>
+        <Animation id="slideDown" duration="0.5" repeat="false" easeFunction="inOutQuintic">
+            <Vector2DFieldInterpolator id="slideDownV2"
+                key="[0, 1]"
+                keyValue="[[0, -1080], [0, 0]]"
+                fieldToInterp="dialogbg_rect.translation" />
+        </Animation>
+
+    </children>
+</component>
+
+
+<!-- <Group
+                id="SubscribeOverlay"
+                visible="false"
+                width="1920"
+                height="1080">
+
+                
+                <Poster
+                    id="bgPoster"
+                    width="1920"
+                    height="1080"
+                    loadWidth="1920"
+                    loadHeight="1080"
+                    loadDisplayMode="scaleToFit"
+                    translation="[0,0]" />
+
+                
+                <Rectangle
+                    width="1920"
+                    height="1080"
+                    color="#000000"
+                    opacity="0.7" />
+
+               
+                <Group
+                    id="centerGroup"
+                    translation="[960, 756]"> 
+
+                 
+
+                    <Label id="subscribeText" height="250" width="800" translation="[-400, -80]"
+                        vertAlign="center" text="Subscribe to watch this content"
+                        horizAlign="center" color="#ffffff">
+                        <Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="24" />
+                    </Label>
+
+                    
+                    <Button id="subscribeButton" height="70" visible="true"
+                        showFocusFootprint="true"
+                        minWidth="300" translation="[-150, 90]" iconUri="" focusedIconUri=""
+                        focusFootprintBitmapUri="pkg:/images/img_long_button_selected.png"
+                        focusBitmapUri="pkg:/images/img_long_button_selected.png"
+                        textColor="#FFFFFF"
+                        focusedTextColor="#FFFFFF">
+                        <Label id="buttonPlaylistLabel" height="70" width="300" text="Subscribe"
+                            vertAlign="center" horizAlign="center">
+                            <Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="24" />
+                        </Label>
+                    </Button>
+                </Group>
+
+            </Group> -->

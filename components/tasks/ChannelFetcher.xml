@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ChannelFetcher" extends="Task">
+
+<interface>
+  	<field id="ContentRequest" alwaysnotify="true" type="String"/>
+    <field id="Content" alwaysnotify="true" type="node" />
+     
+	<function name="runChannelFetcher" />
+    <function name="stopChannelFetcher" />  
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/tasks/ChannelFetcher.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	
+</component>

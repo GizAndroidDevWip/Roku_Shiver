@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Autoplay" extends="Task">
+
+<interface>
+  	<field id="AutoRequest" alwaysnotify="true" type="String"/>
+    <field id="video_id" alwaysnotify="true" type="String" />
+    <field id="AutoResponse" alwaysnotify="true" type="node" />
+    <field id="AutoSubtitle" alwaysnotify="true" type="Array" />
+    
+    
+	<function name="runAutoplay" />
+    <function name="stopAutoplay" />
+    
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/tasks/Autoplay/Autoplay.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	
+</component>

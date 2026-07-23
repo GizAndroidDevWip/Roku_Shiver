@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="MyAccount" extends="Group">
+    <interface>
+        <field id="goBack" type="bool" alwaysnotify="true" />
+        <field id="goToMyListScreen" type="bool" alwaysnotify="true" />
+        <field id="requestLogout" type="bool" alwaysnotify="true" />
+        <field id="requestLanguageSelection" type="bool" alwaysnotify="true" />
+        <field id="goToShowMoreScene" type="roAssociativeArray" alwaysnotify="true" />
+        <field id="goToInfoScreen" type="roAssociativeArray" alwaysnotify="true" />
+        <field id="goToPlanDetailsScreen" type="bool" alwaysnotify="true" />
+        <field id="requestChangePassword" type="bool" alwaysnotify="true" />
+        <field id="goToSplashScreen" type="bool" alwaysnotify="true" />
+        <field id="closeAllScreens" type="bool" alwaysnotify="true" />
+        <field id="dialogResult" type="assocarray" onChange="OnDialogAction" />
+
+    </interface>
+    <script type="text/brightscript" uri="MyAccount.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <children>
+        <Rectangle id="bg" color="0x000000ff" width="1920" height="1080" />
+        <Group id="profileSection" translation="[80, 131]">
+            <Group id="avatarCircle" translation="[120, 0]"
+                width="180" height="180">
+                <Rectangle id="avatarBg" color="0x000000ff"
+                    width="180" height="180" />
+                <Poster id="avatarPoster" width="180" height="180"
+                    loadDisplayMode="scaleToZoom" />
+                <Poster id="avatarRing" width="180" height="180"
+                    uri="pkg:/images/design_assets/round_frame.png" />
+            </Group>
+            <Label
+                id="userName" width="420" height="50"
+                translation="[0, 190]" color="0xFFFFFFff"
+                horizAlign="center">
+                <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="36" />
+            </Label>
+            <Label
+                id="userEmail" width="420" height="38"
+                translation="[0, 245]" color="0xAAAAAAff"
+                horizAlign="center">
+                <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="24" />
+            </Label>
+            <Group id="coinBalanceGroup" translation="[148, 330]">
+                <Label id="coinLabelHeading" visible="false" width="600" wrap="true" numLines="0"
+                    maxLines="2" lineSpacing="6" horizAlign="left" vertAlign="top" color="#8A93A3"
+                    text="COIN BALANCE" translation="[0, 0]">
+                    <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Regular.ttf" size="20" />
+                </Label>
+                <Poster id="coinIcon" uri="pkg:/images/coin_icon.png" width="32" height="32"
+                    translation="[0, 36]"  visible="false"/>
+                <Label id="coinLabel" text="" translation="[42, 36]" width="300" height="32"
+                    color="0xFFFFFFFF" vertAlign="center" horizAlign="left" visible="false"> 
+                    <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Bold.ttf" size="30" />
+                </Label>
+            </Group>
+
+            <Group id="qrCardContainer" translation="[37, 425]">
+
+                <!-- Base poster acting as the card/background for the QR (scaled up) -->
+                <Poster id="qrCardBase" width="360" height="465" opacity="0.30" translation="[0, 15]"
+                    uri="pkg:/images/img_newbg.9.png" />
+
+                <!-- "Scan QR code" text in the top margin area of the base -->
+                <Label id="qrScanLabel" text="" width="360" translation="[0, 31]" color="0xFFFFFFFF"
+                    vertAlign="center" horizAlign="center">
+                    <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Medium.ttf" size="30" />
+                </Label>
+
+                <!-- Original QR group, nested so its translation is now relative to the base -->
+                <Group id="qrContainer" translation="[30, 80]">
+                    <Poster id="qrBg" width="300" height="300"
+                        uri="pkg:/images/img_newbg.9.png" />
+                    <Poster id="qrPoster" width="260" height="260" translation="[20, 20]"
+                        loadDisplayMode="scaleToFit" />
+                </Group>
+
+                <!-- Subtext in the bottom margin of the base -->
+                <Label id="qrSubLabel" text="" lineSpacing="0"
+                    width="320" translation="[20, 396]" color="0xFFFFFFFF"
+                    horizAlign="center" vertAlign="top" wrap="true">
+                    <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Regular.ttf" size="23" />
+                </Label>
+
+            </Group>
+        </Group>
+        <Group id="optionsList" translation="[600, 160]" />
+    </children>
+</component>

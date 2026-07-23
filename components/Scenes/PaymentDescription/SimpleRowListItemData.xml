@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--********** Copyright 2017 Roku Inc.  All Rights Reserved. **********-->
+
+<component name="SimpleRowListItemData" extends="ContentNode">
+
+<interface>
+  <field id="subscription_id" type="string" />
+  <field id="subscription_name" type="string" />
+  <field id="price" type="string" />
+  <field id="symbol" type="string" />
+  <field id="logo" type="string" />
+  <field id="subscription_type_name" type="string" />
+  <field id="roku_keyword" type="string" />
+  <field id="cost" type="string" />
+  <field id="description" type="string" />
+  <field id="description_image" type="string"/>
+  <field id="subscription_text" type="string"/>
+</interface>
+
+</component>

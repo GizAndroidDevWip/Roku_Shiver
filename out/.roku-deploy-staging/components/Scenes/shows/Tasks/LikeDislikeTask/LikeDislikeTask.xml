@@ -1,0 +1,14 @@
+<component name="LikeDislikeTask" extends="Task">
+    <interface>
+        <field id="showId" type="string"  alwaysnotify="true"/>
+        <field id="action" type="string"  alwaysnotify="true"/> <!-- "like" or "dislike" -->
+        <field id="LikeDislikeTaskResult" type="roAssociativeArray" alwaysnotify="true"/>
+
+        <function name="runlikeDislikeTask" />
+        <function name="stoplikeDislikeTask" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/components\Scenes\shows\Tasks\LikeDislikeTask\LikeDislikeTask.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+</component>

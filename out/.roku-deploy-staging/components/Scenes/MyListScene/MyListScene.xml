@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<component name="MyListScene" extends="Group" initialFocus="RowList"
+  xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+  <interface>
+    <!-- Grid Content Node -->
+
+    <field id="startLoading" type="String" alwaysnotify="true" />
+
+    <field id="content" type="node" alias="RowList.content" onChange="onContentChange" />
+
+    <field id="selectedlanguageid" type="String" alwaysnotify="true" />
+
+    <field id="channelid" type="String" alwaysnotify="true" />
+
+    <field id="isChildrensVisible" type="bool" alwaysnotify="true" />
+
+    <!-- Row item selection handler -->
+    <field id="rowItemSelected" type="intarray" alwaysnotify="true" alias="RowList.rowItemSelected"
+      onChange="OnItemSelected" />
+
+    <!-- Row item focused handler -->
+    <field id="itemFocused" type="intarray" alias="RowList.rowItemFocused" onChange="OnItemFocused" />
+
+    <!-- Interface to focused item (Content Node) -->
+    <field id="focusedContent" type="node" />
+
+    <field id="focusedRow" type="intarray" alwaysnotify="true" />
+
+    <field id="GloBoolean" type="boolean" alwaysNotify="true" />
+
+    <field id="loading" type="node" />
+    <field id="SET_DEFAULT_FOCUS" type="bool" alwaysnotify="true" onChange="onSetDefaultFocus" />
+  </interface>
+
+  <!-- main handler -->
+  <script type="text/brightscript" uri="pkg:/components/Scenes/MyListScene/MyListScene.brs" />
+
+  <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+
+  <children>
+
+    <ThumbBackground
+      id="AppBackground"
+      width="1920"
+      height="1080"
+      translation="[0,0]" />
+
+    <Label
+      id="sceneTitle"
+      text="My List"
+      font="font:LargeBoldSystemFont"
+      horizAlign="center"
+      width="400"
+      height="80"
+      translation="[0, 45]"
+      visible="false" />
+
+    <Timer
+      id="Timer"
+      repeat="false"
+      duration="6" />
+
+    <Timer
+      id="Timer2"
+      repeat="false" />
+
+    <Video id="videoPlayer" visible="false" translation="[400,0]" width="900" height="550" />
+
+    <Label>
+      <Font id="RowListFont" role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="18" />
+    </Label>
+
+    <RowList id="RowList" itemComponentName="customItemHomeForMyList"
+      focusBitmapUri="pkg:/images/focus_grid.9.png" translation="[135, 510]" itemSize="[1920, 518]"
+      numRows="4" itemSpacing="[40, 40]" focusXOffset="[120]" rowFocusAnimationStyle="floatingfocus"
+      vertFocusAnimationStyle="fixedfocus"
+      rowItemSize="[[320, 180]]" rowItemSpacing="[[40, 10]]" showRowLabel="false"
+      showRowCounter="false" rowHeights="[240]" rowLabelOffset="[[120,10]]"
+      rowLabelFont="font:MediumBoldSystemFont" rowLabelColor="#ffffff" />
+
+    <Label
+      id="nolist"
+      height="30"
+      width="670"
+      text="Your Watchlist Is Empty"
+      font="font:SmallBoldSystemFont" translation="[175,900]" size="20" visible="false" />
+
+    <Label
+      id="Hint"
+      height="30"
+      width="670"
+      text="Press UP/DOWN For Live Guide and Navigate to Different Shows"
+      font="font:SmallBoldSystemFont"
+      translation="[1180,50]" size="20" visible="false" />
+
+    <Label
+      id="playing"
+      height="30"
+      width="670"
+      font="font:SmallBoldSystemFont"
+      translation="[1180,100]" size="20" />
+
+    <Loading id="loading" />
+
+    <Label
+      id="Hint2"
+      height="30"
+      width="560"
+      font="font:SmallBoldSystemFont"
+      translation="[1280,100]" size="20" />
+
+    <!-- Overhang logo -->
+    <Group id="Overhang">
+
+      <Label>
+        <Font id="DescFont" role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="18" />
+      </Label>
+
+    </Group>
+
+    <Hud id="Hud" visible="false" />
+
+    <Label id="Title" color="#ffffff" font="font:LargeBoldSystemFont" translation="[250,180]" width = "1400" height = "80"
+      size="50" text="" />
+
+    <Label id="resolution" height="135" width="1000" wrap="true" numLines="4" maxLines="4"
+      lineSpacing="1" horizAlign="left" vertAlign="top" color="#cccccc" text=""
+      translation="[255,280]">
+      <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Regular.ttf" size="21" />
+    </Label>
+
+    <Label id="year" color="#ffffff" text="" />
+
+    <Label id="category_name" color="#ffffff" translation="[260,180]" text="" />
+
+
+    <Label id="director" color="#ffffff" translation="[260,320]" text="" />
+
+  </children>
+
+</component>

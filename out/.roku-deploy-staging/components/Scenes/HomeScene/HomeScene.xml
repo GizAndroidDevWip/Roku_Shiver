@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--********** Copyright 2016 Roku Corp.  All Rights
+Reserved. **********-->
+
+<!-- main node which handles home screen children -->
+<component name="HomeScene" extends="Group"
+  xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+  <interface>
+    <!-- Specifies the content for the GridPannel -->
+    <field id="gridContent" type="node" alias="GridScreen.content"
+      onChange="OnChangeContent" />
+    <!-- <field id="rowItemSelected" type="intarray" alwaysnotify="true"
+      alias="GridScreen.rowItemSelected" onChange="OpenDetailsScreen" /> -->
+
+    <field id="rowItemSelected" type="intarray" alwaysnotify="true"
+      alias="GridScreen.rowItemSelected" onChange="OnRowItemSelected" />
+
+    <field id="rowItemFocused"
+      type="intarray" alwaysnotify="true" alias="GridScreen.itemFocused"
+      onChange="onRowItemFocused" />
+    <field id="liveLinkIfLiveVideoAvailable" type="bool"
+      alwaysnotify="false"
+      alias="GridScreen.liveLinkIfLiveVideoAvailable" onChange="onLiveItemPlayingOnAppLaunch" />
+    <field
+      id="goToMyTimeGridScreen" type="bool" alwaysnotify="false"
+      alias="GridScreen.goToTimeGridScene" onChange="OnGotoTimeGridScene" />
+    <field
+      id="deepLinkContent" type="assocarray" alwaysnotify="true" />
+    <field id="dialogAuthExceed"
+      type="node" />
+
+       <field id="utilityAssoc" type="assocarray" alwaysnotify="true"
+      onChange="onUtilityDataChange" />
+
+    <field id="channel_id" alwaysnotify="true" type="String" />
+       <field
+      id="categorytype" alwaysnotify="true" type="String" />
+    <field
+      id="sessionExpiredPopUp" type="node" />alias <field id="appExit" type="bool"
+      alwaysnotify="true" value="false" />
+    <field id="goToCategoryScreen" type="String"
+      alwaysnotify="true" />
+
+
+  <field id="gotoHomeScenen" type="String"
+      alwaysnotify="true" />
+        <field id="goToNewCategoryScreen" type="String"
+      alwaysnotify="true" />
+
+    <field id="goToSearchScreen" type="String" alwaysnotify="true" />
+      <field
+      id="closethispage" type="bool" alwaysnotify="true" />
+    <field
+      id="goToMyListScreen" type="String" alwaysnotify="true" />
+    <field id="goToShowScreen"
+      type="String" alwaysnotify="true" />
+    <field id="goToSubscriptionListScreen" type="String"
+      alwaysnotify="true" />
+    <field id="goToSplashScreen" type="bool" alwaysnotify="true" />
+    <field
+      id="goToLandingScene" type="bool" alwaysnotify="true" />
+    <field
+      id="goToLandingSceneAndCloseAllScreens" type="bool" alwaysnotify="true" />
+    <field
+      id="closeThisScreen" type="bool" alwaysnotify="true" />
+    <field id="closeAllScreen" type="bool"
+      alwaysnotify="true" />
+    <field id="goToPodcastScene" type="bool" alwaysnotify="true" />
+    <field
+      id="goToShowMoreScene" type="node" alwaysnotify="true" />
+    <field id="backToHomeSceneNotifier"
+      alwaysnotify="true" type="String"
+      onChange="backToHomeSceneNotifier" />
+    <field id="goToMainVideoPlayer" type="roAssociativeArray"
+      alwaysnotify="true" />
+    <field id="goToPaymentDescriptionScreenForEvent" type="string"
+      alwaysnotify="true" />
+    <field id="goToVideoPlayerScene" type="string" alwaysnotify="true" />
+    <field
+      id="goToCalendarScene" type="bool" alwaysnotify="true" />
+    <field id="ai_type" type="string"
+      alwaysnotify="true" />
+    <!-- <field id="goToMyTimeGridScreen" type="bool" alwaysnotify="true" /> -->
+    <field id="goToShortsScreen" type="String" alwaysnotify="true" />
+    <field
+      id="goToMyAccountScreen" type="String" alwaysnotify="true" />
+    <field id="triggerLogoutWarning"
+      type="bool" alwaysnotify="true" />
+    <field id="triggerLanguageSelection" type="bool"
+      alwaysnotify="true" />
+    <field
+      id="livefetcherResponse" type="roArray" alwaysnotify="true" />
+    <field
+      id="playSelectedShortsVideo" type="string" alwaysnotify="true" />
+    <field
+      id="onDeepLinkLaunchedGotoShowScene" type="string" alwaysnotify="true"
+      alias="GridScreen.onDeepLinkLaunchedGotoShowScene" />
+    <field
+      id="goToSubscriptionListScreenForAppSubscription" type="string" alwaysnotify="true" />
+
+      <field
+      id="selectedBannerItem" type="roAssociativeArray" alwaysnotify="true"
+      alias="GridScreen.selectedBannerItem" onChange="onBannerItemSelected" />
+
+      <field
+      id="setFocusToTopMenu" type="bool"
+      alwaysnotify="true"
+      alias="GridScreen.setFocusToTopMenu" onChange="onsetFocusToTopMenu" />
+
+      <field
+      id="GOTO_HOME_AND_LOAD_SMARTHOME" type="string" alwaysnotify="true"
+      onChange="onGoToHomeAndLoadSmartHome" />
+      <field id="SET_DEFAULT_FOCUS" type="bool"
+      alwaysnotify="true" onChange="onSetDefaultFocus" />
+      <field id="ONTOPMENU_ITEM_SELECTED"
+      type="string" alwaysnotify="true" onChange="OnTopMenuRowItemSelected" />
+
+  </interface>
+
+  <!-- main handler -->
+  <script type="text/brightscript" uri="pkg:/components/Scenes/HomeScene/HomeScene.brs" />
+  <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+
+  <children>
+
+    <Rectangle id="AppBackground" width="1920" height="1080" translation="[0,0]" />
+
+    <!-- <Poster id="bannerPoster"
+      width="1920"
+      height="1080"
+      uri="pkg:/images/home_gradient2.png"
+      loadDisplayMode="noScale"
+      translation="[0,0]" /> -->
+
+    <PaymentDescription id="PaymentDescription" visible="false" />
+
+    <GridScreen id="GridScreen" visible="false" translation="[70,0]" />
+
+
+    <Animation id="menuslideRight" duration="0.2" easeFunction="inOutQuad">
+      <Vector2DFieldInterpolator id="DSFadeOutInterp"
+        key="[0.0,  1.0]"
+        keyValue="[[70,0], [300,0]]"
+        fieldToInterp="GridScreen.translation" />
+    </Animation>
+
+    <Animation id="menuslideLeft" duration="0.2" easeFunction="inOutQuad">
+      <Vector2DFieldInterpolator id="DSFadeOutInterp"
+        key="[0.0,  1.0]"
+        keyValue="[[300,0], [70,0]]"
+        fieldToInterp="GridScreen.translation" />
+    </Animation>
+
+
+    <LiveTV id="LiveTV" visible="false" />
+
+
+    <!-- dialog  -->
+
+
+    <Rectangle id="dialogbg_rect" width="1920" height="1080" translation="[0,0]" color="#1f2120"
+      visible="false">
+
+      <Rectangle id="dialogmain_rect" width="750" height="365" translation="[587,360]"
+        color="#1f2120" visible="true">
+
+        <Poster id="dialogbanner_poster" loadDisplayMode="noScale" width="750" height="365"
+          loadWidth="498" loadHeight="280" translation="[0,0]" uri="pkg:/images/img_newbg.9.png"
+          visible="true" />
+
+        <Label id="dialogmessage_label" width="750" height="36" text=""
+          horizAlign="center" vertAlign="center" visible="true" translation="[0,60]"
+          color="#080808">
+          <Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="30" />
+        </Label>
+
+        <Button id="NoButton" text="" height="80" visible="true"
+          showFocusFootprint="true"
+          minWidth="330" translation="[30,200]" iconUri="" focusedIconUri=""
+          focusFootprintBitmapUri="pkg:/images/img_itemcatbg.png"
+          focusBitmapUri="pkg:/images/img_itemcatbg_selected.png" textColor="#ffffff"
+          focusedTextColor="#ffffff">
+          <ScrollingLabel id="cancelbutton_Label" height="80" width="330" text="" maxWidth="330"
+            repeatCount="-1"
+            vertAlign="center" horizAlign="center" color="#ffffff">
+            <Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="26" />
+          </ScrollingLabel>
+        </Button>
+
+
+        <Button id="YesButton" text="" height="80" visible="true"
+          showFocusFootprint="true"
+          minWidth="330" translation="[386,200]" iconUri="" focusedIconUri=""
+          focusFootprintBitmapUri="pkg:/images/img_itemcatbg.png"
+          focusBitmapUri="pkg:/images/img_itemcatbg_selected.png" textColor="#ffffff"
+          focusedTextColor="#ffffff">
+          <ScrollingLabel id="exitbutton_Label" height="80" width="330" maxWidth="330" text=""
+            repeatCount="-1"
+            vertAlign="center" horizAlign="center" color="#ffffff">
+            <Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="26" />
+          </ScrollingLabel>
+        </Button>
+      </Rectangle>
+    </Rectangle>
+
+
+    <LayoutGroup
+      id="menuGroup"
+      layoutDirection="horiz" horizAlignment="left"
+      vertAlignment="custom">
+      <CollapsedMenu id="collapsedMenu" translation="[0,0]" />
+    </LayoutGroup>
+
+
+    <Loading id="loading" />
+
+    <Loading id="loading2" translation="[0, 0]" visible="false" />
+
+    <Rectangle id="languageLbllist_react" width="1920" height="1080"
+      translation="[0,0]" color="#000000" visible="false">
+
+
+      <Label id="language_Lbl" translation="[10,195]" height="45" width="1900"
+        color="#FFFFFF" horizAlign="center" vertAlign="center"
+        text="" visible="true" numLines="1"
+        maxLines="1" lineSpacing="0">
+        <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Bold.ttf" size="60" />
+      </Label>
+
+      <Label id="language_Lbl2" translation="[10,303]" height="400" width="1900"
+        color="#999999" horizAlign="center"
+        visible="true" wrap="true" numLines="0"
+        maxLines="2" lineSpacing="6" vertAlign="top">
+        <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Regular.ttf" size="28" />
+      </Label>
+
+      <LabelList id="selectLanguage" translation="[700,415]" textHorizAlign="center" numRows="7"
+        font="font:SmallestSystemFont" visible="true" focusedColor="#ffffff" width="680"
+        height="480"
+        vertFocusAnimationStyle="floatingFocus">
+      </LabelList>
+    </Rectangle>
+    <ChannelStore id="billing" />
+
+  </children>
+</component>		    
+				    
+				    
+		

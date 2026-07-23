@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="OtpTask" extends="Task">
+<interface>
+  	<field id="OtpRequest" alwaysnotify="true" type="String"/>
+  	<field id="otp" type="String"/>
+    <field id="OtpResponse" alwaysnotify="true" type="String" />
+    
+		<function name="runOtpTask" />
+		<function name="stopOtpTask" />
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/Scenes/Register/Tasks/OtpTask/OtpTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+</component>

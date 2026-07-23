@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="SearchSuggestionFetcherTask" extends="Task">
+	<interface>
+  	  <field id="key" alwaysnotify="true" type="String"/>
+      <field id="searchSuggestionContent" type="node" alwaysNotify="true"/>
+      <field id="SearchBoolean" type="boolean" alwaysNotify="true"/>
+      <field id="searchFilter" type="String" alwaysNotify="true"/>
+      
+	<function name="runSearchSuggestionFetcherTask" />
+    <function name="stopSearchSuggestionFetcherTask" />
+    </interface>
+
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Scenes/Search/Tasks/SearchSuggestionFetcherTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Util.brs" />
+</component>

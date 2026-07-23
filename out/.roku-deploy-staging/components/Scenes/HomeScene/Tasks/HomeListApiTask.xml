@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="HomeListApiTask" extends="Task">
+    <interface>
+        <field id="HomeListApiTaskContent" alwaysnotify="true" type="node" />
+        <!-- <field id="HomeListApiTaskAdditionalRows" alwaysnotify="true" type="node" /> -->
+        <field id="HomeListApiTaskListStatus" alwaysnotify="true" type="Boolean" />
+		<field id="HomeListApiTaskAdditionalRows" type="node" />
+        <field id="courseId" type="Integer" />
+        
+        <function name="runHomeListApiTask" />
+        <function name="stopHomeListApiTask" />
+    </interface>
+    <script type="text/brightscript" uri="pkg:/components/Scenes/HomeScene/Tasks/HomeListApiTask.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Util.brs" />
+</component>

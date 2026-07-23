@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<!--********** Copyright 2016 Roku Corp.  All Rights Reserved. **********-->
+
+<!-- Description 
+	Item details is a group of labels used to show most valuable for user fields form
+	content meta-data.-->
+
+<component name="ItemDetails" extends="Group" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+	<interface>
+		<!--Returns Title Label node.-->
+		<field id="Title"           type="node"/>
+		<!--Returns ReleaseDate Label node.-->
+		<field id="ReleaseDate"     type="node"/>
+		<!--Returns Description Label node.-->
+		<field id="Description"     type="node"/>
+		<!--Sets descriptive Content Meta-Data for the item.-->
+		<field id="Content"         type="node" alwaysNotify="true" onChange="onContentchanged"/>
+	</interface>
+
+	<script type="text/brightscript" uri="pkg:/components/screens/ItemDetails/ItemDetails.brs"/>
+
+	<children>
+	
+		<LayoutGroup
+			id="LayoutGroup"
+			translation="[0,0]"
+			layoutDirection="vert"/>
+	</children>  
+</component>

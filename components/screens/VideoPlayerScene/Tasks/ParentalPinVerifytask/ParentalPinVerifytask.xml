@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="ParentalPinVerifytask" extends="Task">
+    <script type="text/brightscript"
+        uri="pkg:/components/screens/VideoPlayerScene/Tasks/ParentalPinVerifytask/ParentalPinVerifytask.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+
+
+    <interface>
+        <function name="runParentalPinVerifytask" />
+        <function name="stopParentalPinVerifytask" />
+
+        <field id="requestBody" alwaysNotify="true" type="assocarray" />
+        <field id="parentalPinResponse" alwaysNotify="true" type="assocarray" />
+    </interface>
+
+</component>

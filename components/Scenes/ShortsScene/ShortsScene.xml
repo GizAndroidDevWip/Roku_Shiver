@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ShortsScene" extends="Group"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+    <interface>
+
+        <field id="callShortsApi" type="bool" alwaysnotify="true" onChange="callShortsApi" />
+        <field id="playSelectedShortsVideo" type="string" alwaysnotify="true"
+            onChange="playSelectedShortsVideo" />
+        <field id="closethispage" type="string" alwaysnotify="true" />
+    </interface>
+    <script type="text/brightscript"
+        uri="pkg:/components/Scenes/ShortsScene/ShortsScene.brs" />
+        <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <children>
+
+        <Rectangle color="#010915" width="1920" height="1080">
+            <Rectangle color="00ffffff" width="1920" height="1080" opacity="0.1">
+                <Poster id="image" visible="true" width="1920" height="1080" translation="[0,0]"
+                    uri="" />
+            </Rectangle>
+
+            <Label
+                id="title"
+                height="200"
+                width="1600"
+                font="font:LargeBoldSystemFont"
+                horizAlign="center"
+                wrap="true"
+                vertAlign="top"
+                translation="[200,282]" />
+
+            <Label
+                id="description"
+                height="197"
+                width="1500"
+                font="font:MediumSystemFont"
+                translation="[220,500]"
+                horizAlign="center"
+                vertAlign="top"
+                wrap="true" />
+
+            <Poster id="rewind" visible="false" width="60" height="60" translation="[640,789]"
+                uri="pkg:/images/rewind.png" opacity="0.8" />
+
+            <Poster id="controlposter" visible="false" width="60" height="60"
+                translation="[893,789]" uri="" />
+
+
+            <Poster id="fastForward" visible="false" width="60" height="60"
+                translation="[1156,789]" uri="pkg:/images/fastforward.png" opacity="0.8" />
+
+            <!-- <Poster id="playerOverlayPoster" visible="false" translation="[665, 0]" width="608"
+                height="1080" uri="" /> -->
+
+            <Loading id="loading" visible="false"/>
+
+        </Rectangle>
+    </children>
+</component>          

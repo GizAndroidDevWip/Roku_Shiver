@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--********** Copyright 2017 Roku Inc.  All Rights
+Reserved. **********-->
+
+<component name="SimpleRowListItem" extends="Group">
+  <interface>
+    <field id="width" type="float" onChange="updateLayout" />
+    <field id="height" type="float" onChange="updateLayout" />
+    <field id="itemContent" type="node" onChange="itemContentChanged" />
+    <field id="focusPercent" type="float" onChange="onFocusPercent" />
+    <field id="rowFocusPercent" type="float" onChange="onRowFocusPercent" />
+  </interface>
+
+  <script type="text/brightscript"
+    uri="pkg:/components/Scenes/PaymentDescription/SimpleRowListItem.brs" />
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+
+  <children>
+    <Rectangle
+      id="mainRect"
+      translation="[0,0]"
+      width="0"
+      height="0"
+      color="#00000000">
+
+      <Poster id="bgPoster" uri="pkg:/images/img_newbg.9.png" opacity="0.1"
+        translation="[0,0]" width="0" height="0" />
+      <!-- <Rectangle color="00ffffff" width="1920" height="1080" opacity="0.1">
+        <Poster id="bgPoster" visible="true" width="1920" height="1080" translation="[0,0]"
+          uri="pkg:/images/img_newbg.9.png" />
+      </Rectangle> -->
+      <Poster id="focusRect" translation="[0,0]" width="800" height="234"
+        uri="pkg:/images/focus_grid.9.png" visible="false" />
+      <Poster id="itemPoster" translation="[75,0]" width="950" height="200" />
+
+      <ScrollingLabel id="itemTitle" horizAlign="left" translation="[0,99]"
+        font="font:LargeBoldSystemFont" maxWidth="700" width="400" height="1090" color="#FFFFFF" />
+      <!-- <Label id="itemType" horizAlign="center" translation="[90,260]"
+        font="font:MediumSystemFont" width="196" height="65" color="#FFFFFF" /> -->
+      <Label id="itemPriceDisplay" horizAlign="left" translation="[30,155]" wrap="true"
+        font="font:SmallSystemFont" width="330" height="200" color="#858585" />
+
+      <Poster
+        id="rightIcon"
+        width="120"
+        height="120"
+        opacity="0.3"
+        translation="[0,0]"
+        uri="pkg:/images/next.png"
+        visible="true" />
+
+
+    </Rectangle>
+  </children>
+</component>

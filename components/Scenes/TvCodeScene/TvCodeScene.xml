@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="TvCodeScene" extends="Group"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+  <interface>
+    <field id="sceneName" type="String" value="TvCodeScene" />
+    <field id="TwoWaysToSignIn" type="node" />
+    <field id="OntheWeb" type="node" />
+    <field id="weblink" type="node" />
+    <field id="SigninOrCreateAccount" type="node" />
+    <field id="EnterTheFollowingCode" type="node" />
+    <field id="code" type="node" />
+    <field id="WhenConnectedThisPage" type="node" />
+    <field id="AutomaticallyUpdates" type="node" />
+    <field id="ScanQRCode" type="node" />
+    <field id="UseTheCameraApp" type="node" />
+    <field id="QrCodeReader" type="node" />
+    <field id="MakeSureQrCode" type="node" />
+    <!-- <field id="VisibleOnYourDevice" type="node" /> -->
+    <field id="GoTo" type="node" />
+    <field id="NewCodeButton" type="node" />
+    <field id="OtherWaysToSignIn" type="node" />
+    <field id="OR_Text" type="node" />
+    <field id="loading" type="node" />
+    <field id="dialog" type="node" />
+    <field id="dialogAuthExceed" type="node" />
+
+    <field id="logindialog" type="node" />
+    <field id="dialogErrEmails" type="node" />
+
+    <field id="signindialog" type="node" />
+    <field id="dialogForgot" type="node" />
+
+    <field id="goToEmailLoginScreen" type="bool" alwaysnotify="true" />
+
+    <field id="closethispage" type="string" alwaysNotify="true" />
+    <field id="goToLoginScene" type="string" alwaysNotify="true" />
+    <field id="goToLoginChooseScene" type="bool" alwaysNotify="true" />
+    <field id="gotoHomeScene" type="bool" alwaysNotify="true" />
+
+
+    <!-- <function name="showEmailLoginScreen" />
+    <function name="getPurchaseList" /> -->
+
+    <!-- <field id="QRCodeImage" type="node" /> -->
+  </interface>
+
+  <script type="text/brightscript" uri="pkg:/components/Scenes/TvCodeScene/TvCodeScene.brs" />
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+  <script type="text/brightscript" uri="pkg:/source/main.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+  <children>
+
+
+    <StdDlgTitleArea primaryTitle="Let's create your account!" />
+    <StdDlgContentArea>
+      <StdDlgTextItem text="Sign up for a free account to start streaming today." />
+    </StdDlgContentArea>
+    <StdDlgButtonArea id="buttonArea">
+      <StdDlgButton text="Continue" />
+      <StdDlgButton text="Cancel" />
+    </StdDlgButtonArea>
+
+
+    <Label>
+      <Font id="DescFont" role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="18" />
+    </Label>
+
+
+    <Dialog id="dialog" translation="[0,0]" visible="false" />
+
+
+    <Rectangle id="TvCodeSceneBackground" width="1920" height="1080" translation="[0,0]" />
+    <Rectangle id="verticalLine" width="3" height="300" color="#8C8C8C"
+      translation="[915, 227]" />
+    <Rectangle id="verticalLine2" width="3" height="265" color="#8C8C8C"
+      translation="[915, 606]" />
+    <Poster id="QRCodeImage" uri="" visible="true"
+      translation="[1175,424]" width="300" height="300" />
+
+
+    <Rectangle id="logindialogbg_rect" width="1920" height="1080" translation="[0,0]"
+      color="#1f2120"
+      visible="false">
+
+      <Rectangle id="logindialogmain_rect" width="750" height="365" translation="[587,360]"
+        color="#1f2120" visible="true">
+
+        <Poster id="logindialogbanner_poster" loadDisplayMode="noScale" width="750" height="365"
+          loadWidth="498" loadHeight="280" translation="[0,0]" uri="pkg:/images/img_newbg.9.png"
+          visible="true" />
+
+        <Label id="logindialogmessage_label" width="750" height="36" text="Choose to login?"
+          horizAlign="center" vertAlign="center" visible="true" translation="[0,60]"
+          color="#080808">
+          <Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="30" />
+        </Label>
+
+        <Button id="LoginViaEmail_button" text="" height="65" visible="true"
+          showFocusFootprint="true"
+          minWidth="230" translation="[79,210]" iconUri="" focusedIconUri=""
+          focusFootprintBitmapUri="pkg:/images/img_loginbg.png"
+          focusBitmapUri="pkg:/images/img_loginbg_selected.png" textColor="#080808"
+          focusedTextColor="#080808">
+
+          <Label id="LoginViaEmail_Label" height="60" width="200" text="No" vertAlign="center"
+            horizAlign="center" color="#ffffff">
+            <Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="24" />
+          </Label>
+        </Button>
+
+
+        <Button id="LoginWithCredentials_button" text="" height="65" visible="true"
+          showFocusFootprint="true"
+          minWidth="230" translation="[454,210]" iconUri="" focusedIconUri=""
+          focusFootprintBitmapUri="pkg:/images/img_loginbg.png"
+          focusBitmapUri="pkg:/images/img_loginbg_selected.png" textColor="#080808"
+          focusedTextColor="#080808">
+
+          <Label id="LoginWithCredentials_Label" height="60" width="200" text="Yes"
+            vertAlign="center"
+            horizAlign="center" color="#ffffff" translation="[4,-7]">
+            <Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="24" />
+          </Label>
+        </Button>
+      </Rectangle>
+
+    </Rectangle>
+
+
+    <Timer
+      id="isLoggedInCheckTimer"
+      repeat="true"
+      duration="5" />
+
+
+  </children>
+
+
+</component>

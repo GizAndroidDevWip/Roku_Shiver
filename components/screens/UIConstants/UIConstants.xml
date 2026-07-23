@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<!--********** Copyright 2016 Roku Corp.  All Rights Reserved. **********-->
+
+<!-- Description 
+	UIConstatnts is used for collect all magic numbers of UI in one place.
+	Also it is responsible for correct sizes in different display modes.-->
+
+<component name="UIConstants" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	
+	<interface>
+		<!--Return current width of screen.-->
+		<field id="SCREEN_WIDTH"  type="int"/>
+		<!--Return current height of screen.-->
+		<field id="SCREEN_HEIGHT" type="int"/>
+		<!--Returns the text corresponding to the button selection in the Player Info Settings/Display Type page. Either "HDTV", "4:3 standard", or "16:9 anamorphic"-->
+		<field id="displayType"   type="string"/>
+		<!--If display type is fullHD returns true-->
+		<field id="isFHD" 		  type="bool"/>
+		<!--If display type is HD returns true-->
+		<field id="isHD"  		  type="bool"/>
+		<!--If display type is SD returns true-->
+		<field id="isSD"  		  type="bool"/>
+		<!--Returns associative array that contains structure of UI values for some node in current display mode.-->
+		<field id="root"    type="assocarray"/>
+	
+	</interface> 
+
+<script type="text/brightscript" uri="pkg:/components/screens/UIConstants/UIConstants.brs" />
+
+</component>

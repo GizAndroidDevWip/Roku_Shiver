@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="EmailLogin" extends="Group"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+  <interface>
+    <field id="sceneName" type="String" value="EmailLogin" />
+    <!-- <field id="sceneName" type="String" value="EmailLogin" /> -->
+    <field id="SignInViaEmail" type="node" />
+    <field id="EnterTheEmail" type="node" />
+    <field id="Submit_button" type="node" />
+    <field id="loading" type="node" />
+    <field id="GoTo" type="node" />
+    <field id="code" type="node" />
+    <field id="dialogNode" type="node" />
+    <field id="user_email" type="string" alwaysNotify="true" />
+    <field id="id" type="integer" alwaysNotify="true" />
+    <field id="content" type="node" />
+    <field id="login_text_msg" type="node" />
+    <field id="dialogAuthFailed" type="node" />
+    <field id="dialogAuthExceed" type="node" />
+    <field id="closethispage" type="string" alwaysNotify="true" />
+    <field id="goToLoginScene" type="string" alwaysNotify="true" />
+  </interface>
+
+  <script type="text/brightscript" uri="pkg:/components/Scenes/TvCodeScene/Tasks/EmailLogin.brs" />
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/source/main.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+  <!-- <script type="text/brightscript"
+  uri="pkg:/components/Scenes/TvCodeScene/Tasks/GetCodeApiTask/GetCodeApiTask.brs" /> -->
+
+  <children>
+
+    <Label>
+      <Font id="DescFont" role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="18" />
+    </Label>
+
+    <Rectangle id="EmailLoginBackground" width="1920" height="1080" translation="[0,0]" />
+    <TextEditBox id="Email_texteditbox" width="500" height="90"
+      horizAlign="left" vertAlign="center" visible="true" clearOnDownKey="false"
+      fontSize="30" textColor="#FFFFFF"
+      translation="[716,260]" hintText=""></TextEditBox>
+    <Poster id="QRCodeImage" uri="" visible="true"
+      translation="[1175,424]" width="300" height="300" />
+
+
+    <Timer
+      id="isLoggedInCheckTimer"
+      repeat="true"
+      duration="5" />
+  </children>
+</component>

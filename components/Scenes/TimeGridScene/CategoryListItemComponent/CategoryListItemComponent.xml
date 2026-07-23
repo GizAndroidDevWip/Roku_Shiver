@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="CategoryListItemComponent" extends="Group">
+
+  <interface>
+    <field id="itemContent" type="node" onChange="updateContent" />
+    <field id="width" type="float" />
+    <field id="height" type="float" />
+    <field id="focusPercent" type="float" onChange="onItemFocusPercentchanged" />
+    <field id="rowHasFocus" type="bool" onChange="onRowFocusPercentChanged" />
+    <field id="rowListHasFocus" type="bool" onChange="onRowListFocusPercentChanged" />
+    <field id="itemHasFocus" type="bool" onChange="onitemHasFocus" />
+  </interface>
+
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+  <script type="text/brightscript"
+    uri="pkg:/components/Scenes/TimeGridScene/CategoryListItemComponent/CategoryListItemComponent.brs" />
+
+  <children>
+    <Rectangle
+      id="bgRect"
+      translation="[0,0]"
+      width="250"
+      height="50"
+      color="#00000000"> 
+     
+      <Rectangle
+        id="bg_color"
+        translation="[0,0]"
+        width="250"
+        height="50"
+        color="#545454ff" />
+
+      <Poster
+        id="bg"
+        translation="[0,0]"
+        width="250"
+        height="50"
+        uri="pkg:/images/button-focus-light1.png">
+      </Poster>
+
+      <Label
+        id="label"
+        translation="[0,0]"
+        width="250"
+        height="50"
+        horizAlign="center"
+        vertAlign="center"
+        visible="true"
+        wrap="true"
+        color="#CCCCCC"
+        text="">
+        <Font role="font" uri="pkg:/fonts/Netflix-Regular.ttf" size="26" />
+      </Label>
+
+    </Rectangle>
+
+  </children>
+</component>

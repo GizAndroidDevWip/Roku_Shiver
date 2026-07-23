@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="RowListGuide" extends="Group" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<interface>
+		<field id = "itemContent" type = "node" onChange = "itemContentChanged" />
+		<field id = "height" type = "float" onChange= "updateLayout" />
+		<field id = "width" type = "float" onChange = "updateLayout" />
+	</interface>
+
+	<script type = "text/brightscript">
+		<![CDATA[
+			Sub init()
+				m.Poster = m.top.findNode("poster")
+				m.Label = m.top.findNode("label")
+				m.Label2 = m.top.findNode("label2")
+				
+				m.Label2.font.size = "20"
+			End Sub
+
+			Sub itemContentChanged()
+				m.Poster.uri = m.top.itemContent.HDPosterUrl
+				m.Label.text = m.top.itemContent.title
+				starttime= m.top.itemContent.ShortDescriptionLine2
+				endtime=m.top.itemContent.description
+				starttimes=Mid (starttime, 1, 19)
+	            endtimes=Mid (endtime, 1, 19)
+	            dtstart = timeConvertstart (starttimes)
+	            dtend = timeConvertend(endtimes)
+	            m.Label2.text=dtstart+" "+"-"+dtend	            
+				updateLayout()
+			End Sub
+
+			Sub updateLayout()
+				if m.top.height > 0 and m.top.width > 0
+					m.Poster.width = "400"
+					m.Poster.height = "300"
+					m.Label.translation = [0, 210]
+					m.Label.width = m.Poster.width
+					m.Label.color="##10c1d0"
+					m.Label2.translation = [25, m.Poster.height + 10]
+				end if
+			End Sub
+			
+			
+Function timeConvertstart (estString As String) As Object
+    ' An roDateTime by default gives current time in UTC
+    dt = CreateObject ("roDateTime")
+    ' Set the time from the EST string input
+    dt.FromISO8601String (estString)
+    dt.ToLocalTime ()
+    chour=dt.GetHours()
+    cminute=dt.GetMinutes()
+    IF chour=0
+    chour=12
+    ampm="AM"
+    ELSE
+    If chour=12
+    chour=12
+    ampm="PM"
+    Else
+    If chour>12
+    chour= chour-12
+    ampm="PM"
+    Else
+    If chour<12
+    chour=chour
+    ampm="AM"
+    ENDIF
+    ENDIF
+    ENDIF
+    ENDIF
+    if dt.getMinutes() <10
+    cminute="0"+str(dt.getMinutes()).Trim()
+    else
+    cminute=str(dt.getMinutes()).Trim()
+    end if
+    ctime=str(chour)+":"+cminute+" "+ampm
+    ' Return the local time representation of the EST input
+    Return ctime
+End Function
+
+Function timeConvertend (estString As String) As Object
+    ' An roDateTime by default gives current time in UTC
+    dt = CreateObject ("roDateTime")
+    ' Set the time from the EST string input
+    dt.FromISO8601String (estString)
+    ' Convert to local time
+    dt.ToLocalTime ()
+    ' Return the local time representation of the EST input
+       chour=dt.GetHours()
+    cminute=dt.GetMinutes()
+    IF chour=0
+    chour=12
+    ampm="AM"
+    ELSE
+    If chour=12
+    chour=12
+    ampm="PM"
+    Else
+    If chour>12
+    chour= chour-12
+    ampm="PM"
+    Else
+    If chour<12
+    chour=chour
+    ampm="AM"
+    ENDIF
+    ENDIF
+    ENDIF
+    ENDIF
+    if dt.getMinutes() <10
+    cminute="0"+str(dt.getMinutes()).Trim()
+    else
+    cminute=str(dt.getMinutes()).Trim()
+    end if
+    ctime=str(chour)+":"+cminute+" " +ampm
+    ' Return the local time representation of the EST input
+    Return ctime
+End Function
+		]]>
+	</script>
+
+	<children>
+	<!-- Aspect ratio for thumbnails is 16:9 -->
+		<Poster
+			id = "poster"
+			height = "350"
+			width = "250"
+			loadWidth = "250"
+			loadHeight = "350"
+			>
+			<Label
+				id = "label"
+				height = "30"
+				width = "267"
+				translation="[80, 950]"
+				horizAlign = "center"
+				color = "0xFFFFFFFF"
+				font = "font:SmallestBoldSystemFont"
+			/>
+			
+			<Label
+			    id="label2"
+				translation="[0, 1000]"
+				horizAlign="right"
+				font="font:SmallestBoldSystemFont"
+				
+			/>
+		</Poster>
+	</children>
+</component>

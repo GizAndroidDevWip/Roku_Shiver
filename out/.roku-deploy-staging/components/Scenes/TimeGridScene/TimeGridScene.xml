@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="TimeGridScene" extends="Group">
+	<interface>
+		<!-- Content fields -->
+		<!-- String to make go to homescreen -->
+		<field id="tagName" type="string" alwaysnotify="true" onChange="runMoreTask" />
+		<field id="tagType" type="string" alwaysnotify="true" />
+		<field id="showHomeScreen" type="String" alwaysnotify="true" />
+		<field id="channel_id" alwaysnotify="true" type="String" />
+
+		<field id="gotoRegisterLoginscene" type="bool" alwaysnotify="true" />
+		<field id="gotoonDemandScene" type="bool" alwaysnotify="true" />
+		<field id="goToMyListScene" type="bool" alwaysnotify="true" />
+		<field id="goToLiveScene" type="bool" alwaysnotify="true" />
+		<field id="gotoMyAccountScreen" type="bool" alwaysnotify="true" />
+		<field id="goToVideoPlayerScene" type="string" alwaysnotify="true" />
+		<field id="goToVideoPlayerSceneWithVideoId" type="string" alwaysnotify="true" />
+		<field id="gotolivevideoplayer" type="string" alwaysnotify="true" />
+		<field id="goToCategoryScreen" type="String" alwaysnotify="true" />
+		<field id="goToSearchScreen" type="String" alwaysnotify="true" />
+		<field id="goToMyListScreen" type="String" alwaysnotify="true" />
+		<field id="goToShowDetailsScreen" type="intarray" alwaysnotify="true" />
+		<field id="goToSubscriptionListScreen" type="String" alwaysnotify="true" />
+		<field id="goToCatchUpScreen" type="bool" alwaysnotify="true" />
+		<field id="goToScheduleScreen" type="String" alwaysnotify="true" />
+		<field id="goToMainVideoPlayer" type="roAssociativeArray" alwaysnotify="true" />
+		<field id="id" type="string" alwaysnotify="true" />
+		<field id="goToPaymentDescriptionScreenForEvent" type="string" alwaysnotify="true" />
+		<field id="gotolandingscene" type="string" alwaysnotify="true" />
+		<field id="changeFocusNotifier" type="string" alwaysnotify="true" alias="CustomTimeGrid.KEY_PRESSED_STATE" onChange="onChangeFocusNotify" />
+
+
+	</interface>
+	<script type="text/brightscript" uri="pkg:/components/Scenes/TimeGridScene/TimeGridScene.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<!-- <script type="text/brightscript" uri="pkg:/source/apiUtils.brs" /> -->
+
+	<children>
+		<!-- this is the main rectangle -->
+		<!-- first black Color -->
+		<Rectangle id="main_rect" width="1920" height="1080" translation="[0,0]" color="#1d2124"
+			visible="true">
+			<Rectangle id="AppBackground" width="1920" height="1080" translation="[0,0]" />
+
+
+			<Label id="TimeGridSceneItem_Label" translation="[223,100]" height="38" width="1000"
+				font="font:MediumBoldSystemFont"
+				color="#E3E3E3" size="40" />
+
+			<Label id="message_label" translation="[0, 0]" height="1080" width="1920"
+				font="font:MediumBoldSystemFont" visible="false" horizAlign="center" wrap="true"
+				vertAlign="center"
+				color="#E3E3E3" size="40" />
+
+			<Rectangle
+				id="videoPlayerContainer"
+				translation="[0,0]"
+				color="#00000000"
+				width="1920"
+				height="1080"
+				visible="true">
+				<Video
+					id="onFocusPlayVideoPlayer"
+					translation="[0,0]"
+					width="1920"
+					height="1080"
+					visible="true"
+				/>
+				<Rectangle
+					id="videoTitleBar"
+					translation="[1395,15]"
+					width="500"
+					height="35"
+					color="#000000"
+					visible="true">
+					<Label
+						id="videoTitleLabel"
+						translation="[0,0]"
+						width="500"
+						height="35"
+						text=""
+						color="#FFFFFF"
+						font="font:MediumBoldSystemFont"
+						horizAlign="center"
+						vertAlign="center"
+						size="22" />
+				</Rectangle>
+				<Poster
+					id="videoOverlayposter"
+					translation="[0,0]"
+					width="1920"
+					height="1080"
+					loadDisplayMode="scaleToZoom"
+					uri=""
+					visible="true"
+				/>
+				<Poster
+					id="posterOverlayGradient"
+					translation="[0,0]"
+					width="1600"
+					height="1080"
+					uri="pkg:/images/home_gradient1.png"
+					visible="true"
+				/>
+			</Rectangle>
+
+			<Rectangle id="MetaDataRect" translation="[0, 0]" width="1920" height="600"
+				color="#00000000">
+
+				<!-- <Label id="mainTitle" translation="[461,102]" height="180" width="810"
+					font="pkg:/fonts/Netflix-Semibold.ttf" text="" wrap="true"
+					color="#E3E3E3" size="35" />
+
+				<Label id="subTitle" translation="[465, 255]" height="100" width="1000"
+					font="pkg:/fonts/Netflix-Regular.ttf" visible="true" horizAlign="left" wrap="true"
+					vertAlign="center" text=""
+					color="#E3E3E3" size="32" /> -->
+
+
+				<Label id="mainTitle" translation="[461,102]" height="180" width="810"
+					lineSpacing="0"
+					wrap="true" color="#E3E3E3" size="35" text="">
+					<Font role="font" uri="pkg:/fonts/Netflix-Semibold.ttf" size="37" />
+				</Label>
+
+				<Label id="subTitle" translation="[465,240]" height="100" width="1000"
+					visible="true" horizAlign="left" wrap="true" vertAlign="center"
+					color="#E3E3E3" text="">
+					<Font role="font" uri="pkg:/fonts/Netflix-Regular.ttf" size="29" />
+				</Label>
+
+
+				<Poster id="poster" translation="[30,30]" width="400" height="400" loadWidth="500"
+					loadHeight="300"
+					uri=""
+					loadDisplayMode="scaleToFit" loadSync="true" />
+
+			</Rectangle>
+
+			<LabelList id="pressStarForcategoryLabelLabelList" translation="[30, 448]"
+				textHorizAlign="center"
+				numRows="1" itemSize="[510, 76]"
+				font="font:SmallestBoldSystemFont" visible="false" focusedColor="#ffffff"
+				width="680"
+				height="480"
+				vertFocusAnimationStyle="floatingFocus"></LabelList>
+
+			<CustomTimeGrid
+				id="CustomTimeGrid"
+				translation="[0,735]" />
+
+		</Rectangle>
+
+		<Rectangle id="category_rect" translation="[0, 210]" width="1920" height="1080"
+			color="00FFFFFF"
+			visible="false">
+			<!-- <Rectangle id="categoryLblListReact" width="1920" height="1080"
+                translation="[0,0]" color="#000000" visible="true"> -->
+
+
+			<Label id="categoryLbl" translation="[105,330]" height="38" size="40" width="360"
+				color="#FBFBFB" filltype="solid" visible="false"
+				font="font:MediumBoldSystemFont"
+				text="" />
+
+			<RowList
+				id="selectCategory"
+				itemSize="[1800,60]"
+				itemSpacing="[30, 60]"
+				rowItemSize="[[250, 60]]"
+				rowHeights="[70,70]"
+				numRows="1"
+				width="1740"
+				height="70"
+				focusable="true"
+				rowItemSpacing="[[40, 15]]"
+				focusBitmapUri=""
+				translation="[100, 380]"
+				itemComponentName="CategoryListItemComponent"
+			/>
+
+
+			<!-- </Rectangle> -->
+
+		</Rectangle>
+
+
+		<Timer
+			id="jumpToProgramTimer"
+			repeat="true"
+			duration="1" />
+
+		<Rectangle id="languageLbllist_react" width="1920" height="1080"
+			translation="[0,0]" color="#000000" visible="false">
+			<Label id="language_Lbl" translation="[840,203]" height="38" size="40" width="360"
+				color="#FBFBFB" filltype="solid"
+				font="font:MediumBoldSystemFont"
+				text="Select Language" />
+
+			<Label id="language_Lbl2" translation="[443,203]" height="400" size="100" width="1800"
+				color="#FBFBFB" filltype="solid"
+				font="font:MediumBoldSystemFont"
+				text="" />
+			<LabelList id="selectLanguage" translation="[729,315]" textHorizAlign="center"
+				numRows="7"
+				font="font:SmallestSystemFont" visible="true" focusedColor="#ffffff" width="680"
+				height="480"
+				vertFocusAnimationStyle="floatingFocus">
+			</LabelList>
+		</Rectangle>
+
+		<Loading id="loading" />
+
+		<Timer
+			id="fullscreenTimer"
+			repeat="true"
+			duration="1"
+			control="stop"
+		/>
+	</children>
+</component>

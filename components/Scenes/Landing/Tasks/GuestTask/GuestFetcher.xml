@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="GuestFetcher" extends="Task">
+
+
+    <interface>
+    
+   <field id="GuestRequest" alwaysnotify="true" type="String"/>
+    <field id="GuestResponse" alwaysnotify="true" type="String" />
+
+    
+		<function name="runGuestFetcher" />
+		<function name="stopGuestFetcher" /> 
+</interface>
+        <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+        <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Scenes/Landing/Tasks/GuestTask/GuestFetcher.brs" />
+</component>

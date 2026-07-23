@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="SquareItemComponent" extends="Group"
+    xmlns="http://www.w3.org/2005/Atom"
+    xmlns:roku="http://roku.com/schema/ui">
+
+    <interface>
+        <field id="itemContent" type="node" onChange="onContentChanged" />
+        <field id="isLocked" type="boolean" />
+        <field id="isActive" type="boolean" />
+        <field id="width" type="float" onChange="OnsizeChanged" />
+        <field id="height" type="float" onChange="OnsizeChanged" />
+    </interface>
+
+    <script type="text/brightscript"
+        uri="pkg:/components/Scenes/MicroDramaScene/ItemComponentFile/SquareItemComponent.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+
+
+    <children>
+
+
+        <!-- ✅ Outer Square -->
+        <Rectangle
+            id="bg"
+            width="160"
+            height="160"
+            color="0x1A1A1AFF">
+
+            <!-- ✅ Red Gradient Poster (Active State) -->
+            <Poster
+                id="activePoster"
+                width="160"
+                height="160"
+                visible="false"
+                uri="pkg:/images/design_assets/right_bottom_gradient.png" />
+
+            <!-- ✅ Graph Icon Poster -->
+            <Poster
+                id="graphPoster"
+                width="20"
+                height="20"
+                uri="pkg:/images/icons/music_bar.png"
+                translation="[10, 10]" />
+
+            <!-- ✅ Lock Icon Poster -->
+            <Poster
+                id="lockPoster"
+                width="30"
+                height="30"
+                uri="pkg:/images/icons/lock_icon.png"
+                translation="[0, 0]"
+                visible="false" />
+
+            <!-- ✅ Title -->
+            <Label
+                id="titleLabel"
+                translation="[0, 0]"
+                width="0"
+                height="0"
+                horizAlign="center"
+                vertAlign="center"
+                color="#cccccc"
+                font="font:MediumBoldSystemFont"
+                text="" />
+
+            <Poster id="CornerRounded" uri="pkg:/images/cornerRounded.png" visible="true"
+                translation="[0,0]" width="0" height="0" />
+        </Rectangle>
+
+    </children>
+
+</component>

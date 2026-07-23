@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="CalendarListItemComponent" extends="Group">
+
+  <interface>
+    <field id="itemContent" type="node" onChange="itemContentChanged" />
+    <field id="width" type="float" onChange="updateLayout" />
+    <field id="height" type="float" onChange="updateLayout" />
+    <field id="focusPercent" type="float" onChange="onItemFocusPercentchanged" />
+  </interface>
+
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+  <script type="text/brightscript"
+    uri="pkg:/components/Scenes/CalendarViewScene/ItemComponents/CalendarListItemComponent/CalendarListItemComponent.brs" />
+
+
+  <children>
+    <!-- Outer Layout -->
+    <Rectangle id="main_rect" width="800" height="400" translation="[0,0]" color="#ffffff">
+      <!-- Background Poster -->
+      <Poster
+        id="backgroundPoster"
+        uri="pkg:/images/img_loginbg1.png"
+        width="1500"
+        height="360"
+        opacity="0.3"
+        translation="[0,0]"
+        loadSync="true" />
+      <Group layoutDirection="horizontal" translation="[0, 0]">
+
+          <!-- Thumbnail Poster -->
+          <Poster
+            id="thumbnailPoster"
+            width="500"
+            height="300"
+            cornerRadius="20"
+            loadDisplayMode="limitSize"
+            uri=""
+            loadSync="true" />
+
+          <!-- Double Tick Icon Poster (overlayed on top-left) -->
+          <Poster
+            id="tickIcon"
+            width="40"
+            height="40"
+            uri="pkg:/images/icons/read.png"
+            translation="[10, 10]"
+            blendColor="#FFFFFF"
+            visible="false"
+            opacity="1.0" />
+
+
+        <!-- Right Side Content -->
+        <Group layoutDirection="vertical" translation="[-109, -11]" vertAlignment="center">
+
+          <!-- Title -->
+          <ScrollingLabel
+            id="titleLabel"
+            text=""
+            font="font:MediumBoldSystemFont"
+            horizAlign="left"
+            width="1035"
+            maxWidth="1035"
+            height="105"
+            maxLines="1"
+            translation="[525, 36]"
+            color="#000000"
+          />
+
+          <!-- Instructor Info -->
+          <Group layoutDirection="horiz" horizAlignment="left" translation="[-92, -20]">
+            <!-- Instructor Image -->
+            <Poster
+              id="instructorPoster"
+              width="65"
+              height="65"
+              cornerRadius="20"
+              uri=""
+              translation="[615, 122]"
+              loadSync="true" />
+
+            <Poster id="instructorFramePoster"
+              translation="[615, 122]"
+              loadDisplayMode="scaleToFill" loadWidth="75"
+              loadHeight="65" width="65"
+              height="65"
+              uri="pkg:/images/design_assets/round_frame.png" />
+
+
+            <!-- Instructor Name -->
+            <Label
+              id="instructorLabel"
+              text=""
+              font="font:MediumSystemFont"
+              horizAlign="left"
+              translation="[698, 143]"
+              color="#000000"
+              width="780" />
+          </Group>
+
+          <!-- Duration -->
+          <Label
+            id="durationLabel"
+            text=""
+            font="font:SmallSystemFont"
+            horizAlign="left"
+            translation="[525, 225]"
+            color="#000000"
+            width="700" />
+        </Group>
+      </Group>
+    </Rectangle>
+  </children>
+
+</component>

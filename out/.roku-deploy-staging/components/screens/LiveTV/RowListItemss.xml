@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="RowListItemss" extends="Group"
+    xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+    <interface>
+        <field id="itemContent" type="node" onChange="itemContentChanged" />
+        <field id="height" type="float" onChange="updateLayout" />
+        <field id="width" type="float" onChange="updateLayout" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/components/screens/LiveTV/RowListItemss.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+
+    <children>
+        <!-- Aspect ratio for thumbnails is 16:9 -->
+        <Rectangle id="main_rect" color="#000000" width="320" height="180">
+            <Poster
+                id="poster"
+                height="180"
+                width="320"
+                loadWidth="320"
+                loadHeight="180"
+                loadDisplayMode="limitSize" />
+
+            <Poster id="poster_bottom_shadow" uri="pkg:/images/img_newbottomshade.png"
+                visible="true" translation="[0,0]" width="320" height="180" />
+            <Label
+                id="label" height="90" width="320" wrap="true" lineSpacing="0.1" horizAlign="left"
+                vertAlign="top" color="#FFFFFF" font="font:MediumBoldSystemFont"
+                translation="[10,100]" numLines="2" maxLines="2" />
+
+            <Label id="label22" height="90" width="320" wrap="true" lineSpacing="0.5"
+                horizAlign="left" vertAlign="top" color="#ffffff" font="font:MediumBoldSystemFont"
+                translation="[10,130]" numLines="2" maxLines="2" />
+
+            <Label id="label2" height="81" width="320" wrap="true" numLines="1" maxLines="1"
+                lineSpacing="0.1" horizAlign="left" vertAlign="top" color="#ffffff" text=""
+                translation="[10,130]">
+                <Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="18" />
+            </Label>
+
+            <Label
+                id="descriptionBanner"
+                translation="[0, 0]"
+                horizAlign="left"
+                text=""
+                lineSpacing="5"
+                width="700"
+                height="40"
+                wrap="true" numLines="1" maxLines="1"
+                visible="true" color="#ffffff">
+            </Label>
+        </Rectangle>
+
+    </children>
+</component>

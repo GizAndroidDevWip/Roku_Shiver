@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="LogoutTaskAll" extends="Task">
+<interface>
+  	<field id="LogoutRequest" alwaysnotify="true" type="String"/>
+    <field id="LogoutResponse" alwaysnotify="true" type="roAssociativeArray" />
+    
+    <function name="runLogoutTask" />
+    <function name="stopLogoutTask" />
+
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/tasks/logouttaskall/LogoutTaskAll.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+</component>

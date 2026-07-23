@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="PlanDetailsTask" extends="Task">
+    <interface>
+        <field id="subscriptionData" type="assocarray" alwaysnotify="true" />
+        <field id="cancelSubscriptionId" type="string" />
+        <field id="cancelResponse" type="assocarray" alwaysnotify="true" />
+        <field id="action" type="string" />
+    </interface>
+    <script type="text/brightscript" uri="PlanDetailsTask.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+</component>

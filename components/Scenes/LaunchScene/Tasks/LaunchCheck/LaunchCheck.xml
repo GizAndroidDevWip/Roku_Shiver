@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="LaunchCheck" extends="Task">
+
+
+    <interface>
+    
+   <field id="LaunchRequest" alwaysnotify="true" type="String"/>
+    <field id="LaunchResponse" alwaysnotify="true" type="String" />
+
+    <function name="runLaunchCheck" />
+    <function name="stopLaunchCheck" />
+</interface>
+        <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Scenes/LaunchScene/Tasks/LaunchCheck/LaunchCheck.brs" />
+</component>

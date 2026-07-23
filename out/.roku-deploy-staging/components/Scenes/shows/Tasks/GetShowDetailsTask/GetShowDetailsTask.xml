@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="GetShowDetailsTask" extends="Task">
+    <interface>
+        <field id="request" type="string" alwaysnotify="true" />
+        <field id="showId" type="string" alwaysnotify="true" />
+        <field id="videoSubs" alwaysnotify="true" type="bool"/>
+        <field id="userSubIDSCount" alwaysnotify="true" type="Integer" />
+        <field id="notifyClick"  type="bool" />
+        <field id="showDetailsResponse"  alwaysnotify="true"  type="assocarray" />
+        <function  name="runGetShowDetailsTask"/>
+        <function name="stopGetShowDetailsTask" />
+    </interface>
+    <script type="text/brightscript" uri="pkg:/components/Scenes/shows/Tasks/GetShowDetailsTask/GetShowDetailsTask.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs"/>
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs"/>
+</component>

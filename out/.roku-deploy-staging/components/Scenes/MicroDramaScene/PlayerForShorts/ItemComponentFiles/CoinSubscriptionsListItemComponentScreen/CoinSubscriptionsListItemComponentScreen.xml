@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="CoinSubscriptionsListItemComponentScreen" extends="Group">
+
+    <interface>
+        <field id="itemContent" type="node" onChange="onContentChange" />
+        <field id="focusPercent" type="float" onChange="onFocusChange" />
+    </interface>
+
+    <script type="text/brightscript"
+        uri="pkg:/components/Scenes/MicroDramaScene/PlayerForShorts/ItemComponentFiles/CoinSubscriptionsListItemComponentScreen/CoinSubscriptionsListItemComponentScreen.brs" />
+
+    <children>
+        <Poster
+            id="background"
+            width="600"
+            height="180"
+            opacity="0.2"
+            blendColor="#FFFFFF"
+            uri="pkg:/images/design_assets/rounded_corners_long.png" />
+
+        <Group translation="[30, 38]">
+            <Poster
+                id="iconBg"
+                width="100"
+                opacity="0.4"
+                height="100"
+                blendColor="#FF7F7F"
+                uri="pkg:/images/design_assets/rounded_corners_square.png" />
+            <Poster
+                id="icon"
+                translation="[30, 30]"
+                uri="pkg:/images/icons/lock_icon.png"
+                width="40"
+                height="40" />
+        </Group>
+
+        <LayoutGroup translation="[153, 38]" layoutDirection="vert" itemSpacings="[5]">
+            <Label
+                id="title"
+                font="font:MediumBoldSystemFont"
+                color="0xFFFFFFFF" />
+
+
+            <Label id="description"
+                width="320"
+                wrap="true"
+                numLines="0"
+                maxLines="2"
+                lineSpacing="0"
+                horizAlign="left"
+                vertAlign="center"
+                color="#cccccc"
+                text="">
+                <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Regular.ttf" size="25" />
+            </Label>
+        </LayoutGroup>
+
+        <Group id="rightTagGroup" translation="[480, 73]">
+            <Poster
+                id="tagBg"
+                width="35"
+                height="35"
+                uri="pkg:/images/icons/star.png" />
+            <Label
+                id="tagText"
+                translation="[39, 4]"
+                font="font:SmallBoldSystemFont"
+                color="#FFFFFFFF"
+                width="70"
+                align="center" />
+
+            <Poster
+                id="rightArrow"
+                translation="[85, 6]"
+                width="24"
+                height="24"
+                visible="false"
+                uri="pkg:/images/icons/rightArrow.png" />
+        </Group>
+    </children>
+</component>

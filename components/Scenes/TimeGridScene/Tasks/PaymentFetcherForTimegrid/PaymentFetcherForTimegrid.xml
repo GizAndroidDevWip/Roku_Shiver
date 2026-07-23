@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="PaymentFetcherForTimegrid" extends="Task">
+<interface>
+    <field id="channelId" type="String" alwaysnotify="true"/>
+    <field id="PayContent" type="node"/>
+
+	<function name="runPaymentFetcherTask" />
+    <function name="stopPaymentFetcherTask" /> 
+</interface>
+        <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Scenes/TimeGridScene/Tasks/PaymentFetcherForTimegrid/PaymentFetcherForTimegrid.brs" />
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+</component>

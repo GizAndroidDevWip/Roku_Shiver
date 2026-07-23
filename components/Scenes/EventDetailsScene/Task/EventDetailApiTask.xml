@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="EventDetailApiTask" extends="Task">
+
+<interface>
+  	<field id="ContentRequest" alwaysnotify="true" type="String"/>
+    <field id="Content" alwaysnotify="true" type="roAssociativeArray" />
+    <field id="showFetcherStatus" alwaysnotify="true" type="bool" />
+    <field id="CastContent" alwaysnotify="true" type="node" />
+    <field id="EventRequest" alwaysnotify="true" type="String"/>
+    <field id="user_id" alwaysnotify="true" type="String" />
+    <field id="event_type" alwaysnotify="true" type="String" />
+    <field id="video_id" alwaysnotify="true" type="String" />
+    <field id="video_title" alwaysnotify="true" type="String" />
+    <field id="channel_id" alwaysnotify="true" type="String" />    
+    <field id="category" alwaysnotify="true" type="String" />  
+    <field id="itemType" alwaysnotify="true" type="String" />  
+    <field id="EVENT_ID" alwaysnotify="true" type="int" />  
+    <field id="rawShowfetcherContent" alwaysnotify="true" type="roAssociativeArray"/>
+    <field id="is_live" alwaysnotify="true" type="String"/>
+    <field id="LiveEventResponseData" alwaysnotify="true" type="roAssociativeArray"/>
+    <field id="EventDetailApiTaskStatus" alwaysnotify="true" type="bool"/>
+    <field id="rawEventDetailApiTaskContent" alwaysnotify="true" type="roAssociativeArray"/>
+    <field id="subscriptions" alwaysnotify="true" type="node"/>
+    
+            
+    <field id="taskType" alwaysnotify="true" type="String" />   
+
+	<function name="runEventDetailApiTask" />
+    <function name="stopEventDetailApiTask" />
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/Scenes/EventDetailsScene/Task/EventDetailApiTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Util.brs" />
+	
+</component>

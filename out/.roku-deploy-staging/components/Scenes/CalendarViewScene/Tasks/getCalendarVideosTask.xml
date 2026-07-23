@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="GetCalendarVideosTask" extends="Task">
+    <interface>
+        <field id="CalendarVideosContent" alwaysnotify="true" type="node" />
+        <field id="CalendarVideosListStatus" alwaysnotify="true" type="Boolean" />
+        <field id="calendarDate" type="String" />
+        <field id="dateRange" type="roAssociativeArray" />
+        
+        <function name="runGetCalendarVideosTask" />
+        <function name="stopGetCalendarVideosTask" />
+    </interface>
+    <script type="text/brightscript" uri="pkg:/components/Scenes/CalendarViewScene/Tasks/getCalendarVideosTask.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Util.brs" />
+</component>

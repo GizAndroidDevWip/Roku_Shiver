@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="IpInfoTask" extends="Task">
+<interface>
+  	<field id="IpInfoRequest" alwaysnotify="true" type="String"/>
+    <field id="IpInfoResponse" alwaysnotify="true" type="String" />
+    
+		<function name="runIpInfoTask" />
+		<function name="stopIpInfoTask" />
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/Scenes/LaunchScene/Tasks/IpInfoTask/IpInfoTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+</component>

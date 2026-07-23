@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="HomeTopMenuRowlistItemComponent" extends="Group">
+
+  <interface>
+    <field id="itemContent" type="node" onChange="updateContent" />
+    <field id="width" type="float" onChange="onSizeChanged" />
+    <field id="height" type="float" />
+    <field id="focusPercent" type="float" onChange="onItemFocusPercentchanged" />
+    <field id="rowListHasFocus" type="bool" onChange="onRowListFocusPercentChanged" />
+    <field id="itemHasFocus" type="bool" onChange="onitemHasFocus" />
+    <field id="rowHasFocus" type="bool" onChange="onRowHasFocus" />
+  </interface>
+
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+  <script type="text/brightscript"
+    uri="pkg:/components\Scenes\HomeScene\ItemComponentFiles\HomeTopMenuRowlistItemComponent\HomeTopMenuRowlistItemComponent.brs" />
+
+  <children>
+    <Rectangle
+      id="bgRect"
+      translation="[0,0]"
+      width="200"
+      height="60"
+      color="#00000000">
+
+      <Rectangle
+        id="separator"
+        translation="[-8,0]"
+        width="2"
+        height="40"
+        visible="false"
+        color="#606060" />
+
+      <Label
+        id="label"
+        translation="[0,0]"
+        width="500"
+        height="500"
+        color="#ffffff"
+        horizAlign="center"
+        vertAlign="center"
+        visible="true"
+        text="">
+        <Font role="font" uri="pkg:/fonts/Roboto-Medium.ttf" size="25" />
+      </Label>
+
+      <Poster
+        id="searchIcon"
+        uri="pkg:/images/icons/icons_search.png"
+        width="30"
+        visible="false"
+        height="30"
+        translation="[5,3]" />
+    </Rectangle>
+
+  </children>
+</component>

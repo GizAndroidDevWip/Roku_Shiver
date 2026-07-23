@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Rating" extends="Task">
+<interface>
+  	<field id="RatingRequest" alwaysnotify="true" type="String"/>
+  	<field id="showid" type="integer"/>
+  	<field id="rating" type="integer"/>
+    <field id="RatingResponse" alwaysnotify="true" type="String" />
+    
+		<function name="runRatingTask" />
+		<function name="stopRatingTask" />      
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/tasks/Rating/Rating.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+</component>

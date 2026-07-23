@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Loading" extends="Group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+	<script type="text/brightscript" uri="pkg:/components/screens/Loading/Loading.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+
+	<children>
+		<Rectangle
+			id="AppBackground"
+			width="1920"
+			height="1080"
+			translation="[0,0]" />
+
+		<Group>
+			<BusySpinner
+				id="spinner"
+				translation="[920, 470]"
+				control="start"
+				clockwise="true"
+				spinInterval="2" />
+		</Group>
+	</children>
+</component>

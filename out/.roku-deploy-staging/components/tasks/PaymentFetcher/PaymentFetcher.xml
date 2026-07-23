@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="PaymentFetcher" extends="Task">
+<interface>
+    <field id="videoID" type="String" alwaysnotify="true"/>
+      <field id="channelID" type="String" alwaysnotify="true"/>
+      <field id="PayContent" type="node"/>
+      <field id="isGoadsFreeclicked" type="bool" alwaysnotify="true"/>
+
+	<function name="runPaymentFetcherTask" />
+    <function name="stopPaymentFetcherTask" /> 
+</interface>
+        <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components/tasks/PaymentFetcher/PaymentFetcher.brs" />
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+</component>

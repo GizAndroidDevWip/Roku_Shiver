@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="AccountRequestApiTask" extends="Task">
+<interface>
+
+
+
+<field id="user_email" type="string" alwaysNotify="true" />
+<field id="responseDataAccountRequestTaskContent" alwaysNotify="true" type="roAssociativeArray"/>
+<field id="responseDataAccountRequestTaskListStatus" alwaysNotify="true" type="Boolean" />
+
+<function name="runAccountRequestApiTask" />
+		<function name="stopAccountRequestApiTask" />
+
+</interface>
+<script type="text/brightscript" uri="pkg:/components/Scenes/TvCodeScene/Tasks/AccountRequestApiTask/AccountRequestApiTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Util.brs" />
+
+
+</component>

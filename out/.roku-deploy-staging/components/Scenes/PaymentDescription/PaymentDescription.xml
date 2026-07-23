@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="PaymentDescription" extends="Group" initialFocus="contentRowList"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<script type="text/brightscript"
+		uri="pkg:/components/Scenes/PaymentDescription/PaymentDescription.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Scenes/PaymentDescription/utils.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+
+	<interface>
+		<field id="display" type="String" alwaysnotify="true" />
+		<field id="videoID" type="String" alwaysnotify="true" />
+		<field id="start" type="bool" alwaysnotify="true"
+			onChange="DisapalyVideoDataForAppSubscription" />
+		<field id="eventID" type="String" alwaysnotify="true" />
+		<field id="channel_id" type="String" alwaysnotify="true" />
+		<field id="channelID" type="String" alwaysnotify="true" />
+		<field id="displaylabel" type="String" alwaysnotify="true" />
+		<field id="displaydescrip" type="String" alwaysnotify="true" />
+		<field id="focusedContent" type="node" />
+		<field id="isAuthNeeded" type="boolean" value="false" />
+		<field id="regexEmail" type="string"
+			value="^[A-Za-z0-9_%+-]+(\.[A-Za-z0-9_%+-]+)*@([A-Za-z0-9-]+\.)+[A-Za-z]{2,6}$"
+			onChange="On_regexEmail" />
+		<field id="regexPassword" type="string" value=".{1,}" onChange="On_regexPassword" />
+		<field id="textTermsOfUse" type="string" value="" onChange="On_textTermsOfUse" />
+		<field id="dialogsConfig" type="assocarray" onChange="On_dialogsConfig" />
+		<field id="dialogsButtonConfig" type="assocarray" onChange="On_dialogsButtonConfig" />
+		<field id="show" type="boolean" value="false" alwaysNotify="true" onChange="On_show" />
+		<field id="isLoginAPISuccess" type="boolean" alias="loginAuthFlow.isAPISuccess" />
+		<field id="isSignupAPISuccess" type="boolean" alias="signupAuthFlow.isAPISuccess" />
+		<field id="kbdialogLoginEmail" type="node" alias="loginAuthFlow.kbdialogEmail" />
+		<field id="kbdialogLoginPassword" type="node" alias="loginAuthFlow.kbdialogPassword" />
+		<field id="dialogLoginErrEmail" type="node" alias="loginAuthFlow.dialogErrEmail" />
+		<field id="dialogLoginErrPassword" type="node" alias="loginAuthFlow.dialogErrPassword" />
+		<field id="pdialogLogin" type="node" alias="loginAuthFlow.pdialogAuth" />
+		<field id="dialogLoginFailed" type="node" alias="loginAuthFlow.dialogAuthFailed" />
+		<field id="kbdialogSignupEmail" type="node" alias="signupAuthFlow.kbdialogEmail" />
+		<field id="kbdialogSignupPassword" type="node" alias="signupAuthFlow.kbdialogPassword" />
+		<field id="dialogSignupErrEmail" type="node" alias="signupAuthFlow.dialogErrEmail" />
+		<field id="dialogSignupErrPassword" type="node" alias="signupAuthFlow.dialogErrPassword" />
+		<field id="pdialogSignup" type="node" alias="signupAuthFlow.pdialogAuth" />
+		<field id="dialogSignupFailed" type="node" alias="signupAuthFlow.dialogAuthFailed" />
+		<field id="dialogTermsOfUse" type="node" alias="signupAuthFlow.dialogTermsOfUse" />
+		<field id="dialogSelectSub" type="node" />
+		<field id="dialogNoSubToPurchase" type="node" />
+		<field id="dialogBillingNA" type="node" />
+		<field id="pdialogCheckSubs" type="node" />
+		<field id="pdialogPurchase" type="node" />
+		<field id="dialogSuccess" type="node" />
+		<field id="pdialogAuth" type="node" />
+		<field id="isAuthorized" type="boolean" alwaysNotify="true" value="false" />
+		<field id="loginUserData" type="assocarray" alias="loginAuthFlow.userData" />
+		<field id="signupUserData" type="assocarray" alias="signupAuthFlow.userData" />
+		<field id="isAfterLoginAuthFlow" type="boolean" alwaysNotify="true"
+			onChange="On_isAfterLoginAuthFlow" />
+		<field id="isSubscribed" type="boolean" alwaysNotify="true" value="false" />
+		<field id="gotoShowScene" type="string" alwaysNotify="true" />
+		<field id="gotoHomeScene" type="string" alwaysNotify="true" />
+		<field id="gotoLandingScene" type="string" alwaysNotify="true" />
+		<field id="goToPaymentDescriptionScreen" type="string" alwaysNotify="true" />
+
+	</interface>
+	<children>
+		<Rectangle
+			id="AppBackground"
+			width="1920"
+			height="1080"
+			translation="[0,0]" />
+
+		<Poster
+			id="packimage"
+			width="800"
+			visible="false"
+			height="880"
+			translation="[1020,100]" />
+
+		<Group>
+
+			<Label
+				id="subscriptionlbl"
+				horizAlign="left"
+				width="1400"
+				text=""
+				color="#FFFFFF"
+				font="font:LargeBoldSystemFont"
+				translation="[181,219]" />
+			<Label
+				id="lbl"
+				horizAlign="left"
+				width="1000"
+				text=""
+				color="#FFFFFF"
+				font="font:MediumSystemFont"
+				translation="[182,284]" />
+
+			<Poster
+				id="premiumposter"
+				width="1080"
+				height="720"
+				translation="[750,150]" />
+
+			<Label
+				id="descri"
+				horizAlign="left"
+				width="1920"
+				color="#FFFFFF"
+				font="dictionary:DescFont"
+				translation="[20,130]" />
+
+			<SimpleRowList
+				id="contentRowList"
+				translation="[180,330]" />
+		</Group>
+
+		<ChannelStore id="billing" />
+		<RokuAuthFlow id="loginAuthFlow" />
+		<RokuAuthFlow id="signupAuthFlow" />
+
+	</children>
+
+</component>

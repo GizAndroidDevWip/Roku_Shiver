@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="BigQRComponent" extends="Group">
+  <interface>
+    <field id="titleLabel" type="string" alias="titleLabel.text" />
+    <field id="description1" type="string" alias="label1.text" />
+    <field id="description2" type="string" alias="label2.text" />
+    <field id="description3" type="string" alias="label3.text" />
+    <field id="qrUrl" type="string" alias="qrPoster.uri" />
+    <field id="closeQROverlay" type="bool" alwaysNotify="true" />
+    <field id="refreshRequested" type="bool" alwaysNotify="true" />
+  </interface>
+
+  <script type="text/uri" uri="pkg:/components/screens/BigQRComponent/BigQRComponent.brs" />
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+  <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+
+  <children>
+    <Rectangle width="1920" height="1080" color="0x000000AA" />
+
+    <!-- <Rectangle id="card" width="1200" height="600" translation="[360, 240]" color="0x151515"> -->
+
+    <!-- <Rectangle id="card" width="1304" height="875" translation="[300, 112]" color="0x151515"> -->
+    <Poster id="card" uri="pkg:/images/img_newbg.9.png" width="1425" height="1035"
+      blendColor="#262626"
+      translation="[255, 30]" />
+
+    <Group translation="[270,85]">
+
+      <Label id="Main_title" height="80" width="600" wrap="true"
+        color="#FFFFFF"
+        translation="[715,52]" />
+      <ScrollingLabel id="titleLabel" height="80" width="473" text="" maxWidth="473"
+        repeatCount="-1" translation="[88,170]"
+        vertAlign="center" horizAlign="left" color="#ffffff" font="font:MediumBoldSystemFont">
+        <!-- <Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="26" /> -->
+      </ScrollingLabel>
+
+      <!-- <Label id="titleLabel" width="650" translation="[70,170]" text="" color="#FFFFFF"
+        font="font:MediumBoldSystemFont"  wrap="true"  maxLines="2" /> -->
+      <Poster
+        id="lockIcon"
+        uri=""
+        width="46"
+        height="44"
+        translation="[77,256]"
+        loadDisplayMode="scaleToFit" />
+
+      <Label id="subscription_title" width="550" translation="[125,258]" text="" color="0xBBBBBB">
+        <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" />
+      </Label>
+      <!-- <Label id="Main_title" width="550" translation="[616, -10]"
+        font="font:LargeBoldSystemFont" text="" color="0xBBBBBB" height="200" /> -->
+      <!-- <Label id="titleLabel" width="500" font="font:LargeBoldSystemFont" translation="[583,
+        73]" /> -->
+      <Label id="qr_title" width="550" translation="[715,124]" text="" color="0xBBBBBB"
+        wrap="true" lineSpacing="0"
+        maxLines="2">
+        <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" />
+      </Label>
+      <Poster
+        id="one_icon"
+        uri="pkg:/images/icons/one_icon.png"
+        width="65"
+        height="64"
+        translation="[694,263]"
+        loadDisplayMode="scaleToFit" />
+      <Poster
+        id="two_icon"
+        uri="pkg:/images/icons/two_icon.png"
+        width="65"
+        height="64"
+        translation="[692,457]" />
+      <Poster
+        id="three_icon"
+        uri="pkg:/images/icons/three_icon.png"
+        width="65"
+        height="64"
+        translation="[694,653]" />
+
+      <Label id="label1" width="620" translation="[756,279]" font="font:LargeBoldSystemFont"
+        text="" color="0xF2F2F2FF" />
+      <!-- <Label id="label4" width="550" translation="[765,278]" font="font:SmallSystemFont"
+        text="" color="#BBBBBBFF"  wrap="true"
+    maxLines="2" /> -->
+      <Label id="label2" width="620" translation="[756,476]" font="font:LargeBoldSystemFont"
+        text="" color="0xF2F2F2FF" />
+      <!-- <Label id="label5" width="550" translation="[765,479]" font="font:SmallSystemFont"
+        text="" color="#BBBBBBFF" wrap="true"
+    maxLines="2" /> -->
+      <Label id="label3" width="620" translation="[756,673]" font="font:LargeBoldSystemFont"
+        text="" wrap="true" color="0xF2F2F2FF" />
+      <!-- <Label id="label6" width="550" translation="[765,680]" font="font:SmallSystemFont"
+        text="" color="#BBBBBBFF" wrap="true"
+    maxLines="2" /> -->
+      <Label
+        id="label4"
+        width="500"
+        height="100"
+        translation="[756,312]"
+        color="#BBBBBBFF"
+        wrap="true"
+        lineSpacing="0"
+        maxLines="2"
+        horizAlign="left"
+        vertAlign="top">
+        <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" />
+      </Label>
+
+
+      <Label
+        id="label5"
+        width="500"
+        height="100"
+        translation="[756,509]"
+        color="#BBBBBBFF"
+        wrap="true"
+        maxLines="2"
+        lineSpacing="0"
+        horizAlign="left"
+        vertAlign="top">
+        <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" />
+      </Label>
+
+      <Label
+        id="label6"
+        width="500"
+        height="100"
+        translation="[756,706]"
+        color="#BBBBBBFF"
+        wrap="true"
+        maxLines="2"
+        lineSpacing="0"
+        horizAlign="left"
+        vertAlign="top">
+        <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" />
+      </Label>
+
+
+      <Button
+        id="NoButton"
+        height="90"
+        minWidth="549"
+        translation="[76,863]"
+        showFocusFootprint="true"
+        text=""
+        iconUri=""
+        focusedIconUri=""
+        focusFootprintBitmapUri="pkg:/images/img_newbg_default.9.png"
+        focusBitmapUri="pkg:/images/img_newbg.9.png">
+
+        <Label
+          id="cancel_label"
+          text=""
+          width="500"
+          height="90"
+          translation="[0,0]"
+          horizAlign="center"
+          vertAlign="center"
+          color="#FFFFFF">
+          <Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="35" />
+        </Label>
+      </Button>
+
+      <Button
+        id="YesButton"
+        height="90"
+        minWidth="549"
+        translation="[717,863]"
+        showFocusFootprint="true"
+        text=""
+        iconUri=""
+        focusedIconUri=""
+        focusFootprintBitmapUri="pkg:/images/img_newbg_default.9.png"
+        focusBitmapUri="pkg:/images/img_newbg.9.png">
+
+        <Label
+          id="refresh_label"
+          text=""
+          width="500"
+          height="90"
+          translation="[0,0]"
+          horizAlign="center"
+          vertAlign="center"
+          color="#FFFFFF">
+          <Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="35" />
+        </Label>
+      </Button>
+
+      
+      <Poster
+        id="RefreshIcon"
+        uri="pkg:/images/icons/refresh_icon.png"
+        width="35"
+        height="35"
+        translation="[1145,889]" />
+      <Rectangle
+        id="buttonSeparator"
+        width="1238"
+        height="3"
+        color="#4d4d4d"
+        translation="[71,826]" />
+    </Group>
+
+    <Rectangle
+      id="verticalLine"
+      width="3"
+      height="653"
+      color="#4d4d4d"
+      translation="[934,213]" />
+
+    <Poster
+      id="logoPoster"
+      uri=""
+      visible="true"
+      loadDisplayMode="scaleToFit"
+      failedBitmapUri="pkg:/images/watermarklogo1.png"
+      loadingBitmapUri="pkg:/images/watermarklogo1.png"
+      translation="[345,124]"
+      height="124"
+      width="224" />
+
+    <Label
+      id="video_title"
+      width="380"
+      font="font:LargeBoldSystemFont"
+      color="0xFFFFFFFF"
+      horizAlign="center"
+      opacity="0.7"
+      wrap="true"
+      maxLines="2" />
+
+
+    <Poster width="450" height="450" translation="[363,413]" color="0xFFFFFF"
+      uri="pkg:/images/img_newbg.9.png">
+      <Poster
+        id="qrPoster"
+        width="400"
+        height="400"
+        translation="[25,26]"
+        loadDisplayMode="limitSize"
+      />
+    </Poster>
+  </children>
+</component>

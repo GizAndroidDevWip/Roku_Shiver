@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ListFetcher" extends="Task">
+<interface>
+    
+    <field id="start" type="String" alwaysnotify="true"/>
+    <field id="UserSubContent" type="node"/>
+    <field id="SubBoolean" type="boolean" alwaysNotify="true"/>
+    
+	<function name="runListFetcher" />
+    <function name="stopListFetcher" />
+</interface>
+        <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components/tasks/ListFetcher.brs" />
+    <script type="text/brightscript" uri = "pkg:/source/commonUtils.brs"/>
+</component>

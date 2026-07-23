@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Channel" extends="Group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+	<interface>
+		<field id="start" type="string" alwaysnotify="true" onChange="onStarted" />
+		<field id="Content" alwaysnotify="true" type="node" />
+	</interface>
+	<script type="text/brightscript" uri="pkg:/components/screens/Channels/Channel.brs" />
+	<children>
+
+
+		<Rectangle
+			id="BottomBar"
+			translation="[0,720]"
+			width="1920"
+			height="250"
+			color="#FF0000"
+			opacity="0.7">
+			<RowList
+				id="RowList"
+				itemComponentName="RowListItems"
+				translation="[20,30]"
+				numRows="1"
+				rowItemSize="[[267,150]]"
+				rowItemSpacing="[[30,0]]"
+				itemSize="[1280,300]"
+				rowFocusAnimationStyle="floatingFocus">
+			</RowList>
+		</Rectangle>
+		<Animation
+			id="ShowBar"
+			repeat="false"
+			duration=".2"
+			easeFunction="linear">
+			<Vector2DFieldInterpolator
+				fieldToInterp="BottomBar.translation"
+				key="[0,1]"
+				keyValue="[[0,720],[0,480]]"
+			/>
+		</Animation>
+		<Animation
+			id="HideBar"
+			repeat="false"
+			duration=".2"
+			easeFunction="linear">
+			<Vector2DFieldInterpolator
+				fieldToInterp="BottomBar.translation"
+				key="[0,1]"
+				keyValue="[[0,480],[0,720]]"
+			/>
+		</Animation>
+
+		<Timer
+			id="Timer"
+			repeat="false"
+			duration="3"
+		/>
+		<Timer
+			id="AdTimer"
+			repeat="true"
+			duration="3"
+		/>
+
+
+	</children>
+
+</component>

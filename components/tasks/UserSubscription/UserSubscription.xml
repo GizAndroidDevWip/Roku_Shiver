@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="UserSubscription" extends="Task">
+<interface>
+  	<field id="SubsRequest" alwaysnotify="true" type="String"/>
+    <field id="SubsResponse" alwaysnotify="true" type="String" />
+    <field id="UserSubResponseData" alwaysnotify="true" type="roAssociativeArray" />
+    
+    <function name="runUserSubscription" />
+    <function name="stopUserSubscription" />
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/tasks/UserSubscription/UserSubscription.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+</component>

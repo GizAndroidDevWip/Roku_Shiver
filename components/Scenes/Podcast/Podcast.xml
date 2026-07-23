@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Podcast" extends="Group" initialFocus="Keyboard" xsi:noNamespaceSchemaLocation="http://rokudev.roku.com/rokudev/schema/RokuSceneGraph.xsd">
+    <interface>
+        <!-- Grid searched Content Node -->
+        <field id="content" type="node" alias="PodCastRowList.content" onChange="OnContentChange" />
+		<field id="itemFocused" type="intarray" alwaysnotify="true" alias="PodCastRowList.rowItemFocused" onChange="OnItemFocused" />
+        <!-- Row item selection handler -->
+        <field id="rowItemSelected" type="intarray" alwaysnotify="true" alias="PodCastRowList.rowItemSelected"/>
+        <!-- Row item focused handler -->
+        <field id="goToPlayerPodCastScreen" type="string" alwaysnotify="true" />
+
+    </interface>
+    <script type="text/brightscript"
+        uri="pkg:/components/Scenes/Podcast/Podcast.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <children>
+        <Rectangle id="main_rect" width="1920" height="1080" translation="[0,0]" color="#101010"
+            visible="true">
+            <RowList id="PodCastRowList" itemComponentName="customItemhome" translation="[-10, 320]" itemSize="[1920, 320]" numRows="2" itemSpacing="[20, 20]" focusXOffset="[147]" rowFocusAnimationStyle="floatingfocus" rowItemSize="[[400, 225]]" rowItemSpacing="[[20, 20]]" showRowLabel="true" showRowCounter="true"  rowLabelFont="dictionary:RowListFont" rowLabelOffset="[[120,18]]" />
+            <Label
+			id = "podcastlabel"
+			text = "Audio"
+			font = "font:LargeBoldSystemFont"
+			translation = "[900,100]" size="20" />
+        </Rectangle>
+    </children>
+</component>

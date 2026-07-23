@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ShortsDetailsTask" extends="Task">
+    <interface>
+        <field id="shortsID" type="string" alwaysnotify="true" />
+        <field id="userSubIDSCount" alwaysnotify="true" type="Integer" />
+        <field id="shortsDetailsResponse" type="roAssociativeArray" />
+
+        <function name="runShortsDetailsTask" />
+        <function name="stopShortsDetailsTask" />
+    </interface>
+    <script type="text/brightscript"
+        uri="pkg:/components/Scenes/ShortsScene/PlayerForShorts/Task/ShortsDetailsTask/ShortsDetailsTask.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Util.brs" />
+</component>

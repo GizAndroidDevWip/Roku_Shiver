@@ -1,0 +1,20 @@
+{"app_id":"86","channel_id":"357","device_id":"eca87af1-ab57-5a84-8540-0a12efd2a423","event_type":"ECOM01","publisherid":"50025","session_id":"1644575453eca87af1-ab57-5a84-8540-0a12efd2a423","timestamp":"1644575453","user_id":"112327"}
+{"app_id":"86","channel_id":"357","device_id":"eca87af1-ab57-5a84-8540-0a12efd2a423","event_type":"ECOM21","publisherid":"50025","session_id":"1644575453eca87af1-ab57-5a84-8540-0a12efd2a423","timestamp":"1644575453","user_id":"112327"}
+video start: 
+{"app_id":"86","channel_id":"357","device_id":"eca87af1-ab57-5a84-8540-0a12efd2a423","event_type":"ECOM02","publisherid":"50025","session_id":"1644575499eca87af1-ab57-5a84-8540-0a12efd2a423","timestamp":"1644575499","user_id":"112327","video_id":"8569"}
+cart item add
+{"app_id":"86","cart_id":"499","category_id":"43","channel_id":"357","currency":"USD","device_id":"eca87af1-ab57-5a84-8540-0a12efd2a423","event_type":"ECOM13","merchant_id":"19","product_id":"39","publisherid":"50025","quantity":" 1","session_id":"1644575724eca87af1-ab57-5a84-8540-0a12efd2a423","timestamp":"1644575724","total_price":"$14.99","user_id":"112327","variant_id":"Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTcxODgyMjUxMDY4MQ=="}
+product view
+{"app_id":"86","cart_id":"499","category_id":"43","channel_id":"357","device_id":"eca87af1-ab57-5a84-8540-0a12efd2a423","event_type":"ECOM10","items_count":"1","merchant_id":"19","product_id":"39","publisherid":"50025","quantity":" 1","session_id":"1644575502eca87af1-ab57-5a84-8540-0a12efd2a423","timestamp":"1644575502","user_id":"112327","video_id":"8569","video_time":"1.767"}
+video end
+{"app_id":"86","cart_id":"499","category_id":"43","channel_id":"357","device_id":"eca87af1-ab57-5a84-8540-0a12efd2a423","event_type":"ECOM05","items_count":"1","merchant_id":"19","product_id":"39","publisherid":"50025","quantity":" 1","session_id":"1644575543eca87af1-ab57-5a84-8540-0a12efd2a423","timestamp":"1644575543","user_id":"112327","video_id":"8569","video_time":"5.167"}
+product click:
+{"app_id":"86","category_id":"43","channel_id":"357","currency":"USD","device_id":"eca87af1-ab57-5a84-8540-0a12efd2a423","event_type":"ECOM11","merchant_id":"19","product_id":"39","publisherid":"50025","session_id":"1644575716eca87af1-ab57-5a84-8540-0a12efd2a423","timestamp":"1644575716","total_price":"$14.99","user_id":"112327","variant_id":"Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMjA0MTAyOTI3MTY0MQ=="}
+product view end
+{"app_id":"86","cart_id":"499","category_id":"43","channel_id":"357","currency":"USD","device_id":"eca87af1-ab57-5a84-8540-0a12efd2a423","event_type":"ECOM20","merchant_id":"19","product_id":"39","publisherid":"50025","quantity":" 1","session_id":"1644575727eca87af1-ab57-5a84-8540-0a12efd2a423","timestamp":"1644575727","total_price":"$14.99","user_id":"112327","variant_id":"Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTcxODgyMjUxMDY4MQ=="}
+cart update:
+{"app_id":"86","cart_id":"499","channel_id":"357","currency":"USD","device_id":"eca87af1-ab57-5a84-8540-0a12efd2a423","event_type":"ECOM14","merchant_id":"19","product_id":"48","publisherid":"50025","quantity":"2","session_id":"1644575940eca87af1-ab57-5a84-8540-0a12efd2a423","timestamp":"1644575940","total_price":"$29.99","user_id":"112327","variant_id":"Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTcwMzUxMTUzMTYwOQ=="}
+cart item remove
+{"app_id":"86","cart_id":"499","channel_id":"357","currency":"USD","device_id":"eca87af1-ab57-5a84-8540-0a12efd2a423","event_type":"ECOM15","merchant_id":"19","product_id":"48","publisherid":"50025","quantity":"2","session_id":"1644575976eca87af1-ab57-5a84-8540-0a12efd2a423","timestamp":"1644575976","total_price":"$59.98","user_id":"112327","variant_id":"Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTcwMzUxMTUzMTYwOQ=="}
+pause
+{"app_id":"86","cart_id":"499","category_id":"43","channel_id":"357","device_id":"eca87af1-ab57-5a84-8540-0a12efd2a423","event_type":"ECOM04","items_count":"1","merchant_id":"19","product_id":"39","publisherid":"50025","quantity":" 1","session_id":"1644575502eca87af1-ab57-5a84-8540-0a12efd2a423","timestamp":"1644575502","user_id":"112327","video_id":"8569","video_time":"1.767"}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<!--********** Copyright 2016 Roku Corp.  All Rights Reserved. **********-->
+
+<!-- Descripiton 
+	This node is used to show details of item in bottom of screen.-->
+
+<component name="Hud" extends="Group"  xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	    
+	<interface>
+	  <!-- setting this value for true shows hud with animation and vise versa.-->
+	  <field id="show"          type="bool"  onChange="onVisibilityChanged" alwaysNotify="true"/>
+	  <!--  set content meta-data to hud.-->
+	  <field id="content"       type="node"  onChange="onContentChanged"/>
+	  <!--  set height of hud from bottom.-->
+	  <field id="height"        type="int"   onChange="onHeightChanged"/>
+	  <!-- horizontal space size of labels. Used only second value in this array. -->
+	  <field id="offset"        type="vector2d" onChange="OnOffsetChange"/>
+	</interface> 
+
+	<script type="text/brightscript" uri="pkg:/components/screens/Hud/Hud.brs"/> 
+ 
+	<children>
+		<Group
+			id="hudGroup"
+			visible="true"
+			opacity="0"
+			translation="[0, 0]">
+			 
+			<Rectangle
+				id="background"
+				visible="true"
+				translation="[0,0]"
+				color="0x000000FF"
+				opacity="0.8"/>
+	
+			<LayoutGroup
+				id = "infoGroup"
+				layoutDirection="vert"
+				horizAlignment="left">
+				<Label
+					id="title"
+					visible="true"
+					text=""
+					color="0xFFFFFFFF"
+					horizAlign="left"
+					vertAlign="center"
+					wrap="false"
+					ellipsizeOnBoundary="true"/>
+					
+				<Label
+					id="description"
+					horizAlign="left"
+					color="0xDDDDDDFF"
+					wrap="true"
+					visible="true"/>
+			</LayoutGroup>
+			
+			<Animation
+				id="SlideAnimation"
+				duration="0.2"
+				repeat="false"
+				easeFunction="linear">
+				<FloatFieldInterpolator
+					id="SlideAnimationInterpolator"
+					key="[0, 1]"
+					keyValue="[0.0, 1.0]"
+					fieldToInterp="hudGroup.opacity"/>
+			</Animation> 
+		</Group>
+	</children>  
+</component>

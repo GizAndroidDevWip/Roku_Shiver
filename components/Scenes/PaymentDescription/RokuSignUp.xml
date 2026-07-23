@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<component name="RokuSignUp" extends="Group">
+
+<interface>
+    <field id="isAuthNeeded"          type="boolean"  value="false"/>
+    <field id="regexEmail"            type="string"   value="^[A-Za-z0-9_%+-]+(\.[A-Za-z0-9_%+-]+)*@([A-Za-z0-9-]+\.)+[A-Za-z]{2,6}$"  onChange="On_regexEmail"/>
+    <field id="regexPassword"         type="string"   value=".{1,}"  onChange="On_regexPassword"/>
+    <field id="textTermsOfUse"        type="string"   value=""  onChange="On_textTermsOfUse"/>
+    <field id="dialogsConfig"         type="assocarray"  onChange="On_dialogsConfig"/>
+    <field id="dialogsButtonConfig"   type="assocarray"  onChange="On_dialogsButtonConfig"/>
+    <field id="show"                  type="boolean"  value="false"  alwaysNotify="true"  onChange="On_show"/>
+    <field id="isLoginAPISuccess"     type="boolean"  alias="loginAuthFlow.isAPISuccess"/>
+    <field id="isSignupAPISuccess"    type="boolean"  alias="signupAuthFlow.isAPISuccess"/>
+    <field id="posterSplash"          type="node"     alias="authScreen.posterSplash"/>
+    <field id="buttonLoginFlow"       type="node"     alias="authScreen.buttonLogin"/>
+    <field id="buttonSignupFlow"      type="node"     alias="authScreen.buttonSignup"/>
+    <field id="kbdialogLoginEmail"    type="node"     alias="loginAuthFlow.kbdialogEmail"/>
+    <field id="kbdialogLoginPassword" type="node"     alias="loginAuthFlow.kbdialogPassword"/>
+    <field id="dialogLoginErrEmail"   type="node"     alias="loginAuthFlow.dialogErrEmail"/>
+    <field id="dialogLoginErrPassword"   type="node"  alias="loginAuthFlow.dialogErrPassword"/>
+    <field id="pdialogLogin"          type="node"     alias="loginAuthFlow.pdialogAuth"/>
+    <field id="dialogLoginFailed"     type="node"     alias="loginAuthFlow.dialogAuthFailed"/>
+    <field id="kbdialogSignupEmail"   type="node"     alias="signupAuthFlow.kbdialogEmail"/>
+    <field id="kbdialogSignupPassword"   type="node"  alias="signupAuthFlow.kbdialogPassword"/>
+    <field id="dialogSignupErrEmail"     type="node"  alias="signupAuthFlow.dialogErrEmail"/>
+    <field id="dialogSignupErrPassword"  type="node"  alias="signupAuthFlow.dialogErrPassword"/>
+    <field id="pdialogSignup"         type="node"     alias="signupAuthFlow.pdialogAuth"/>
+    <field id="dialogSignupFailed"    type="node"     alias="signupAuthFlow.dialogAuthFailed"/>
+    <field id="dialogTermsOfUse"      type="node"     alias="signupAuthFlow.dialogTermsOfUse"/>
+    <field id="dialogSelectSub"       type="node"/>
+    <field id="dialogNoSubToPurchase" type="node"/>
+    <field id="dialogBillingNA"       type="node"/>
+    <field id="pdialogCheckSubs"      type="node"/>
+    <field id="pdialogPurchase"       type="node"/>
+    <field id="isAuthorized"          type="boolean"  alwaysNotify="true"  value="false"/>
+    <field id="loginUserData"         type="assocarray"  alias="loginAuthFlow.userData"/>
+    <field id="signupUserData"        type="assocarray"  alias="signupAuthFlow.userData"/>
+    <field id="isAfterLoginAuthFlow"  type="boolean"  alwaysNotify="true"  onChange="On_isAfterLoginAuthFlow"/>
+    <field id="isSubscribed"          type="boolean"  alwaysNotify="true"  value="false"/>
+
+</interface> 
+
+
+<script type="text/brightscript"  uri="pkg:/components/Scenes/PaymentDescription/RokuSignUp.brs"/>
+<script type="text/brightscript"  uri="pkg:/components/Scenes/PaymentDescription/utils.brs"/>
+
+
+<children>
+    <ChannelStore id="billing"/>
+    <RokuAuthScreen id="authScreen"/>
+    <RokuAuthFlow id="loginAuthFlow"/>
+    <RokuAuthFlow id="signupAuthFlow"/>
+</children>
+
+</component>

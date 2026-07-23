@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<component name="MenuItem" extends="Group">
+
+  <interface>
+    <field id="itemContent" type="node" onChange="onItemContentChanged" />
+    <field id="focusPercent" type="float" onChange="onItemHasFocus" />
+    <field id="gridHasFocus" type="boolean" onChange="onGridHasFocus" />
+    <field id="index" type="integer" />
+  </interface>
+
+  <script type="text/brightscript" uri="menuItem.brs" />
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+
+  <children>
+
+    <Poster
+      id="icon"
+      width="27"
+      height="27"
+      blendColor="#4f4f4f" opacity="0.3"
+      translation="[50, 7]" />
+
+    <ScrollingLabel
+      id="title"
+      color="#4f4f4f"
+      opacity="0.5"
+      translation="[1000, 0]"
+      width="250"
+      height="40"
+      text=""
+      maxWidth="250"
+      scrollSpeed="100"
+    />
+
+
+    <Animation
+      id="animation"
+      duration="0.17"
+      easeFunction="inOutQuad">
+      <Vector2DFieldInterpolator
+        id="testVector2D"
+        key="[0.0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.3, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]"
+        keyValue="[ [-60, 0], [-50, 0], [-40, 0], [-30, 0], [-20, 0], [-10, 0], [5, 0], [10, 0], [15, 0], [25, 0], [35, 0], [45, 0], [55, 0], [65, 0], [95, 0], [100, 0], [105, 0]]"
+        fieldToInterp="title.translation" />
+    </Animation>
+
+    <Timer
+      id="testTimer"
+      repeat="false"
+    />
+
+  </children>
+
+</component>

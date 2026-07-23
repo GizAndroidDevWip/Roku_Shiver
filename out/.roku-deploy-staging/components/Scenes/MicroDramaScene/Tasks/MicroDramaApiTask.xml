@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="MicroDramaApiTask" extends="Task">
+	<interface>
+		<field id="MicroDramaApiTaskContent" alwaysnotify="true"
+			type="roAssociativeArray" />
+		<field id="MicroDramaApiTaskListStatus" alwaysnotify="true" type="Boolean" />
+		<field id="logInOrSubscribeStatus" alwaysnotify="true" type="String" value = ""/>
+		<field id="updateCoinsUsageAssoc" alwaysnotify="true" type="roAssociativeArray"/>
+		
+		<function name="runMicroDramaApiTask" />
+		<function name="stopMicroDramaApiTask" />
+		<function name="runUpdateCoinsUsageApiTask" />
+	</interface>
+	<script type="text/brightscript" uri="pkg:/components\Scenes\MicroDramaScene\Tasks\MicroDramaApiTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Util.brs" />
+	<!-- <script type="text/brightscript" uri="pkg:/components/Scenes/LaunchScene/LaunchScene.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" /> -->
+</component>

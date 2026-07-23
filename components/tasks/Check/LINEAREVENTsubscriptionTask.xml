@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="LINEAREVENTsubscriptionTask" extends="Task">
+
+<interface>
+  	<field id="request" alwaysnotify="true" type="String"/>
+    <field id="eventId" alwaysnotify="true" type="String" />
+    <field id="notifyClick" alwaysnotify="true"   type="bool"/>
+    <field id="notifyClick2" type="boolean" alwaysnotify="true"/>
+    <field id="videoSubs" alwaysnotify="true" type="bool" />
+    <field id="userSubIDSCount" alwaysnotify="true" type="Integer" />
+    <field id="videoSubIDSCount" alwaysnotify="true" type="Integer" />
+    <field id="videoSubscriptionResponseData"  type="roAssociativeArray" />
+    <field id="userSubsTypes"  type="roAssociativeArray" />
+    <field id="videoDetailsResponse"  type="roAssociativeArray" />
+    <field id="userSubIDS" alwaysnotify="true" type="roArray" />
+    <field id="eventSubscriptionResponseDataUnParsed" alwaysnotify="true" type="roArray" />
+    <field id="IS_LISTING" alwaysnotify="true" type="bool" />
+    
+    
+        
+	<function name="runVideoSubscriptionTask" />
+    <function name="stopVideoSubscriptionTask" />
+</interface>
+
+	<script type="text/brightscript" uri="pkg:/components/tasks/Check/LINEAREVENTsubscriptionTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+</component>

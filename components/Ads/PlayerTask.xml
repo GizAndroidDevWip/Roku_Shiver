@@ -1,0 +1,37 @@
+<?rokuml version="1.0" encoding="utf-8" ?>
+<component name="PlayerTask" extends="Task">
+
+    <script type="text/brightscript" uri="pkg:/components/Ads/PlayerTask.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+    <interface>
+        <field id="video" type="node" />
+        <field id="GloBoolean" type="boolean" alwaysNotify="true" />
+        <field id="PauseBoolean" type="boolean" alwaysNotify="true" />
+        <field id="timerBoolean" type="boolean" />
+        <field id="skipAd" type="boolean" />
+        <field id="watched_duration" type="integer" />
+        <field id="playerState" type="string" alwaysNotify="true"/>
+        <field id="isFinished" type="bool" alwaysNotify="true" value="false"/>
+        <field id="ai_type" type="string" alwaysNotify="true"  />
+        <field id="video_type" type="string" alwaysNotify="true"  />
+        <field id="isTrackChange" type="bool" value="false" />
+        
+
+    </interface>
+
+
+    <children>
+
+        <Timer
+			id = "Timer"
+			repeat = "true"
+			duration = "1" />
+
+        <Timer
+			id = "AutoTimer"
+			duration = "15" />
+
+    </children>
+</component>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="InfoTextScene" extends="Group">
+    <interface>
+        <field id="contentData" type="roAssociativeArray" alwaysnotify="true" />
+        <field id="goBack" type="bool" alwaysnotify="true" />
+    </interface>
+    <script type="text/brightscript" uri="InfoTextScene.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <children>
+        <Rectangle id="bg" color="0x000000ff" width="1920" height="1080" />
+
+        <Label id="backHint" translation="[80, 60]" text="&lt; Back"
+            color="0xAAAAAAff" width="160" height="50">
+            <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="28" />
+        </Label>
+        
+        <Group id="header" translation="[960, 45]">
+            <Label id="titleLabel" color="0xFFFFFFff">
+                <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="40" />
+            </Label>
+            <Label id="appVersion" color="0x888888ff">
+                <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="30" />
+            </Label>
+        </Group>
+
+        <Rectangle id="divider" translation="[80, 130]"
+            width="1760" height="2" color="0x444444ff" />
+
+        <Loading id="loadingSpinner" visible="false" />
+
+        <ScrollableText id="contentLabel" translation="[80, 160]" width="1760" height="840"
+            color="0xDDDDDDff">
+            <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="28" />
+        </ScrollableText>
+
+        <Label id="arrowUp" translation="[1870, 160]" text="▲"
+            color="0xFFFFFFff" visible="false">
+            <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="36" />
+        </Label>
+        <Label id="arrowDown" translation="[1870, 960]" text="▼"
+            color="0xFFFFFFff" visible="false">
+            <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="36" />
+        </Label>
+    </children>
+</component>

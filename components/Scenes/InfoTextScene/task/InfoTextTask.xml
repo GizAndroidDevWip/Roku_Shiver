@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="InfoTextTask" extends="Task">
+    <interface>
+        <field id="configType" type="string" />
+        <field id="textResult" type="string" alwaysnotify="true" />
+    </interface>
+    <script type="text/brightscript" uri="InfoTextTask.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+</component>

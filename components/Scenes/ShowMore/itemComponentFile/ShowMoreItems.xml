@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ShowMoreItems" extends="Group">
+
+	<interface>
+		<field id="width" type="float" />
+		<field id="height" type="float" />
+		<field id="itemContent" type="node" onChange="OnContentSet" />
+		<field id="showHomeScreen" type="String" alwaysnotify="true" />
+		<field id="gotoRegisterLoginscene" type="bool" alwaysnotify="true" />
+		<field id="SearchString" type="string" alwaysnotify="true" onChange="onSearchStringChanged" />
+		<field id="backToHomeSceneNotifier" alwaysnotify="true" type="String"
+			onChange="backToHomeSceneNotifier" />
+		<field id="gotoonDemandScene" type="bool" alwaysnotify="true" />
+		<field id="goToMyListScene" type="bool" alwaysnotify="true" />
+		<field id="goToLiveScene" type="bool" alwaysnotify="true" />
+		<field id="gotoMyAccountScreen" type="bool" alwaysnotify="true" />
+		<field id="goToVideoPlayerScene" type="string" alwaysnotify="true" />
+		<field id="goToVideoPlayerSceneWithVideoId" type="string" alwaysnotify="true" />
+		<field id="gotolivevideoplayer" type="string" alwaysnotify="true" />
+		<field id="goToCategoryScreen" type="String" alwaysnotify="true" />
+		<field id="goToSearchScreen" type="String" alwaysnotify="true" />
+		<field id="goToMyListScreen" type="String" alwaysnotify="true" />
+		<field id="goToShowDetailsScreen" type="intarray" alwaysnotify="true" />
+		<field id="goToSubscriptionListScreen" type="String" alwaysnotify="true" />
+		<field id="goToCatchUpScreen" type="bool" alwaysnotify="true" />
+	</interface>
+
+	<script type="text/brightscript"
+		uri="pkg:/components/Scenes/ShowMore/itemComponentFile/ShowMoreItems.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+
+	<children>
+
+		<Rectangle id="main_rect" width="320" height="180"
+			translation="[0,0]" color="0000FF" visible="true">
+
+
+			<!-- <Poster id="showMoreDetail_poster" focusable="true"
+				loadDisplayMode="limitSize" loadwidth="370" loadheight="208"
+				visible="true" width="345" height="194" uri="pkg:/images/carousel thumbnail.png"
+				translation="[0,0]" failedBitmapUri="pkg:/images/carousel thumbnail.png"
+				loadingBitmapUri="pkg:/images/carousel thumbnail.png" /> -->
+
+			<Poster id="showMoreDetail_poster" translation="[0,0]" width="320" height="180"
+				loadWidth="400"
+				loadHeight="180"
+				uri=""
+				loadDisplayMode="limitSize" loadSync="true" />
+
+			<Poster id="CornerRounded" uri="pkg:/images/cornerRounded.png"
+				visible="false"
+				translation="[0,0]" width="320" height="180" />
+
+
+			<Poster id="free_icon" uri="pkg:/images/free_icon.png" visible="false"
+				translation="[15,15]" width="30" height="30" />
+			<Poster id="lock_icon" uri="pkg:/images/icons/lock_icon.png" visible="false"
+				translation="[15,15]" width="30" height="30" />
+
+			<Label id="showMoreDeat_label" height="55" width="310" wrap="true" lineSpacing="1"
+				horizAlign="left"
+				vertAlign="top" font="font:SmallestBoldSystemFont" translation="[10,192]" visible="true"
+				numLines="2"
+				maxLines="2">
+			</Label>
+
+		</Rectangle>
+
+	</children>
+
+</component>

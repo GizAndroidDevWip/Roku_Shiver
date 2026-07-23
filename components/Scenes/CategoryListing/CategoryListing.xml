@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="CategoryListing" extends="Group">
+	<interface>
+		<!-- Content fields -->
+		<!-- String to make go to homescreen -->
+		<field id="key" type="string" alwaysnotify="true" onChange="runMoreTask" />
+
+
+		<field id="tagNameForAdditionalDonorContent" type="string" alwaysnotify="true"
+			onChange="runMoreTaskForAdditionalDonorContent" />
+		<field id="title" type="string" alwaysnotify="true" />
+		<!-- <field id="key" type="string" alwaysnotify="true" /> -->
+		<!-- <field id="Content" type="node" alias="CategorySceneRowlist.content" /> -->
+		<field id="itemFocused" type="intarray" alwaysnotify="true"
+			alias="CategoryListing.rowItemFocused" />
+		<!-- <field id="rowItemSelected" type="intarray" alwaysnotify="true"
+			alias="CategoryListing.rowItemSelected" /> -->
+		<field id="showHomeScreen" type="String" alwaysnotify="true" />
+
+		<field id="rowItemSelected" type="intarray" alwaysnotify="true"
+			alias="CategoryListing.rowItemSelected" />
+
+		<field id="content" alwaysnotify="true" type="node" />
+		<field id="goToCategoryListingPage" type="node" alwaysnotify="true" />
+		<field id="gotoRegisterLoginscene" type="bool" alwaysnotify="true" />
+		<field id="gotoonDemandScene" type="bool" alwaysnotify="true" />
+		<field id="goToMyListScene" type="bool" alwaysnotify="true" />
+		<field id="goToLiveScene" type="bool" alwaysnotify="true" />
+		<field id="gotoMyAccountScreen" type="bool" alwaysnotify="true" />
+		<field id="goToVideoPlayerScene" type="string" alwaysnotify="true" />
+		<field id="goToVideoPlayerSceneWithVideoId" type="string" alwaysnotify="true" />
+		<field id="gotolivevideoplayer" type="string" alwaysnotify="true" />
+		<field id="goToCategoryScreen" type="String" alwaysnotify="true" />
+		<field id="goToSearchScreen" type="String" alwaysnotify="true" />
+		<field id="goToMyListScreen" type="String" alwaysnotify="true" />
+		<field id="goToShowDetailsScreen" type="intarray" alwaysnotify="true" />
+		<field id="goToSubscriptionListScreen" type="String" alwaysnotify="true" />
+		<field id="goToCatchUpScreen" type="bool" alwaysnotify="true" />
+		<field id="goToScheduleScreen" type="String" alwaysnotify="true" />
+
+
+	</interface>
+	<script type="text/brightscript"
+		uri="pkg:/components/Scenes/CategoryListing/CategoryListing.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+	<!-- <script type="text/brightscript" uri="pkg:/source/apiUtils.brs" /> -->
+
+	<children>
+		<!-- this is the main rectangle -->
+		<!-- first black Color -->
+		<Rectangle id="main_rect" width="1920" height="1080" translation="[0,0]" color="#1d2124"
+			visible="true">
+			<Rectangle id="AppBackground" width="1920" height="1080" translation="[0,0]" />
+
+			<Label id="sceneTitle" translation="[255,75]" height="135" wrap="true" width="1440"
+				font="font:MediumBoldSystemFont" vertAlign="top" horizAlign="left" 
+				color="#E3E3E3" size="40" />
+
+			<Label id="message_label" translation="[0, 0]" height="1080" width="1920"
+				font="font:MediumBoldSystemFont" visible="false" horizAlign="center" wrap="true"
+				vertAlign="center"
+				color="#E3E3E3" size="40" />
+
+
+			<RowList itemComponentName="CategoryListingItems"
+				id="CategoryListing" translation="[255,210]" numRows="3"
+				rowitemSize="[[320, 180], [320, 180], [320, 180], [320, 180]]"
+				itemSize="[1920, 518]"
+				rowItemSpacing="[[45, 45]]" itemSpacing="[40, 60]"
+				focusBitmapUri="pkg:/images/focus_grid.9.png" rowHeights="[320,320,320,320,320]"
+				showRowCounter="[false]" rowLabelOffset="[[0,10]]"
+				rowLabelFont="font:SmallestBoldSystemFont"
+				rowLabelColor="#ffffff" showRowLabel="false"
+				rowFocusAnimationStyle="floatingfocus"
+				vertFocusAnimationStyle="fixedfocus" />
+
+			<!-- <Loading id="loading" /> -->
+		</Rectangle>
+	</children>
+</component>

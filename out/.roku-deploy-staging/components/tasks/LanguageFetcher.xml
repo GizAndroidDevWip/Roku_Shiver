@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="LanguageFetcher" extends="Task">
+
+<interface>
+    
+    <field id="start" type="String" alwaysnotify="true"/>
+    <field id="UserSubContent1" type="node" alwaysnotify="true"/>
+  
+	<function name="runLanguageFetcherTask" />
+    <function name="stopLanguageFetcherTask" /> 
+</interface>
+
+
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components/tasks/LanguageFetcher.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+</component>

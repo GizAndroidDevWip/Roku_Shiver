@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<component name="Search" extends="Group" initialFocus="Keyboard"
+    xsi:noNamespaceSchemaLocation="http://rokudev.roku.com/rokudev/schema/RokuSceneGraph.xsd">
+    <interface>
+
+        <!-- Grid searched Content Node -->
+        <field id="content" type="node" alias="Grid.content" onChange="OnContentChange" />
+
+        <!-- Row item selection handler -->
+        <field id="rowItemSelected" type="intarray" alwaysnotify="true" alias="Grid.rowItemSelected"
+            onChange="onRowitemSelected1" />
+
+        <!-- Row item focused handler -->
+        <field id="itemFocused" type="intarray" alwaysnotify="true" alias="Grid.rowItemFocused"
+            onChange="OnItemFocused" />
+
+        <!-- Flag denies search screen close if any children are opened.-->
+        <field id="isChildrensVisible" type="bool" alwaysnotify="true" />
+
+        <!-- Interface to focused item (Content Node) -->
+        <field id="focusedContent" type="node" />
+
+        <!-- Returns search string from text editor of keyboard. -->
+        <field id="SearchString" type="string" alwaysnotify="true" onChange="onSearchStringChanged"
+            alias="Keyboard.text" />
+
+        <field id="LimitCharacter" type="node" />
+
+        <!-- Alias to Results Video Title Text label -->
+        <field id="VideoTitleText" type="string" alias="VideoTitle.text" />
+        <field id="goToMainVideoPlayer" type="roAssociativeArray" alwaysnotify="true" />
+        <field id="playSelectedShortsVideo" type="string" alwaysnotify="true" />
+        <field id="gotoLandingScene" type="string" alwaysnotify="true" />
+        <field id="SET_DEFAULT_FOCUS" type="bool" alwaysnotify="true" onChange="onSetDefaultFocus" />
+    </interface>
+
+    <!-- main handler -->
+    <script type="text/brightscript" uri="pkg:/components/Scenes/Search/Search.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <children>
+
+
+        <ThumbBackground
+            id="AppBackground"
+            width="1920"
+            height="1080"
+            translation="[0,0]" />
+
+        <!-- Custom fonts -->
+        <Label>
+            <Font id="RowListFont" role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="18" />
+        </Label>
+
+
+        <!-- ...existing code... -->
+        <Rectangle
+            id="SearchKeyBoardContainer"
+            width="1920"
+            height="600"
+            color="#000000"
+            translation="[0, 0]">
+
+
+            <MiniKeyboard
+                id="Keyboard"
+                translation="[40, 30]" />
+
+            <LabelList
+                id="searchFilterLabelList"
+                translation="[89, 810]"
+                width="1800"
+                height="900"
+                vertFocusAnimationStyle="floatingfocus"
+                numRows="7"
+                color="#ffffff" />
+        </Rectangle>
+        <!-- ...existing code... -->
+
+
+        <Button id="searchNowButton" height="70" visible="false" showFocusFootprint="true"
+            minWidth="10"
+            translation="[550, 220]" iconUri="" focusedIconUri=""
+            focusFootprintBitmapUri="pkg:/images/white_arrow_unfocused.png"
+            focusBitmapUri="pkg:/images/white_arrow_unfocused.png" />
+
+        <Label
+            id="SearchTitleAndSearchString"
+            height="100"
+            width="1080"
+            wrap="true"
+            numLines="1"
+            maxLines="1"
+            lineSpacing="1"
+            horizAlign="left"
+            vertAlign="top"
+            color="#ffffff"
+            text=""
+            translation="[724, 109]">
+            <Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="45" />
+        </Label>
+
+        <!--Search
+        results grid -->
+
+        <LabelList id="searchSuggestionLabelList" translation="[900, 240]"
+            focusBitmapUri="" color="#808080" focusedColor="#ffffff"
+            numRows="7" vertFocusAnimationStyle="floatingfocus" itemSize="[900, 90]"
+            wrapDividerBitmapUri=""
+            wrapDividerHeight="1" />
+        <RowList
+            id="Grid"
+            defer="true"
+            itemComponentName="customItemHomeForSearch"
+            focusBitmapUri="pkg:/images/focus_grid.9.png"
+            translation="[730, 225]"
+            itemSize="[1150, 718]"
+            numRows="3"
+            itemSpacing="[10, 10]"
+            focusXOffset="[0]"
+            rowFocusAnimationStyle="floatingfocus"
+            vertFocusAnimationStyle="fixedfocus"
+            rowItemSize="[[0, 0]]"
+            rowItemSpacing="[[25, 15]]"
+            showRowLabel="[true]"
+            rowLabelOffset="[[0, 10]]"
+            showRowCounter="false"
+            rowLabelFont="font:MediumBoldSystemFont"
+        />
+
+        <Label
+            id="VideoTitle"
+            color="#ffffff"
+            text=""
+            translation="[100,700]">
+            <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="18" />
+        </Label>
+
+        <!-- Overhang logo -->
+
+
+        <Poster
+            id="BackgroundDown"
+            translation="[0, 650]"
+            width="2000"
+            height="95" />
+
+
+        <Label
+            id="lbl1"
+            color="#ffffff"
+            text=""
+            visible="false"
+            translation="[830,450]">
+            <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="35" />
+        </Label>
+
+        <Show
+            id="Show"
+            visible="false" />
+
+
+        <Rectangle id="searchFilterLebellist_rect" width="1920" height="1080"
+            translation="[0,0]" visible="false">
+
+            <!-- <Rectangle id="searchFilterLebellist_rect2" width="1920" height="1080"
+                translation="[0,0]" color="#FFFFFF" opacity="0.5" visible="true" /> -->
+
+
+            <Label id="searchFilterText" translation="[0,105]" height="38" size="40" width="1920"
+                color="#FBFBFB" filltype="solid" horizAlign="center"
+                font="font:MediumBoldSystemFont"
+                text="" />
+
+            <Label id="searchFilterText2" translation="[443,203]" height="400" size="100"
+                width="1800"
+                color="#FBFBFB" filltype="solid"
+                font="font:MediumBoldSystemFont"
+                text="" />
+
+            <LabelList id="searchFilter_subccategory_labellist" translation="[729,315]"
+                textHorizAlign="center"
+                numRows="7"
+                font="font:SmallestSystemFont" visible="true" focusedColor="#ffffff" width="680"
+                height="480"
+                vertFocusAnimationStyle="floatingFocus">
+            </LabelList>
+        </Rectangle>
+
+
+        <!-- animation sections -->
+        <Animation id="scrollup_animation" duration="0.2"
+            easeFunction="inOutQuad">
+            <Vector2DFieldInterpolator
+                id="testVector2D"
+                key="[0.0, 1.0]"
+                keyValue="[[0, 0],[0, -500]]"
+                fieldToInterp="SearchKeyBoardContainer.translation" />
+
+        </Animation>
+
+        <Animation id="scrolldown_animation" duration="0.2"
+            easeFunction="inOutQuad">
+            <Vector2DFieldInterpolator
+                id="testVector2D"
+                key="[0.0,  1.0]"
+                keyValue="[[0, -500], [0, 0]]"
+                fieldToInterp="SearchKeyBoardContainer.translation" />
+
+        </Animation>
+
+
+    </children>
+</component>

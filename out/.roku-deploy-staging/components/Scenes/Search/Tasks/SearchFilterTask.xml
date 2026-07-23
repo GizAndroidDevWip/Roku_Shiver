@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="SearchFilterTask" extends="Task">
+	<interface>
+      <field id="searchFilterContent" type="node"  alwaysNotify="true"/>
+      <field id="SearchBoolean" type="boolean" alwaysNotify="true"/>
+      
+	<function name="runSearchFilterTask" />
+    <function name="stopSearchFilterTask" />
+    </interface>
+
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Scenes/Search/Tasks/SearchFilterTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+	<script type="text/brightscript" uri="pkg:/source/Util.brs"/>
+</component>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="EventFetcher" extends="Task">
+
+
+<interface>
+    <field id="EventRequest" alwaysnotify="true" type="String"/>
+    <field id="user_id" alwaysnotify="true" type="String" />
+    <field id="event_type" alwaysnotify="true" type="String" />
+    <field id="video_id" alwaysnotify="true" type="String" />
+    <field id="video_title" alwaysnotify="true" type="String" />
+    <field id="channel_id" alwaysnotify="true" type="String" />
+    <field id="ai_type" alwaysnotify="true" type="String" />
+    <field id="category" alwaysnotify="true" type="String" />
+    <field id="video_time" alwaysnotify="true" type="Integer" />
+    <field id="is_live" alwaysnotify="true" type="String" />
+     <field id="titleSeason" alwaysnotify="true" type="String" />
+
+	<function name="runEventFetcher" />
+    <function name="stopEventFetcher" />
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/tasks/EventFetcher.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+</component>

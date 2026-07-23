@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="CommentsFetcherTask" extends="Task">
+
+<interface>
+	<field id="CommentsFetcherTaskResponse"  alwaysnotify="true"  type="node" />
+	<field id="CommentsFetcherTaskStatus"  alwaysnotify="true"  type="bool" />
+	<field id="video_id"  alwaysnotify="true"  type="string" />
+	
+
+	
+	<function name="runCommentsFetcherTask" />
+	<function name="stopCommentsFetcherTask" />
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/screens/Comments/Tasks/CommentsFetcherTask/CommentsFetcherTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+	<script type="text/brightscript" uri="pkg:/source/Util.brs"/>
+	
+</component>

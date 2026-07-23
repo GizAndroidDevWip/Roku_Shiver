@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ChannelSubsriptionTask" extends="Task">
+<interface>
+  	<field id="request" alwaysnotify="true" type="String"/>
+    <field id="channelID" alwaysnotify="true" type="String" />
+    <field id="channelSubs" alwaysnotify="true" type="bool" />
+    
+      
+	<function name="runChannelSubsriptionTask" />
+    <function name="stopChannelSubsriptionTask" />      
+</interface>
+
+	<script type="text/brightscript" uri="pkg:/components/tasks/Check/ChannelSubsriptionTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+</component>

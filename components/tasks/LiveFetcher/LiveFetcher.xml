@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="LiveFetcher" extends="Task">
+
+<interface>
+  	<field id="LiveScheduleRequest" alwaysnotify="true" type="String"/>
+    <field id="content" alwaysnotify="true" type="node" />
+     <!-- <field id="livefetcherResponse" alwaysnotify="true" type="node" /> -->
+    <field id="live_video_title" alwaysnotify="true" type="string" />
+    <field id="video_thumbnail" alwaysnotify="true" type="string" />
+    <field id="live_channel_id" alwaysnotify="true" type="string" />
+	<field id="livefetcherResponse"  alwaysnotify="true"  type="roArray" />
+	<field id="channel_id"  alwaysnotify="true"  type="string" />
+	
+
+	
+	<function name="runLiveFetcherTask" />
+	<function name="stopLiveFetcherTask" />
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/tasks/LiveFetcher/LiveFetcher.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/commonUtils.brs"/>
+	
+</component>

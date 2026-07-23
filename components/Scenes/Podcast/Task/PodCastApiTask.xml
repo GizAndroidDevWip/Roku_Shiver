@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="PodCastApiTask" extends="Task">
+	<interface>
+
+		<field id="PodCastApiTaskContent" alwaysnotify="true" type="node" />
+		<field id="PodCastApiTaskListStatus" alwaysnotify="true" type="Boolean" />
+
+		<function name="runPodCastApiTask" />
+		<function name="stopPodCastApiTask" />
+	</interface>
+
+	<script type="text/brightscript" uri="pkg:/components/Scenes/Podcast/Task/PodCastApiTask.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Util.brs" />
+</component>

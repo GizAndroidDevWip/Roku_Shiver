@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--********** Copyright 2017 Roku Inc.  All Rights
+Reserved. **********-->
+
+<component name="SimpleRowList" extends="RowList">
+  <interface>
+    <field id="selectedContent" type="assocarray" alwaysnotify="true" />
+    <field id="focusedContent" type="assocarray" />
+    <field id="start" type="String" alwaysnotify="true" />
+    <field id="startlabel" type="String" alwaysnotify="true" />
+    <field id="startdescri" type="String" alwaysnotify="true" />
+    <field id="descriptionData" type="String" alwaysnotify="true" />
+    <field id="imageNode" type="String" alwaysnotify="true" />
+  </interface>
+
+  <script type="text/brightscript" uri="pkg:/components/Scenes/PaymentDescription/SimpleRowList.brs" />
+  <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+</component>

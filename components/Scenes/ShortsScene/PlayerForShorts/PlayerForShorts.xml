@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<component name="PlayerForShorts" extends="Group">
+    <interface>
+        <field id="content" type="node" />
+        <field id="visibility" type="bool" alwaysNotify="true" />
+        <field id="state" type="string" alwaysNotify="true" />
+        <field id="playerState" type="string" alwaysNotify="true" />
+        <field id="autoplay" type="bool" alwaysNotify="true" />
+        <field id="subtitles" type="Array" alwaysNotify="true" />
+        <field id="control" type="string" alwaysNotify="true" onChange="controlChanged" />
+        <field id="skipAd" type="bool" />
+        <field id="watched_duration" type="integer" />
+        <field id="VIDEO_LANGUAGE_CHANGED" type="string" alwaysNotify="true" />
+        <field id="closethispage" type="string" alwaysnotify="true" />
+    </interface>
+
+    <script type="text/brightscript"
+        uri="pkg:/components/Scenes/ShortsScene/PlayerForShorts/PlayerForShorts.brs" />
+    <script type="text/brightscript" uri="pkg:/source/apis.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+
+    <children>
+
+
+        <Rectangle id="dialogbg_rect" width="1920" height="1080" color="#000000"
+            translation="[0,0]">
+
+            <Video
+                id="VideoPlayer" visible="true" translation="[665, 0]" enableUI="false" width="608"
+                height="1080" />
+
+            <Poster id="playerOverlayPoster" visible="false" translation="[665, 0]" width="608"
+                height="1080" uri="" />
+
+            <Poster
+                id="labelBackground"
+                uri="pkg:/images/img_newbg.9.png"
+                opacity="0.3"
+                width="500"
+                height="500" />
+
+            <Label id="label" width="550" wrap="true" lineSpacing="0.1"
+                horizAlign="left"
+                vertAlign="top" color="#FFFFFF" font="font:MediumBoldSystemFont"
+                translation="[1310,800]"/>
+        </Rectangle>
+
+
+        <Animation id="slideUp" duration="0.5" repeat="false" easeFunction="inOutQuintic">
+            <Vector2DFieldInterpolator id="slideupV2" key="[0, 1]"
+                keyValue="[[0, 1080], [0, 0]]"
+                fieldToInterp="dialogbg_rect.translation" />
+        </Animation>
+        <Animation id="slideDown" duration="0.5" repeat="false" easeFunction="inOutQuintic">
+            <Vector2DFieldInterpolator id="slideDownV2"
+                key="[0, 1]"
+                keyValue="[[0, -1080], [0, 0]]"
+                fieldToInterp="dialogbg_rect.translation" />
+        </Animation>
+
+    </children>
+</component>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<!--********** Copyright 2016 Roku Corp.  All Rights Reserved. **********-->
+
+<!-- Description
+	LiveVideo node is responsible for live video stream event handling and processing.
+	After configuring this node, and setting control to "start" until video starts, there where
+	loading animation and informative label occurs if loading failed.
+	By pressing OK on this item its expands to whole screen, and by pressing back video returns to previous size.
+	By pressing OK in fullscreen mode hud appears, and by back its hide.-->
+
+<component name="LiveVideo" extends="Group" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+<interface>
+	<!--Set size of video as vector.-->
+	<field id="size" type="vector2d" onChange="onSizeChange"/>
+	<!--Set live stream url.-->
+	<field id="liveUrl" type="string" onChange="onLiveUrlChange"/>
+	<!--Set poster url that where showed if video loading fails.-->
+	<field id="liveLoadingPoster" type="string" onChange="onLiveLoadingPosterChange"/>
+	<!--Returns hud node.-->
+	<field id="Hud" type="node"/>
+	<!--Returns live stream video node.-->
+	<field id="Video" type="node"/>
+	<!--Defines the origin of the node local coordinate system relative to its parent node.-->
+	<field id="VideoTranslation" type="vector2d" onChange="onTranslationChange"/>
+	<!--Specifies the width of the node.-->
+    <field id="width" type="int" onChange="onWidthChange"/>
+    <!--Specifies the height of the node.-->
+    <field id="height" type="int" onChange="onHeightChange"/>
+    <!--Set to true if node receive focus to show focus graphically.-->
+    <field id="isFocused" type="bool" alwaysNotify="true"/>
+    <!--Sets the required and optional play parameters and descriptive Content Meta-Data for the video.-->
+    <field id="content" type="node" onChange="OnContent"/>
+    <!--Sets offset. Is used for hud-->
+    <field id="offset"  type="vector2d" alias="Hud.offset" alwaysNotify="true"/>
+</interface>
+
+<script type="text/brightscript" uri="pkg:/components/screens/LiveVideo/LiveVideo.brs"/>
+
+<children>
+    <Rectangle
+        id="focusBorder"
+        color="0xFFFFFF"
+        visible="false"/>
+        
+    <Video
+        id="liveStream"/>
+        
+    <Hud
+    	id="Hud"/>
+    	
+    	
+    
+    <!-- <LoadingIndicator
+        id="bufferingAnimation"
+        imageUri="pkg:/images/loader.png"
+        centered="false"
+        backgroundColor="0x000000"
+        imageWidth="100"
+        text="Buffering..."/>  -->
+            
+    <Poster
+        id="liveLoadingPoster"
+        visible="false"/>
+</children>
+
+</component>

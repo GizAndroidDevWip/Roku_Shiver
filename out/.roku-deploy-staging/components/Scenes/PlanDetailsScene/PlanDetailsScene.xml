@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="PlanDetailsScene" extends="Group" focusable="true">
+    <interface>
+        <field id="goBack" type="bool" alwaysnotify="true" />
+    </interface>
+
+    
+    <script type="text/brightscript" uri="PlanDetailsScene.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+    <script type="text/brightscript" uri="pkg:/source/Util.brs" />
+
+
+
+    <children>
+        <Rectangle id="bg" color="0x000000ff" width="1920" height="1080" />
+
+        <Group translation="[0, 36]">
+            <Label id="hdrTitle" width="1920" height="68" text=""
+                horizAlign="center" vertAlign="center" color="0xFFFFFFff">
+                <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="52" />
+            </Label>
+            <Label id="hdrSubtitle" width="1920" height="40" translation="[0, 74]"
+                text=""
+                horizAlign="center" vertAlign="center" color="0xb3b3b3ff">
+                <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="28" />
+            </Label>
+        </Group>
+
+        <RowList
+            id="planList"
+            itemComponentName="PlanCardItem"
+            translation="[40, 160]"
+            itemSize="[740, 750]"
+            rowItemSpacing="[[0, 10]]"
+            showRowLabel="false"
+            showRowCounter="false"
+            numRows="6"
+            rowHeights="[180, 180, 180, 180, 180, 180, 180, 180, 180, 180]"
+            rowItemSize="[[720, 170], [720, 170], [720, 170], [720, 170], [720, 170], [720, 170], [720, 170], [720, 170], [720, 170], [720, 170]]"
+            vertFocusAnimationStyle="floatingFocus"
+            drawFocusFeedback="false" />
+
+        <Group translation="[810, 160]">
+            <Poster id="panelBg" uri="pkg:/images/img_newbg.9.png"
+                blendColor="#121212" width="1070" height="520" />
+
+            <Poster id="billingIcon" uri="pkg:/images/icons/billing.png"
+                width="28" height="28" translation="[45, 56]"
+                loadDisplayMode="scaleToFit" />
+            <Label id="billingLabel" width="400" height="48" translation="[101, 46]"
+                text="" vertAlign="center" color="0xFFFFFFff">
+                <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="28" />
+            </Label>
+            <Label id="lblBillingValue" width="380" height="48" translation="[620, 46]"
+                text="--" horizAlign="right" vertAlign="center" color="0xb3b3b3ff">
+                <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="32" />
+            </Label>
+            <Rectangle id="divider1" width="1000" height="1" translation="[35, 116]"
+                color="0x333333ff" />
+
+            <Poster id="priceIcon" uri="pkg:/images/icons/price.png"
+                width="28" height="28" translation="[45, 166]"
+                loadDisplayMode="scaleToFit" />
+            <Label id="priceLabel" width="400" height="48" translation="[101, 156]"
+                text="" vertAlign="center" color="0xFFFFFFff">
+                <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="28" />
+            </Label>
+            <Label id="lblPriceValue" width="380" height="48" translation="[620, 156]"
+                text="--" horizAlign="right" vertAlign="center" color="0xb3b3b3ff">
+                <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="32" />
+            </Label>
+            <Rectangle id="divider2" width="1000" height="1" translation="[35, 226]"
+                color="0x333333ff" />
+
+            <Poster id="renewalIcon" uri="pkg:/images/icons/billing.png"
+                width="28" height="28" translation="[45, 276]"
+                loadDisplayMode="scaleToFit" />
+            <Label id="renewalLabel" width="400" height="48" translation="[101, 266]"
+                text="" vertAlign="center" color="0xFFFFFFff">
+                <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="28" />
+            </Label>
+            <Label id="lblRenewalValue" width="380" height="48" translation="[620, 266]"
+                text="--" horizAlign="right" vertAlign="center" color="0xb3b3b3ff">
+                <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="32" />
+            </Label>
+            <Rectangle id="divider3" width="1000" height="1" translation="[35, 336]"
+                color="0x333333ff" />
+
+            <Group id="cancelSection">
+                <Poster id="cancelProvIcon" uri="pkg:/images/icons/shield.png"
+                    width="28" height="28" translation="[45, 386]"
+                    loadDisplayMode="scaleToFit" />
+                <Label id="cancelProvLabel" width="400" height="48" translation="[101, 376]"
+                    text="" vertAlign="center" color="0xFFFFFFff">
+                    <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="28" />
+                </Label>
+                <Label id="lblCancelProvText" width="710" height="60"
+                    translation="[101, 428]" text="" wrap="true" color="0xb3b3b3ff">
+                    <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="24" />
+                </Label>
+
+                <Group id="cancelBtn" translation="[820, 388]" focusable="true">
+                    <Poster id="cancelBtnBg" uri="pkg:/images/img_newbg.9.png"
+                        blendColor="#121212" width="220" height="72" />
+                    <Poster id="cancelBtnIcon" uri="pkg:/images/icons/trash.png"
+                        width="28" height="28" translation="[14, 22]"
+                        loadDisplayMode="scaleToFit" blendColor="0xFF4444ff" />
+                    <Label id="cancelBtnLabel" width="150" height="72"
+                        text="" translation="[58, 0]" vertAlign="center"
+                        color="0xFFFFFFff">
+                        <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="26" />
+                    </Label>
+                </Group>
+            </Group>
+        </Group>
+
+        <Group id="cancelConfirmGroup" visible="false">
+            <Rectangle id="cancelConfirmOverlay" width="1920" height="1080" color="0x000000B8" />
+
+            <Group id="cancelConfirmCardGroup" translation="[640, 360]" scale="[1.0, 1.0]">
+                <Poster id="cancelConfirmCardBg" uri="pkg:/images/img_newbg.9.png"
+                    width="640" height="380" blendColor="#2b2b2b" />
+
+                <Label id="cancelConfirmTitle" width="600" height="120" translation="[20, 40]"
+                    text="Are you sure you want to cancel subscription?" horizAlign="center"
+                    vertAlign="center" color="0xFFFFFFff" wrap="true">
+                    <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="38" />
+                </Label>
+
+                <Group id="cancelConfirmButtons" translation="[70, 210]">
+                    <Group id="cancelNoBtn" translation="[0, 0]" scale="[1.0, 1.0]">
+                        <Poster id="cancelNoBtnBg" uri="pkg:/images/img_newbg.9.png"
+                            width="240" height="90" blendColor="#121212" />
+                        <Label id="cancelNoBtnLabel" width="240" height="90" text="No"
+                            horizAlign="center" vertAlign="center" color="0xFFFFFFff">
+                            <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="30" />
+                        </Label>
+                    </Group>
+
+                    <Group id="cancelYesBtn" translation="[260, 0]" scale="[1.0, 1.0]">
+                        <Poster id="cancelYesBtnBg" uri="pkg:/images/img_newbg.9.png"
+                            width="240" height="90" blendColor="#121212" />
+                        <Label id="cancelYesBtnLabel" width="240" height="90" text="Yes"
+                            horizAlign="center" vertAlign="center" color="0xFFFFFFff">
+                            <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="30" />
+                        </Label>
+                    </Group>
+                </Group>
+            </Group>
+        </Group>
+
+        <Group id="qrOverlayGroup" />
+
+        <Group id="qrScreen" visible="false">
+
+            <!-- Full-screen black background -->
+            <Rectangle id="bgRect" width="1920" height="1080" color="0x000000FF" />
+
+            <!-- Full-screen black background -->
+            <Poster id="qrScreenbgposter" width="1600" height="900" opacity="1" blendColor="#2b2b2b"
+                uri="pkg:/images/img_newbg.9.png" translation="[181, 105]" />
+
+            <!-- QR card (square), positioned on the left -->
+            <Group id="qrCardContainer" translation="[270, 240]">
+
+                <Poster id="qrCardBase" width="600" height="600" opacity="0.30"
+                    uri="pkg:/images/img_newbg.9.png" />
+
+                <Group id="qrContainer" translation="[75, 75]">
+                    <Poster id="qrBg" width="450" height="450"
+                        uri="pkg:/images/img_newbg.9.png" />
+                    <Poster id="qrPoster" width="390" height="390" translation="[30, 30]"
+                        loadDisplayMode="scaleToFit" />
+                </Group>
+            </Group>
+
+            <!-- Description label, positioned on the right -->
+            <Label id="qrDescriptionLabel" text=""
+                translation="[945, 240]" width="750"
+                color="0xFFFFFFFF" horizAlign="left" vertAlign="top" wrap="true">
+                <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Regular.ttf" size="28" />
+            </Label>
+
+            <Group id="okBtn" translation="[1515, 900]" focusable="true">
+                <Poster id="okBtnBg" uri="pkg:/images/img_newbg.9.png"
+                    blendColor="#121212" width="220" height="72" />
+                <Label id="okBtnLabel" width="220" height="72"
+                    text="" vertAlign="center" horizAlign="center"
+                    color="0xFFFFFFff">
+                    <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="26" />
+                </Label>
+            </Group>
+        </Group>
+
+        <Label id="noDataLabel" width="1920" height="1080" text="No Active Paid Subscription Found"
+            horizAlign="center" vertAlign="center" color="0xFFFFFFff" visible="false">
+            <Font role="font" uri="pkg:/fonts/Roboto-Bold.ttf" size="40" />
+        </Label>
+    </children>
+</component>

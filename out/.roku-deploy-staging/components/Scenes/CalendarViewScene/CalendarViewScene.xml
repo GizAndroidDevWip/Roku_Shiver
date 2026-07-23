@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="CalendarViewScene" extends="Group">
+    <interface>
+        <field id="gotovideoplayerscene" alwaysNotify="true" type="node" />
+        <field id="visible" alwaysNotify="true"  type="bool" value="true" />
+        <field id="closeThisPage" alwaysNotify="true" type="bool" value="true" />
+    </interface>
+    <script type="text/brightscript"
+        uri="pkg:/components/Scenes/CalendarViewScene/CalendarViewScene.brs" />
+    <script type="text/brightscript" uri="pkg:/source/commonUtils.brs" />
+    <children>
+
+        <Rectangle id="background" width="1920" height="1080" color="#cccccc"
+            translation="[0,
+            0]" visible="true">
+
+
+            <Label
+                id="calendarTitle"
+                text="Calendar"
+                font="font:LargeBoldSystemFont"
+                horizAlign="center"
+                width="400"
+                height="80"
+                translation="[0, 45]"
+                visible="true" />
+
+            <RowList
+                visible="true"
+                id="datesPillRowlist"
+                itemSize="[1740,70]"
+                translation="[90, 150]"
+                focusBitmapUri=""
+                itemSpacing="[15, 60]"
+                rowItemSize="[[280, 100]]"
+                rowHeights="[200,200,200]"
+                numRows="1"
+                focusable="true"
+                width="1740"
+                height="70"
+                itemComponentName="ItemComponetPillDatesRowlist"
+            />
+            <RowList
+                id="calendarRowList"
+                itemSize="[1920,800]"
+                translation="[255, 345]"
+                numRows="3"
+                focusBitmapUri="pkg:/images/focus_grid.9.png"
+                itemSpacing="[0, -18]"
+                rowItemSize="[[370, 222]]"
+                rowHeights="[282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282]"
+                focusable="true"
+                width="1920"
+                height="1080"
+                itemComponentName="CalendarListItemComponent"
+            />
+
+            <Label
+                id="noResultsLabel"
+                visible="false"
+                text="No videos found!"
+                font="font:MediumSystemFont"
+                horizAlign="left"
+                translation="[810, 525]"
+                color="#000000"
+                width="780" />
+        </Rectangle>
+    </children>
+</component>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="playListadd" extends="Task">
+<interface>
+  	<field id="PlaylistRequest" alwaysnotify="true" type="String"/>
+  	<field id="wflag" alwaysnotify="true" type="String" />
+    <field id="showid" alwaysnotify="true" type="String" />
+    <field id="uid" alwaysnotify="true" type="String" />
+    <field id="PlaylistResponse" alwaysnotify="true" type="String" />
+
+		<function name="runPlayListAdd" />
+		<function name="stopPlayListAdd" />
+</interface>
+	<script type="text/brightscript" uri="pkg:/components/Scenes/shows/Tasks/Playlist/playListadd.brs" />
+	<script type="text/brightscript" uri="pkg:/source/apis.brs" />
+	<script type="text/brightscript" uri="pkg:/source/Strings.brs" />
+</component>
