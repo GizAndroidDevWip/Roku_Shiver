@@ -35,27 +35,19 @@ end sub
 sub CloseScreen(node as object)
     ' ?"CloseScreen : "node
     screenStack = m.global.screenStackArray
-    ?m.global.screenStackArray
-    ?"screstavk1"
     if node = invalid or (screenStack.Peek() <> invalid and screenStack.Peek().IsSameNode(node))
         last = screenStack.Pop() ' remove screen from screenStack
-        ?last
-        ?"lastscreen"
         last.visible = false ' hide screen
         m.top.RemoveChild(last) ' remove screen from scene
 
         ' take previous screen and make it visible
         prev = screenStack.Peek()
-        ?prev
-        ?"prevvisble"
         if prev <> invalid
             prev.visible = true
             topMenuVisibility(prev) ' check if top menu should be visible on previous screen or not
             prev.SetFocus(true)
         end if
         m.global.screenStackArray = screenStack
-        ?m.global.screenStackArray
-        ?"screestacharay"
     end if
     showLoader(false)
 end sub
@@ -166,6 +158,5 @@ end function
 sub showLoader(boolean as boolean)
     if m.loadingIndicator <> invalid
         m.loadingIndicator.visible = boolean
-        ?"dsdsds"
     end if  
 end sub

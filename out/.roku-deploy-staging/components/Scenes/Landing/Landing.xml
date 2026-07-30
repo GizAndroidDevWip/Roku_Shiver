@@ -90,7 +90,6 @@
                     uri="pkg:/images/label.png" useHandCursor="true" /> -->
 
         <Rectangle id="AppBackground" width="1920" height="1080" translation="[0,0]" />
-        <!-- <Poster id="AppBackgroundPoster" width="1920" height="1080" uri="pkg:/images/design_assets/bg_radial_color_gradient.png" translation="[0,0]" /> -->
 
 
         <TextEditBox id="TVCodeTextEditBox" width="500" height="90"

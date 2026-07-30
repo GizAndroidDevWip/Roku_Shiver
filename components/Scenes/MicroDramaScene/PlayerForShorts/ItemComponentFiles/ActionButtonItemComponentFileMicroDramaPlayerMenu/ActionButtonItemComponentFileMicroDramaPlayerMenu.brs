@@ -200,7 +200,7 @@ sub onItemFocusPercentchanged()
         if m.top.itemContent.isHighlighted <> invalid and m.top.itemContent.ishighlighted = true
             m.icon.blendColor = getButtonSelectionColor()
         else
-            m.icon.blendColor = "#FFFFFF" 'test change
+            m.icon.blendColor = "#FFFFFF" 'testchange
         end if
         m.iconLabel.visible = true
         m.buttonLeftIcon.blendColor = "#000000"

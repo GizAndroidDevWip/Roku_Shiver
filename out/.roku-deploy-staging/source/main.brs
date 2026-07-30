@@ -357,22 +357,8 @@ function setAppIDs()
     ' m.global.BUNDLE_ID ="com.4biddenknowledge.roku"
     ' m.global.APP_KEY="4biddenknowledgeroku"
 
-    ' m.global.BUNDLE_ID ="reelteve.roku.com"
-    ' m.global.APP_KEY="reelteveroku"
-
-      m.global.BUNDLE_ID = "com.shiver.roku"
-       m.global.APP_KEY = "shiverroku"
-
-
-    '    m.global.BUNDLE_ID ="com.powertube.roku"
-    '   m.global.APP_KEY="powertuberoku"
-
-
-    '    m.global.BUNDLE_ID ="com.powertube.roku"
-    '   m.global.APP_KEY="powertuberoku"
-
-    '   m.global.BUNDLE_ID = "com.fls.roku"
-    ' m.global.APP_KEY = "flsroku"
+    ' m.global.BUNDLE_ID = "reelteve.roku.com"
+    ' m.global.APP_KEY = "reelteveroku"
 
     ' m.global.BUNDLE_ID = "com.uptowntv.roku"
     ' m.global.APP_KEY = "uptowntvroku"
@@ -391,6 +377,14 @@ function setAppIDs()
 
     ' m.global.BUNDLE_ID = "com.dupond.roku"
     ' m.global.APP_KEY = "dupondroku"
+
+     m.global.BUNDLE_ID = "com.shiver.roku"
+    m.global.APP_KEY = "shiverroku"
+
+
+    '  m.global.BUNDLE_ID = "com.cpics.roku"
+    ' m.global.APP_KEY = "cpicsroku"
+
 
     ' m.global.BUNDLE_ID = "com.caribcast.roku"
     ' m.global.APP_KEY = "caribcastroku"
@@ -418,6 +412,9 @@ function setAppIDs()
 
     ' m.global.BUNDLE_ID ="com.nextlevelsoul.roku"
     ' m.global.APP_KEY="nextlevelsoulroku"
+
+    ' m.global.BUNDLE_ID = "com.fls.roku"
+    ' m.global.APP_KEY = "flsroku"
 end function
 
 

@@ -1028,7 +1028,7 @@ function MakeGetRequest2(src as string) as object
         '     httprequest.AddHeader("ua", userAgent)
         ' end if
 
-        if getPubID() <> invalid and getchannelsid() <> invalid 'test change
+        if getPubID() <> invalid and getchannelsid() <> invalid 'testchange
             httprequest.AddHeader("access-token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwicHViaWQiOiI1MDE0OCIsInVpZCI6IjY2MTgxOTQiLCJpYXQiOjE3Nzg2Nzc1NTYsImV4cCI6MTc4NjQ1MzU1Nn0.8cFqSLkNW5P2uVSyV2RbZ1aQbEYJeHA24vgssHvVUgs")
             httprequest.AddHeader("uid", "6618207")
             httprequest.AddHeader("country_code", "IN")
@@ -1774,7 +1774,7 @@ function callShortsApiTask()
 end function
 
 function callMicroDramaApiTask(param)
-    ' if param.show_id <> invalid then url = getBaseApiURL2() + "verticalShows/list?show_id=" + param.show_id.ToStr() 'getBaseApiURL2() + "home" test change
+    ' if param.show_id <> invalid then url = getBaseApiURL2() + "verticalShows/list?show_id=" + param.show_id.ToStr() 'getBaseApiURL2() + "home" testchange
     if param.show_id <> invalid then url = getBaseApiURL2() + "verticalShows/" + param.show_id.ToStr()
     ' url = getBaseApiURL2() + "verticalShows/64982"
     response = MakeGetRequest(url)
@@ -5479,11 +5479,10 @@ end function
 
 
 function parseSimilarShows(list as object)
-     if list <> invalid and list.count() <> 0
     RowItems = CreateObject("RoSGNode", "ContentNode")
 
-   RowItems.Title = getText("you_may_also_like")' Use the backend title as fallback
-   
+
+    RowItems.Title = getText("you_may_also_like")' Use the backend title as fallback
 
     BaseNode = CreateObject("RoSGNode", "ContentNode")
     for each itemAA in list
@@ -5526,7 +5525,6 @@ function parseSimilarShows(list as object)
 
     BaseNode.appendChild(RowItems)
     return BaseNode
-end if
 end function
 
 

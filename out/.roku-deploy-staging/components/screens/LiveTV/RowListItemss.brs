@@ -36,6 +36,21 @@ sub itemContentChanged()
         end if
     end if
 
+ if getThumbnailOrientaion() = "LANDSCAPE"
+    if content.HDPosterUrl<>invalid or content.HDPosterUrl<>""
+            m.Poster.uri = content.HDPosterUrl
+    end if
+    
+    else if getThumbnailOrientaion() = "PORTRAIT"
+      if content.hdposterurlportrait<>invalid or content.hdposterurlportrait<>""
+            m.Poster.uri = content.hdposterurlportrait 
+        end if
+end if
+
+
+
+
+
     if content <> invalid and content.SHORTDESCRIPTIONLINE2 <> invalid
         starttime = content.SHORTDESCRIPTIONLINE2
     else

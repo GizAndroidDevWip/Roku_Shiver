@@ -810,7 +810,7 @@ sub onFullscreenTimerTick()
                 m.videoTitleBar.visible = false
                 m.onFocusPlayVideoPlayer.control = "stop"
                 m.fullscreenTimer.control = "stop"
-                m.fullscreenCountdown = 11
+                m.fullscreenCountdown = 31
                 if m.top.visible = true
                     checkLiveNowSubscription()
                 end if

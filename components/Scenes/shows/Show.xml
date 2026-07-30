@@ -251,7 +251,7 @@
 						<Label id="Year" height="50" width="600" wrap="true" numLines="1"
 							maxLines="1"
 							lineSpacing="0.1" horizAlign="left" vertAlign="top" color="#ffffff"
-							text="2019">
+							text="">
 							<Font role="font" uri="pkg:/fonts/Poppins-Medium.ttf" size="26" />
 						</Label>
 
@@ -287,10 +287,11 @@
 							focusBitmapUri="pkg:/images/img_newbg.9.png"
 							itemSpacing="[40,30]"
 							rowItemSpacing="[[40, 50]]"
-							translation="[90,593]"
+							translation="[95,485]"
 							numRows="1"
 							rowItemSize="[[200, 70]]"
 							rowHeights="[130]" />
+							
 
 
 						<RowList

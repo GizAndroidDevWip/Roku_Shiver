@@ -65,6 +65,11 @@ function ParseXMLContent2(list as object)
         for each itemAA in rowAA.ContentList
             item = createObject("RoSGNode", "ContentNode")
             item.SetFields(itemAA)
+
+            item.SetFields(itemAA)
+             item.addFields({
+    hdposterurlportrait: itemAA.hdposterurlportrait
+})
             ?itemAA
             ?"itemAAerer"
             row.appendChild(item)
@@ -92,6 +97,7 @@ function GetApiArray(array as object)
         item.STREAMFORMAT = "m3u8"
         ' item.HDPosterUrl = element.logo
         item.HDPosterUrl = element.hdposterurl
+        item.HDPosterURLPortrait = element.hdposterurlportrait
         item.ShortDescriptionLine2 = element.starttime
         item.id = element.id
         
@@ -167,6 +173,12 @@ function getSelectedLive()
                         ' item.HDPOSTERURL= jsonitem.thumbnail_350_200
                     else
                         item.Logo = ""
+                    end if
+
+                     if jsonitem.thumbnail <> invalid
+                        item.HDPosterURLPortrait=jsonitem.thumbnail
+                        ?item.HDPosterURLPortrait
+                        ?"xsdsdsd"
                     end if
 
                     subIDS.push(item)

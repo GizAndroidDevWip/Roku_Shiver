@@ -17,24 +17,11 @@ end sub
 sub onSceneVisibleChange()
     ?"onSceneVisibleChange called: "; m.top.visible
     if m.top.visible = true
-        if m.Player = invalid
-            ' m.top.gotoHomeScenen="true"
-        '  m.top.closeExistingPaymentDescriptionScreen="true"   
-         m.top.closethispage = "true"
-            return
-        else
-            if m.Player <> invalid
+        if m.Player <> invalid
             onPageEnter()
-            end if
             ' m.Player.setFocus(true)
         end if
     end if
-    ' if m.top.visible = true
-    '     if m.Player <> invalid
-    '         onPageEnter()
-    '         ' m.Player.setFocus(true)
-    '     end if
-    ' end if
 end sub
 
 ' sub playSelectedShortsVideo() 'call ShortsDetailsTask
@@ -148,8 +135,6 @@ sub ShowInfoDialog(text)
     dialog.optionsDialog = true
     dialog.buttons = ["OK"]
     dialog.ObserveField("buttonSelected", "onInfoDialogOkButtonselected")
-    dialog.ObserveField("buttonSelected", "onInfoDialogOkWasClosed")
-    dialog.ObserveField("wasClosed", "onInfoDialogClosed")  '
     dialog.message = text
 
     m.top.dialog = dialog
@@ -158,29 +143,11 @@ sub ShowInfoDialog(text)
 end sub
 
 sub onInfoDialogOkButtonselected()
-      if m.Player = invalid
-     m.top.closethispage = "true"
-     end if
     m.parentScene.dialog.close = true
     if m.mainVideoDataList.getchild(m.currentPlayingIndex) <> invalid then
         goToSubscriptionListingScene(m.mainVideoDataList.getchild(m.currentPlayingIndex).video_id)
     end if
 end sub
-
-sub onInfoDialogOkWasClosed()
-    
-end sub
-
-sub onInfoDialogClosed()
-    ' If player is invalid when dialog closes, close the scene too
-    if m.Player = invalid and m.top.visible = true
-        m.top.closethispage = "true"
-    end if
-end sub
-
-
-
-
 
 function GetParentScene() as object
     m.parentScene = m.top.GetParent()
@@ -249,22 +216,6 @@ function OnkeyEvent(key, press) as boolean
             end if
 
         else if key = "back"
-
-  if m.parentScene <> invalid and m.parentScene.dialog <> invalid and m.parentScene.dialog.visible = true
-            m.parentScene.dialog.close = true
-            if m.Player = invalid and m.top.visible = true
-                m.top.closethispage = "true"
-            end if
-            return true
-        end if
-            
-    if m.Player = invalid and m.top.visible = true
-        m.top.closethispage = "true"
-    '    m.top.closeExistingPaymentDescriptionScreen="true"   
-        return true
-    end if
-
-
             if (m.Player <> invalid) and (m.Player.playerState = "stop" or m.Player.playerState = "finished" or m.Player.playerState = "back_pressed")
                 m.top.closethispage = "true"
             end if
@@ -345,7 +296,7 @@ sub playVideo(inputContent)
                     return
                 end if
                 m.loading.visible = false
-                ' ShowInfoDialog("Subscribe to watch this content.") test change
+                ' ShowInfoDialog("Subscribe to watch this content.") testchange
 
                 currentBalanceStr = getCurrentCoinBalance()
                 currentBalance = currentBalanceStr.ToInt()
@@ -434,8 +385,8 @@ sub playVideo(inputContent)
     SubtitleTracks = []
     for each item in inputContent.subtitles
         subtitleItem = {}
-        subtitleItem.Language = item.short_code
-        subtitleItem.Description = item.language_name
+        subtitleItem.Language = item.language_name
+        subtitleItem.Description = item.short_code
         subtitleItem.TrackName = item.subtitle_url
         SubtitleTracks.push(subtitleItem)
     end for
@@ -610,27 +561,31 @@ sub onMenuButtonSelected()
                     if selectedItem.videoId <> invalid then goToSubscriptionListingScene(selectedItem.videoId) else gotoSubscriptionListingScene("")
                 end if
             else if selectedItem.type <> invalid and selectedItem.type = "bundle"
-                if selectedItem.consumptionType = "PER_VIEW"
-                    currentBalanceStr = getCurrentCoinBalance()
-                    currentBalance = currentBalanceStr.ToInt()
+                currentBalanceStr = getCurrentCoinBalance()
+                if (currentBalanceStr <> invalid) then currentBalance = currentBalanceStr.ToInt() else currentBalance = 0
 
-                    ' Extract the required tokens
-                    tokensRequired = 0
-                    if m.Player.playerContentThatWeResets <> invalid and m.Player.playerContentThatWeResets.subscriptions <> invalid and m.Player.playerContentThatWeResets.subscriptions[0] <> invalid
-                        tokensRequiredStr = m.Player.playerContentThatWeResets.subscriptions[0].tokens_required
-                        if tokensRequiredStr <> invalid
-                            tokensRequired = tokensRequiredStr
-                        end if
+                ' Extract the required tokens safely
+                tokensRequired = 0
+                playerResets = m.Player.playerContentThatWeResets
+
+                ' Extract the required tokens
+                tokensRequired = 0
+                if m.Player.playerContentThatWeResets <> invalid and m.Player.playerContentThatWeResets.subscriptions <> invalid and m.Player.playerContentThatWeResets.subscriptions[0] <> invalid
+                    tokensRequiredStr = m.Player.playerContentThatWeResets.subscriptions[0].tokens_required
+                    if tokensRequiredStr <> invalid
+                        tokensRequired = tokensRequiredStr
                     end if
+                end if
 
+                ' Handle consumption logic
+                consumptionType = selectedItem.consumptionType
+                if consumptionType = "PER_VIEW" or consumptionType = "UNLOCK"
                     if currentBalance < tokensRequired
                         showQrOverlay(selectedItem)
                     else
-                        reduceCoinsBalanceAfterPlaying(m.Player.playerContentThatWeResets)
-                        playVideo(m.Player.playerContentThatWeResets)
+                        reduceCoinsBalanceAfterPlaying(playerResets)
+                        playVideo(playerResets)
                     end if
-                else if selectedItem.consumptionType = "UNLOCK"
-                    showQrOverlay(selectedItem)
                 end if
             end if
         end if
@@ -691,8 +646,9 @@ end sub
 sub onbuttonsRowlistItemSelected()
     m.episodesBoxContainer.visible = false
     if m.mainVideoDataList <> invalid and m.episodesBoxRowlist <> invalid and m.episodesBoxRowlist.RowItemSelected <> invalid and m.episodesBoxRowlist.RowItemSelected[1] <> invalid and m.mainVideoDataList.getchild(m.episodesBoxRowlist.RowItemSelected[1]) <> invalid then
-        nodeIndex = m.episodesBoxRowlist.content.getchild(m.episodesBoxRowlist.RowItemSelected[0]).getchild(m.episodesBoxRowlist.RowItemSelected[1]).nodeindex
-        playVideo(m.mainVideoDataList.getchild(nodeIndex))
+        ' nodeIndex = m.episodesBoxRowlist.content.getchild(m.episodesBoxRowlist.RowItemSelected[0]).getchild(m.episodesBoxRowlist.RowItemSelected[1]).nodeindex
+        ' playVideo(m.mainVideoDataList.getchild(nodeIndex))
+             playVideo(m.episodesBoxRowlist.content.getchild(m.episodesBoxRowlist.RowItemSelected[0]).getchild(m.episodesBoxRowlist.RowItemSelected[1]))
     end if
 end sub
 
@@ -878,10 +834,17 @@ sub reduceCoinsBalanceAfterPlaying(inputContent)
     if isNotNull2(m.Player) then m.Player.showSubscribeOverlay = false
     inputContent.iswatchOnceSubscribed = true
     updateNodeByIndex(inputContent.nodeindex)
+    selectedSubscriptionIndex = 0
+    if m.Player <> invalid
+        listNode = m.Player.findNode("CoinSubscriptionsList")
+        if listNode <> invalid and listNode.itemSelected <> invalid
+            selectedSubscriptionIndex = listNode.itemSelected
+        end if
+    end if
     m.MicroDramaApiTask.callFunc("stopMicroDramaApiTask")
     m.MicroDramaApiTask.updateCoinsUsageAssoc = {
         video_id: inputContent.video_id,
-        consumption_type: inputContent.subscriptions[0].consumption_type }
+        consumption_type: inputContent.subscriptions[selectedSubscriptionIndex].consumption_type }
     m.MicroDramaApiTask.callFunc("runUpdateCoinsUsageApiTask", "")
 
 
@@ -891,8 +854,8 @@ sub reduceCoinsBalanceAfterPlaying(inputContent)
 
     ' Extract the required tokens
     tokensRequired = 0
-    if inputContent <> invalid and inputContent.subscriptions <> invalid and inputContent.subscriptions[0] <> invalid
-        tokensRequiredStr = inputContent.subscriptions[0].tokens_required
+    if inputContent <> invalid and inputContent.subscriptions <> invalid and inputContent.subscriptions[selectedSubscriptionIndex] <> invalid
+        tokensRequiredStr = inputContent.subscriptions[selectedSubscriptionIndex].tokens_required
         if tokensRequiredStr <> invalid
             tokensRequired = tokensRequiredStr
         end if

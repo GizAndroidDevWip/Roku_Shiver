@@ -228,10 +228,10 @@ end sub
 sub onbuttonsRowlistItemSelected()
     ?"onbuttonsRowlistItemSelected called"
     m.CoinSubscriptionsList.content = m.top.CoinSubscriptionContent
-    if m.SubscribeOverlay.visible = true
-        m.top.menuButtonSelected = "SUBSCRIBE_OVERLAY"
-        return
-    end if
+    ' if m.SubscribeOverlay.visible = true
+    '     m.top.menuButtonSelected = "SUBSCRIBE_OVERLAY"
+    '     return
+    ' end if
     if m.buttonsRowlist.content <> invalid and m.buttonsRowlist.content.getchild(0) <> invalid and m.buttonsRowlist.RowItemSelected <> invalid and m.buttonsRowlist.RowItemSelected[0] <> invalid and m.buttonsRowlist.content.getchild(0).getChild(m.buttonsRowlist.RowItemSelected[0]) <> invalid then
         m.top.menuButtonSelected = m.buttonsRowlist.content.getchild(0).getChild(m.buttonsRowlist.RowItemSelected[1]).id
         exitPlayer()

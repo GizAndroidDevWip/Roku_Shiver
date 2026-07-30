@@ -1,6 +1,7 @@
 sub init()
     m.ShowFetcher = CreateObject("roSGNode", "ShowFetcher")
     m.ShowFetcher.observeField("showFetcherStatus", "onContentChanged")
+    m.ShowFetcher.observeField("rawShowfetcherContent", "onRawContentChanged")
     m.SimilarShows = CreateObject("roSGNode", "SimilarShows")
     m.SimilarShows.observeField("similarShowsApiListContent", "onSimilarShowChanged")
     m.VideoSubscriptionTask = CreateObject("roSGNode", "VideoSubscriptionTask")
@@ -843,6 +844,7 @@ end sub
 
 sub onContentChanged()
     if m.ShowFetcher.showFetcherStatus = true
+        m.loadingIndicator.visible = false
 
         print "RUN ContentRequest true"
 
@@ -862,7 +864,7 @@ sub onContentChanged()
         m.AdTimer.control = "start"
         m.Video.visible = true
         whichNodeToSetFocusBasedOnScreenScrolledStatus()
-        m.RowList.visible = true
+        m.RowList.visible = false
         m.Title1.visible = true
         m.Episode.visible = true
         m.descri.visible = true
@@ -1035,6 +1037,7 @@ sub onContentChanged()
         m.top.close_this_screen = true
     end if
     m.rectangleForSmallDetails.visible = true
+    m.RowList.visible = true
 end sub
 
 sub onSimilarShowChanged()
@@ -1847,7 +1850,7 @@ function OnRowItemFocused2()
     else if VODcontent.itemType = "LIVE_EVENT" or VODcontent.itemType = "RTMP"
 
     end if
-    m.loadingIndicator.visible = true
+    m.loadingIndicator.visible = false
     whichNodeToSetFocusBasedOnScreenScrolledStatus()
 
     m.count = 0
@@ -1931,7 +1934,7 @@ function setShowDetailsDataFromZerothPositionVideo()
         videoCount = m.ShowFetcher.Content.getChild(0).GetChildCount()
     end if
 
-    m.loadingIndicator.visible = true
+    m.loadingIndicator.visible = false
     m.AdTimer.control = "start"
     m.Video.visible = true
     m.Title1.visible = true
@@ -2649,13 +2652,23 @@ end sub
 sub subcriptionListVisiblity(visibility as boolean)
     if visibility = true
         m.subscriptionList.visible = true
-        m.buttonsLabelList.translation = [95, 593]
+        m.buttonsLabelList.translation = [95, 485]  '593
         m.RowList.translation = [95, m.buttonsLabelList.translation[1] + 300]
-    else
+         if getThumbnailOrientaion() = "LANDSCAPE"
         m.subscriptionList.visible = false
         m.buttonsLabelList.translation = [95, 485]
-        m.RowList.translation = [95, m.buttonsLabelList.translation[1] + 220]
+        m.RowList.translation = [95, m.buttonsLabelList.translation[1] + 300]
+        else
+        m.subscriptionList.visible = false
+        m.buttonsLabelList.translation = [95, 485]
+        m.RowList.translation = [95, m.buttonsLabelList.translation[1] + 190]
+        end if 
     end if
+    ' else
+    '     m.subscriptionList.visible = false
+    '     m.buttonsLabelList.translation = [95, 485]
+    '     m.RowList.translation = [95, m.buttonsLabelList.translation[1] + 220]
+    ' end if
 end sub
 
 
@@ -2708,6 +2721,7 @@ end sub
 sub setShowdetailMatadataForShow()
     VODcontent = m.ShowFetcher.rawShowfetcherContent
     m.backGroundBannerPoster.uri = VODcontent.logo_thumb
+    m.backGroundBannerPoster.visible = true
     if VODcontent.image_title <> invalid and VODcontent.image_title <> ""
         m.imageTitlePoster.uri = VODcontent.image_title
         m.imageTitlePoster.visible = true
@@ -2763,3 +2777,9 @@ sub showLoading(showBoolean)
         end if
     end if
 end sub
+
+sub onRawContentChanged()
+    ?"onRawContentChanged calledfdfdf44"
+    m.loadingIndicator.visible = false
+    setShowdetailMatadataForShow()
+end sub 

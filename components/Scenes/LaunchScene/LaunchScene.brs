@@ -16,7 +16,7 @@ function init()
     m.messageDialog_rect = m.top.findNode("messageDialog_rect")
     m.secondSplashScreenImage = m.top.findNode("secondSplashScreen")
     m.secondSplashScreenImage.uri = "pkg:/images/logos/BHD LOGO_Face Of APP_1920X1080.png"
-    m.secondSplashScreenImage.visible = true
+    m.secondSplashScreenImage.visible = false
     m.top.setFocus(true)
     setSessionId()
     setSplashVideo()
@@ -99,7 +99,7 @@ sub onVideoStateChange()
         print "--- PLAYBACK ERROR ---"
         print "Error Code: "; m.video.errorCode
         print "Error Message: "; m.video.errorMsg
-        ' m.secondSplashScreenImage.visible = true
+        m.secondSplashScreenImage.visible = true
     else if m.video.state = "finished"
         m.video.visible = false
         m.loading.visible = true

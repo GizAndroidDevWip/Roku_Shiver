@@ -43,15 +43,15 @@
                 <Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="24" />
             </Label>
             <Group id="coinBalanceGroup" translation="[148, 330]">
-                <Label id="coinLabelHeading" visible="false" width="600" wrap="true" numLines="0"
+                <Label id="coinLabelHeading" visible="true" width="600" wrap="true" numLines="0"
                     maxLines="2" lineSpacing="6" horizAlign="left" vertAlign="top" color="#8A93A3"
                     text="COIN BALANCE" translation="[0, 0]">
                     <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Regular.ttf" size="20" />
                 </Label>
                 <Poster id="coinIcon" uri="pkg:/images/coin_icon.png" width="32" height="32"
-                    translation="[0, 36]"  visible="false"/>
+                    translation="[0, 36]" />
                 <Label id="coinLabel" text="" translation="[42, 36]" width="300" height="32"
-                    color="0xFFFFFFFF" vertAlign="center" horizAlign="left" visible="false"> 
+                    color="0xFFFFFFFF" vertAlign="center" horizAlign="left">
                     <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Bold.ttf" size="30" />
                 </Label>
             </Group>

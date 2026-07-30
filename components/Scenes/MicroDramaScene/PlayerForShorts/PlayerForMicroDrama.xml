@@ -86,7 +86,7 @@
 
                 <LayoutGroup
                     id="SubscribeOverlayGroup"
-                    translation="[550, 225]"
+                    translation="[550, 255]"
                     layoutDirection="vert"
                     alignment="center"
                     itemSpacings="[30]">
@@ -101,7 +101,7 @@
                         vertAlign="center"
                         wrap="true" /> -->
 
-                    <Label id="episode_title" text="" width="800" 
+                    <Label id="episode_title" text="" width="800"
                         vertAlign="center" horizAlign="center">
                         <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Bold.ttf" size="70" />
                     </Label>
@@ -109,22 +109,24 @@
                     <Label
                         id="sub_overlay_title"
                         text=""
-                        font="font:LargeBoldSystemFont"
                         width="800"
                         horizAlign="center"
                         color="#ffffff"
                         vertAlign="center"
-                        wrap="true" />
+                        wrap="true">
+                        <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Regular.ttf" size="30" />
+                    </Label>
 
                     <Label id="sub_overlay_desc"
                         text=""
+                        visible="false"
                         width="800"
                         wrap="true"
                         numLines="1"
                         horizAlign="center"
                         vertAlign="center"
                         color="#cccccc">
-                        <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Regular.ttf" size="35" />
+                        <Font role="font" uri="pkg:/fonts/AvenirNextCyr-Medium.ttf" size="35" />
                     </Label>
 
                 </LayoutGroup>
@@ -133,7 +135,7 @@
                     id="CoinSubscriptionsList"
                     itemComponentName="CoinSubscriptionsListItemComponentScreen"
                     itemSize="[630, 180]"
-                    translation="[645, 570]"
+                    translation="[645, 465]"
                     numColumns="1"
                     numRows="3"
                     vertFocusAnimationStyle="floatingfocus"

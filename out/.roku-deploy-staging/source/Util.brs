@@ -138,7 +138,7 @@ function parseHomeListApiContent(content as object, initialLoadOnly as boolean) 
       end for
     end if
 
-    if item.shows_count <> invalid and item.shows_count > 15 and item.type <> invalid and item.type <> "GENRES" and item.type <> "FEATURED" and item.type <> "TOP_TRENDING" and item.type <> "CONTINUE_WATCHING" and item.type <> "RECENTLY_ADDED" and item.type <> "MY_LIST" and item.type <> "SHORTS" and item.type <> "MICRO_DRAMA"
+    if item.shows_count <> invalid and item.shows_count > 10 and item.type <> invalid and item.type <> "GENRES" and item.type <> "FEATURED" and item.type <> "TOP_TRENDING" and item.type <> "CONTINUE_WATCHING" and item.type <> "RECENTLY_ADDED" and item.type <> "MY_LIST" and item.type <> "SHORTS" and item.type <> "MICRO_DRAMA"
       showMoreChildNode = CreateObject("RoSGNode", "ContentNode")
       showMoreChildNode.addFields({ "itemtype": "SHOW_MORE_ITEM" })
       RowContentNode.appendChild(showMoreChildNode)

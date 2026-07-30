@@ -694,8 +694,12 @@ sub OnRowItemFocused()
 
     if m.bannerPoster <> invalid and m.top.content <> invalid and m.top.content.getChild(itemFocused[0]) <> invalid and m.top.content.getChild(itemFocused[0]).getChild(itemFocused[1]) <> invalid and m.top.content.getChild(itemFocused[0]).getChild(itemFocused[1]).hero_image <> invalid
         m.bannerPoster.uri = m.top.content.getChild(itemFocused[0]).getChild(itemFocused[1]).hero_image
+        ?m.bannerPoster.uri
+        ?"mbanner1"
     else if m.bannerPoster <> invalid and m.top.content <> invalid and m.top.content.getChild(itemFocused[0]) <> invalid and m.top.content.getChild(itemFocused[0]).getChild(itemFocused[1]) <> invalid and m.top.content.getChild(itemFocused[0]).getChild(itemFocused[1]).HDBACKGROUNDIMAGEURL <> invalid
         m.bannerPoster.uri = m.top.content.getChild(itemFocused[0]).getChild(itemFocused[1]).HDBACKGROUNDIMAGEURL
+        ?m.bannerPoster.uri
+        ?"banner2"
     end if
     if m.top <> invalid and m.top.content <> invalid and itemFocused <> invalid and itemFocused[0] <> invalid and m.top.content.getChild(itemFocused[0]) <> invalid and itemFocused[1] <> invalid and m.top.content.getChild(itemFocused[0]).getChild(itemFocused[1]) <> invalid and m.top.content.getChild(itemFocused[0]).getChild(itemFocused[1]).type = "GENRE" and m.bannerPoster <> invalid then m.bannerPoster.uri = ""
     ' IMAGE_TITLE_BANNER = false

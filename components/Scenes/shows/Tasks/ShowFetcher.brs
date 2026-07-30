@@ -56,6 +56,7 @@ sub GetShowVideos(shID as string, itemType)
         showFetcherApiResponse = getSHOWResponse(shID) ' all cases except above
 
     end if
+    m.top.rawShowfetcherContent = showFetcherApiResponse
 
     oneRow = invalid
 
@@ -97,7 +98,7 @@ sub GetShowVideos(shID as string, itemType)
 
         '********** parsing response
         showfetcherContent = ParseContentForSeasonWiseShow(list)
-        m.top.rawShowfetcherContent = showFetcherApiResponse
+        
         m.top.Content = showfetcherContent
         m.top.showFetcherStatus = true
 

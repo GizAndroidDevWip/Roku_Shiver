@@ -1240,7 +1240,7 @@ function OnMenuButtonSelected()
         ' if getMULTI_CHANNELS_REQUIRED() = "true" ' from kalingo asked to change no check needed for guest to go to timegrid
         '     m.top.goToMyTimeGridScreen = true
         ' else
-        m.loadingIndicator.visible = true
+        ' m.loadingIndicator.visible = true
         checkLiveNowSubscriptionForMenuClick()
         ' end if
 
