@@ -239,7 +239,10 @@ sub checkLoginCheck()
     m.MicroDramaApiTask.callFunc("stopMicroDramaApiTask")
     if m.MicroDramaApiTask <> invalid and m.MicroDramaApiTask.logInOrSubscribeStatus <> invalid and m.MicroDramaApiTask.logInOrSubscribeStatus <> "" and m.MicroDramaApiTask.logInOrSubscribeStatus = "LOGIN"
         goToLandingScene()
-        return
+    else if m.MicroDramaApiTask <> invalid and m.MicroDramaApiTask.logInOrSubscribeStatus <> invalid and m.MicroDramaApiTask.logInOrSubscribeStatus <> "" and m.MicroDramaApiTask.logInOrSubscribeStatus = "LOGGED_OUT_CASE"
+        m.parentScene = GetParentScene()
+        m.top.dialogAuthExceed.title = m.MicroDramaApiTask.logInOrSubscribeStatusMessage
+        m.parentScene.dialog = m.top.dialogAuthExceed
     end if
 end sub
 
@@ -489,6 +492,31 @@ sub PlayerStateChanged()
     end if
 end sub
 
+function userLoggedInLimitCheck()
+    forcibleLogout = false
+
+    if m.MicroDramaApiTask <> invalid and m.MicroDramaApiTask.MicroDramaApiTaskContent <> invalid and m.MicroDramaApiTask.MicroDramaApiTaskContent.responseCode <> invalid
+        if m.MicroDramaApiTask.MicroDramaApiTaskContent.responseCode = 419
+            forcibleLogout = true
+        end if
+    end if
+
+    m.parentScene = GetParentScene()
+    if forcibleLogout = true ' user logged in limit - case
+        m.parentScene.dialog = m.top.dialogAuthExceed
+        return true
+    end if
+
+    return false
+end function
+
+
+sub On_dialogAuthExceed_buttonSelected()
+    if m.top.dialogAuthExceed.buttonSelected = 0
+        m.parentScene.dialog.close = true
+        goToLandingScene()
+    end if
+end sub
 
 
 ' sub callMicroDramaApi2()
@@ -898,3 +926,31 @@ function updateNodeByIndex(nodeIndex as integer) as boolean
 
     return false
 end function
+
+
+sub logoutAndGoToLandingScene()
+    ?"logoutAndGoToLandingScene called"
+    if GetParentScene() = invalid then
+        return
+    end if
+    Registry = CreateObject("roRegistry")
+    i = 0
+    for each section in Registry.GetSectionList()
+        RegistrySection = CreateObject("roRegistrySection", section)
+        for each key in RegistrySection.GetKeyList()
+            i = i + 1
+            if key = "USER_ID" or key = "userName" or key = "userEmail" or key = "userPhone"
+                print "Deleting " section + ":" key
+                RegistrySection.Delete(key)
+            else
+                ?key + " not deleted"
+            end if
+        end for
+        RegistrySection.flush()
+    end for
+    print i.toStr() " Registry Keys Deleted"
+    m.top.logout = true
+    m.loading.visible = false
+    m.parentScene.dialog.close = true
+    m.top.goToLandingSceneAndCloseAllScreens = true
+end sub
