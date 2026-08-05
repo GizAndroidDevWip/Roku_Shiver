@@ -2654,6 +2654,7 @@ sub subcriptionListVisiblity(visibility as boolean)
         m.subscriptionList.visible = true
         m.buttonsLabelList.translation = [95, 485]  '593
         m.RowList.translation = [95, m.buttonsLabelList.translation[1] + 300]
+             else
          if getThumbnailOrientaion() = "LANDSCAPE"
         m.subscriptionList.visible = false
         m.buttonsLabelList.translation = [95, 485]
@@ -2664,6 +2665,18 @@ sub subcriptionListVisiblity(visibility as boolean)
         m.RowList.translation = [95, m.buttonsLabelList.translation[1] + 190]
         end if 
     end if
+    ' else
+        
+        '  if getThumbnailOrientaion() = "LANDSCAPE"
+        ' m.subscriptionList.visible = false
+        ' m.buttonsLabelList.translation = [95, 485]
+        ' m.RowList.translation = [95, m.buttonsLabelList.translation[1] + 300]
+        ' else
+        ' m.subscriptionList.visible = false
+        ' m.buttonsLabelList.translation = [95, 485]
+        ' m.RowList.translation = [95, m.buttonsLabelList.translation[1] + 190]
+        ' end if 
+    ' end if
     ' else
     '     m.subscriptionList.visible = false
     '     m.buttonsLabelList.translation = [95, 485]
