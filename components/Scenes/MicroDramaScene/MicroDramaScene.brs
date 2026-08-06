@@ -8,10 +8,18 @@ sub init()
     m.episodesBoxRowlist = m.top.findNode("episodesBoxRowlist")
     m.episodesBoxRowlist.observeField("RowItemSelected", "onbuttonsRowlistItemSelected")
     m.episodesBoxContainer = m.top.findNode("episodesBoxContainer")
+    m.episodesBoxContainer.ObserveField("visible", "onEpisodesBoxContainerVisibleChange")
     m.episodesBoxContainer.blendColor = getBackGroundColor1()
     m.episodesTitle = m.top.findNode("episodesTitle")
     m.episodesTitle.font.size = 60
     m.top.observeField("visible", "onSceneVisibleChange")
+
+
+    okTitle = getTextOf("ok") ' Default value
+    m.top.dialogAuthExceed = CreateObject("roSGNode", "BackDialog")
+    m.top.dialogAuthExceed.backgroundUri = "pkg:/images/black.jpg"
+    m.top.dialogAuthExceed.buttons = [okTitle]
+    m.top.dialogAuthExceed.ObserveField("buttonSelected", "On_dialogAuthExceed_buttonSelected")
 end sub
 
 sub onSceneVisibleChange()
@@ -108,7 +116,9 @@ sub onSetData()
             end try
         end for
     end if
-    initializeEpisodeBoxRowList(content.MicroDramaApiTaskContent.data)
+    if content <> invalid and content.MicroDramaApiTaskContent <> invalid and content.MicroDramaApiTaskContent.data <> invalid
+        initializeEpisodeBoxRowList(content.MicroDramaApiTaskContent.data)
+    end if
     if m.mainVideoDataList <> invalid and m.mainVideoDataList.getchildcount() > 0
         if resumeIndex >= 0 and m.mainVideoDataList.getchild(resumeIndex) <> invalid
             playVideo(m.mainVideoDataList.getchild(resumeIndex))
@@ -163,7 +173,7 @@ end function
 
 function OnkeyEvent(key, press) as boolean
     result = false
-    if isNotNull2(m.Player) and m.Player.showSubscribeOverlay = true and key <> "up" and key <> "down" then return true ' BLOCK SCROLL when subscription overlay is visible
+    if isNotNull2(m.Player) and m.Player.showSubscribeOverlay = true and key <> "up" and key <> "down" and not m.episodesBoxContainer.visible = true then return true ' BLOCK SCROLL when subscription overlay is visible
     if IsNotNull2(m.qrOverlay) and m.qrOverlay.visible = true then return true
     if press
 
@@ -222,7 +232,11 @@ function OnkeyEvent(key, press) as boolean
             if m.episodesBoxContainer.visible = true
                 m.episodesBoxContainer.visible = false
                 onPageEnter()
-                if IsNotNull2(m.Player) then m.Player.setFocus(true)
+                if m.Player <> invalid and m.Player.showSubscribeOverlay <> invalid and m.Player.showSubscribeOverlay = true
+                    m.Player.setFocusToCoinListing = true
+                else
+                    if IsNotNull2(m.Player) then m.Player.setFocus(true)
+                end if
                 result = true ' BLOCK SCROLL
             end if
         else if key = "OK"
@@ -247,15 +261,12 @@ sub checkLoginCheck()
 end sub
 
 sub playVideo(inputContent)
-    ?"dhkasjhajshd playVideo called with inputContent: "; inputContent
+    if inputContent = invalid then return
     if m.Player <> invalid
         m.Player.control = "stop"
         m.Player.showSubscribeOverlay = false
     end if
     m.currentPlayingIndex = inputContent.nodeIndex
-    if inputContent = invalid
-        return
-    end if
     if m.MicroDramaApiTask <> invalid and m.MicroDramaApiTask.MicroDramaApiTaskContent <> invalid
         if m.MicroDramaApiTask.MicroDramaApiTaskContent.is_logged_in <> invalid and m.MicroDramaApiTask.MicroDramaApiTaskContent.is_logged_in = false
             goToLandingScene()
@@ -485,30 +496,13 @@ sub PlayerStateChanged()
             if m.MicroDramaApiTask <> invalid and m.MicroDramaApiTask.MicroDramaApiTaskContent <> invalid and m.MicroDramaApiTask.MicroDramaApiTaskContent.next_show_id <> invalid
                 m.mainVideoDataList.removeChildrenIndex(m.mainVideoDataList.getChildCount(), 0)
                 m.Player.control = "stop"
-                m.top.show_id = m.MicroDramaApiTask.MicroDramaApiTaskContent.next_show_id
+                m.top.show_id = m.MicroDramaApiTask.MicroDramaApiTaskContent.next_show_id 'next microdrama show api automatically called and played
             end if
         end if
 
     end if
 end sub
 
-function userLoggedInLimitCheck()
-    forcibleLogout = false
-
-    if m.MicroDramaApiTask <> invalid and m.MicroDramaApiTask.MicroDramaApiTaskContent <> invalid and m.MicroDramaApiTask.MicroDramaApiTaskContent.responseCode <> invalid
-        if m.MicroDramaApiTask.MicroDramaApiTaskContent.responseCode = 419
-            forcibleLogout = true
-        end if
-    end if
-
-    m.parentScene = GetParentScene()
-    if forcibleLogout = true ' user logged in limit - case
-        m.parentScene.dialog = m.top.dialogAuthExceed
-        return true
-    end if
-
-    return false
-end function
 
 
 sub On_dialogAuthExceed_buttonSelected()
@@ -516,6 +510,33 @@ sub On_dialogAuthExceed_buttonSelected()
         m.parentScene.dialog.close = true
         goToLandingScene()
     end if
+end sub
+
+sub logoutAndGoToLandingScene()
+    ?"logoutAndGoToLandingScene called"
+    if GetParentScene() = invalid then
+        return
+    end if
+    Registry = CreateObject("roRegistry")
+    i = 0
+    for each section in Registry.GetSectionList()
+        RegistrySection = CreateObject("roRegistrySection", section)
+        for each key in RegistrySection.GetKeyList()
+            i = i + 1
+            if key = "USER_ID" or key = "userName" or key = "userEmail" or key = "userPhone"
+                print "Deleting " section + ":" key
+                RegistrySection.Delete(key)
+            else
+                ?key + " not deleted"
+            end if
+        end for
+        RegistrySection.flush()
+    end for
+    print i.toStr() " Registry Keys Deleted"
+    m.top.logout = true
+    m.loading.visible = false
+    m.parentScene.dialog.close = true
+    m.top.goToLandingSceneAndCloseAllScreens = true
 end sub
 
 
@@ -548,7 +569,7 @@ end sub
 ' end sub
 
 sub onMenuButtonSelected()
-    ?"onMenuButtonSelected called: "; m.top.menuButtonSelected
+    ' ?"onMenuButtonSelected called: "; m.top.menuButtonSelected
     if m.Player <> invalid then m.Player.control = "stop"
     if m.Player.menuButtonSelected = "MORE_EPISODES"
         updateEpisodeActiveByEpisodeNumber(m.currentPlayingIndexForEpisodeNumber, true)
@@ -634,6 +655,8 @@ sub initializeEpisodeBoxRowList(list)
             if j >= total then exit for ' ✅ Safety check
             data = list[j]
             ChildNode = CreateObject("RoSGNode", "ContentNode")
+            _nodeIndex = doNullCheck(data, "episode_number", 0) - 1
+            if _nodeIndex < 0 then _nodeIndex = j ' Fallback to j if episode_number is invalid
 
             ChildNode.addFields({
                 video_id: doNullCheck(data, "video_id", "")
@@ -650,7 +673,7 @@ sub initializeEpisodeBoxRowList(list)
                 isActive: (j = m.currentPlayingIndex)
                 graphIcon: "pkg:/images/graph.png"
                 activeGradient: "pkg:/images/red_gradient.png"
-                nodeIndex: doNullCheck(data, "episode_number", 0)
+                nodeIndex: _nodeIndex
                 is_last_video: (i = list.count() - 1) 'setting is_last_video field
                 iswatchOnceSubscribed: false 'setting watchOnceSubscribed field
             })
@@ -674,9 +697,8 @@ end sub
 sub onbuttonsRowlistItemSelected()
     m.episodesBoxContainer.visible = false
     if m.mainVideoDataList <> invalid and m.episodesBoxRowlist <> invalid and m.episodesBoxRowlist.RowItemSelected <> invalid and m.episodesBoxRowlist.RowItemSelected[1] <> invalid and m.mainVideoDataList.getchild(m.episodesBoxRowlist.RowItemSelected[1]) <> invalid then
-        ' nodeIndex = m.episodesBoxRowlist.content.getchild(m.episodesBoxRowlist.RowItemSelected[0]).getchild(m.episodesBoxRowlist.RowItemSelected[1]).nodeindex
-        ' playVideo(m.mainVideoDataList.getchild(nodeIndex))
-             playVideo(m.episodesBoxRowlist.content.getchild(m.episodesBoxRowlist.RowItemSelected[0]).getchild(m.episodesBoxRowlist.RowItemSelected[1]))
+        nodeIndex = m.episodesBoxRowlist.content.getchild(m.episodesBoxRowlist.RowItemSelected[0]).getchild(m.episodesBoxRowlist.RowItemSelected[1]).nodeindex
+        playVideo(m.mainVideoDataList.getchild(nodeIndex))
     end if
 end sub
 
@@ -927,30 +949,8 @@ function updateNodeByIndex(nodeIndex as integer) as boolean
     return false
 end function
 
-
-sub logoutAndGoToLandingScene()
-    ?"logoutAndGoToLandingScene called"
-    if GetParentScene() = invalid then
-        return
+sub onEpisodesBoxContainerVisibleChange()
+    if m.Player <> invalid and m.episodesBoxContainer <> invalid
+        m.Player.visible = not m.episodesBoxContainer.visible
     end if
-    Registry = CreateObject("roRegistry")
-    i = 0
-    for each section in Registry.GetSectionList()
-        RegistrySection = CreateObject("roRegistrySection", section)
-        for each key in RegistrySection.GetKeyList()
-            i = i + 1
-            if key = "USER_ID" or key = "userName" or key = "userEmail" or key = "userPhone"
-                print "Deleting " section + ":" key
-                RegistrySection.Delete(key)
-            else
-                ?key + " not deleted"
-            end if
-        end for
-        RegistrySection.flush()
-    end for
-    print i.toStr() " Registry Keys Deleted"
-    m.top.logout = true
-    m.loading.visible = false
-    m.parentScene.dialog.close = true
-    m.top.goToLandingSceneAndCloseAllScreens = true
 end sub

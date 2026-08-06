@@ -11,6 +11,7 @@
         <field id="closethispage" type="string" alwaysnotify="true" />
         <field id="goToPaymentDescriptionScreen" type="string" alwaysnotify="true" />
         <field id="gotoLandingScene" type="bool" alwaysnotify="true" />
+         <field id="dialogAuthExceed" type="node" />
 
 
     </interface>

@@ -21,9 +21,15 @@ sub start()
     if responseDataMicroDramaApiTaskList <> invalid and responseDataMicroDramaApiTaskList.statusCode = 401 then
         m.top.logInOrSubscribeStatus = "LOGIN"
         return
+
+      else if responseDataMicroDramaApiTaskList <> invalid and responseDataMicroDramaApiTaskList.statusCode = 419 then
+        m.top.logInOrSubscribeStatusMessage = responseDataMicroDramaApiTaskList.message
+        m.top.logInOrSubscribeStatus = "LOGGED_OUT_CASE"
+        return   
     else if responseDataMicroDramaApiTaskList <> invalid and responseDataMicroDramaApiTaskList.statusCode = 403 then
         m.top.logInOrSubscribeStatus = "SUBSCRIBE"
         return
+        
     end if
 
 

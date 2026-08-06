@@ -5,6 +5,7 @@
 			type="roAssociativeArray" />
 		<field id="MicroDramaApiTaskListStatus" alwaysnotify="true" type="Boolean" />
 		<field id="logInOrSubscribeStatus" alwaysnotify="true" type="String" value = ""/>
+		<field id="logInOrSubscribeStatusMessage" alwaysnotify="true" type="String" value = ""/>
 		<field id="updateCoinsUsageAssoc" alwaysnotify="true" type="roAssociativeArray"/>
 		
 		<function name="runMicroDramaApiTask" />

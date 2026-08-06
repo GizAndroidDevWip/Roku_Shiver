@@ -378,8 +378,11 @@ function setAppIDs()
     ' m.global.BUNDLE_ID = "com.dupond.roku"
     ' m.global.APP_KEY = "dupondroku"
 
-     m.global.BUNDLE_ID = "com.shiver.roku"
-    m.global.APP_KEY = "shiverroku"
+     m.global.BUNDLE_ID = "com.outlandishtv.roku"
+    m.global.APP_KEY = "outlandishtvroku"
+
+    '  m.global.BUNDLE_ID = "com.shiver.roku"
+    ' m.global.APP_KEY = "shiverroku"
 
 
     '  m.global.BUNDLE_ID = "com.cpics.roku"

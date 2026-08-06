@@ -18,7 +18,7 @@ sub init()
     m.coinLabel = m.top.findNode("coinLabel")
     m.coinLabel.text = getCurrentCoinBalance()
     m.coinBalanceGroup = m.top.findNode("coinBalanceGroup")
-    m.coinBalanceGroup.visible = true 'pnly needed for reelmuvi, hide for now
+    m.coinBalanceGroup.visible = false 'pnly needed for reelmuvi, hide for now
     m.coinLabelHeading = m.top.findNode("coinLabelHeading")
     m.coinLabelHeading.text = getTextOf("coin_balance")
     m.qrScanLabel = m.top.findNode("qrScanLabel")

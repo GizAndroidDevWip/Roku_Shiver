@@ -61,7 +61,7 @@ sub onGoToShowScreenFromSearchScreen(event as object)
 
             playSelectedShortsVideo(rowContentItem.video_id)
         end if
-    else if rowContentItem.categoryType = "VERTICAL_SHOW"
+    else if rowContentItem.categoryType = "VERTICAL_SHOW" or rowContentItem.categoryType = "MICRO_DRAMA" or rowContentItem.categoryType = "VERTICAL_SHOWS"  'rowContentItem.categoryType = "VERTICAL_SHOW"
         showMicroDramaScene({ show_id: rowContentItem.show_id
         show_name: rowContentItem.name })
     end if
