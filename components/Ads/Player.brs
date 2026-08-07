@@ -453,6 +453,13 @@ function initialisePlayerBottomPopup()
     m.buttonsRowlist = m.top.findNode("buttonsRowlist")
     m.buttonsRowlist.observeField("RowItemSelected", "onbuttonsRowlistItemSelected")
     m.overlayRowlist = m.top.findnode("overlayRowlist")
+     if getThumbnailOrientaion() = "PORTRAIT"
+        m.buttonsRowlist.translation=[70,422]
+        m.overlayRowlist.rowItemSize = [[200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300], [200, 300]]
+        m.overlayRowlist.rowHeights = [440, 440]
+        m.overlayRowlist.itemSize = [1860, 588]
+        m.overlayRowlist.translation=[77,520]
+end if
     font = CreateObject("roSGNode", "Font")
     font.uri = "pkg:/fonts/Poppins-Bold.ttf"
     font.size = 24

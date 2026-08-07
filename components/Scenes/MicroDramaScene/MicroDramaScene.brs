@@ -697,8 +697,9 @@ end sub
 sub onbuttonsRowlistItemSelected()
     m.episodesBoxContainer.visible = false
     if m.mainVideoDataList <> invalid and m.episodesBoxRowlist <> invalid and m.episodesBoxRowlist.RowItemSelected <> invalid and m.episodesBoxRowlist.RowItemSelected[1] <> invalid and m.mainVideoDataList.getchild(m.episodesBoxRowlist.RowItemSelected[1]) <> invalid then
-        nodeIndex = m.episodesBoxRowlist.content.getchild(m.episodesBoxRowlist.RowItemSelected[0]).getchild(m.episodesBoxRowlist.RowItemSelected[1]).nodeindex
-        playVideo(m.mainVideoDataList.getchild(nodeIndex))
+        ' nodeIndex = m.episodesBoxRowlist.content.getchild(m.episodesBoxRowlist.RowItemSelected[0]).getchild(m.episodesBoxRowlist.RowItemSelected[1]).nodeindex
+        ' playVideo(m.mainVideoDataList.getchild(nodeIndex))
+            playVideo(m.episodesBoxRowlist.content.getchild(m.episodesBoxRowlist.RowItemSelected[0]).getchild(m.episodesBoxRowlist.RowItemSelected[1]))
     end if
 end sub
 

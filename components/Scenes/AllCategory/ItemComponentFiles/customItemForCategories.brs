@@ -70,8 +70,8 @@ sub itemContentChanged()
         end if
     end if
 
-    if not m.top.itemContent.Title = invalid
-        m.title.text = m.top.itemContent.Title
+    if not m.top.itemContent.show_name = invalid
+        m.title.text = m.top.itemContent.show_name
     end if
 
     if getHide_Title_Under_Movies() = "true"

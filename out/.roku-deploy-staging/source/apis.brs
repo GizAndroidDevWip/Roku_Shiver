@@ -2766,7 +2766,7 @@ function getCatVODContent(CatString as string)
         item.show_id = jsonitem.show_id
         item.itemType = jsonitem.type
         item.STREAMFORMAT = "m3u8"
-        item.URL = jsonitem.show_name
+        item.show_name = jsonitem.show_name
         item.title = jsonitem.show_name
         item.RELEASEDATE = ""
         item.resolution = jsonitem.resolution
