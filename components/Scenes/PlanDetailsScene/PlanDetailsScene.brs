@@ -374,6 +374,16 @@ sub onCancelQRClose()
     setFocusState(1)
 end sub
 
+sub OnDialogAction(_event as object)
+    result = _event.GetData()
+    if result = invalid then return
+  
+    if result.buttonText = getText("close")
+        m.top.goBack = true
+    end if
+end sub
+
+
 function getText(key as string) as string
     strings = getStrings()
     if m.global.language_keywords <> invalid and m.global.language_keywords[key] <> invalid and m.global.language_keywords[key][getLanguageCodeSelected()] <> invalid

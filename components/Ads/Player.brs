@@ -26,8 +26,13 @@ sub controlChanged()
         m.count = 1
         control = m.top.control
         if control = "play" then
-            if getAdRequired() = "false"
-                m.top.skipAd = true
+            ' if getAdRequired() = "false"
+            '     m.top.skipAd = true
+            ' end if
+             if m.top.content<>invalid and m.top.content.ad_url<>invalid and m.top.content.ad_url<>""
+                 m.top.skipAd = false
+            else
+                 m.top.skipAd = true
             end if
             playContent()
         else if control = "stop" then

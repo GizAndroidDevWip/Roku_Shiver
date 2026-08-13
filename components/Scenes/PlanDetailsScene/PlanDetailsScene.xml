@@ -2,6 +2,7 @@
 <component name="PlanDetailsScene" extends="Group" focusable="true">
     <interface>
         <field id="goBack" type="bool" alwaysnotify="true" />
+        <field id="dialogResult" type="assocarray" onChange="OnDialogAction" />
     </interface>
 
     
