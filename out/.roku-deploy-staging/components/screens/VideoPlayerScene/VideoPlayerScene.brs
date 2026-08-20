@@ -402,11 +402,11 @@ sub playVideo()
         m.Player.watched_duration = m.watched_duration 'setting watched_duration
     end if
 
-    if m.skipAd = true
-        m.Player.skipAd = true
-    else
-        m.Player.skipAd = false
-    end if
+    ' if m.skipAd = true
+    '     m.Player.skipAd = true
+    ' else
+    '     m.Player.skipAd = false
+    ' end if
 
     m.Player.control = "play"
     m.Player.observeField("visibility", "onPlayerVisibleChange")
@@ -1218,11 +1218,11 @@ function autoPlayVideo2()' this is the play function for autoplay
     m.Player.setFocus(true)
     m.Player.watched_duration = m.watched_duration 'setting watched_duration
 
-    if m.skipAd = true
-        m.Player.skipAd = true
-    else
-        m.Player.skipAd = false
-    end if
+    ' if m.skipAd = true
+    '     m.Player.skipAd = true
+    ' else
+    '     m.Player.skipAd = false
+    ' end if
     m.Player.control = "play"
     m.Player.observeField("visibility", "onPlayerVisibleChange")
     callAutoplayAPI(macroVideoID)

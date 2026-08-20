@@ -5590,7 +5590,7 @@ function getCurrentCoinBalance() as string
         value = ses.Read("CURRENT_COIN_BALANCE")
         return value
     else
-        return "0"
+        return "false"
     end if
 end function
 

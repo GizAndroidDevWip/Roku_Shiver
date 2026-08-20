@@ -184,9 +184,15 @@ function onKeyEvent(key as string, press as boolean) as boolean
             end if
             return false
         else if key = "OK"
-            if m.SubscribeOverlay.visible = true
+            if m.CoinSubscriptionsList.visible=true
+            if m.CoinSubscriptionsList<>invalid and m.CoinSubscriptionsList.content<>invalid and m.CoinSubscriptionsList.content.getChildCount() > 0 and  m.CoinSubscriptionsList.content.getChild(0)<>invalid and m.CoinSubscriptionsList.content.getChild(0).type<>invalid 
+            if m.CoinSubscriptionsList.content.getChild(0).type="subscription"  'm.SubscribeOverlay.visible = true 
+                m.top.menuButtonSelected="SUBSCRIBE_OVERLAY"
+            else
                 m.top.menuButtonSelected = "BUNDLE_SUBSCRIPTION_OVERLAY"
             end if
+        end if
+        end if
         end if
     else
         if key = "OK"
