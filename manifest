@@ -1,6 +1,6 @@
 title=Shiver
 major_version=1
-minor_version=0
+minor_version=1
 build_version=0
 mm_icon_focus_hd=pkg:/images/logos/BHD LOGO_Face Of APP _540x405.png
 mm_icon_focus_sd=pkg:/images/logos/BHD LOGO_Face Of APP _540x405.png
@@ -11,9 +11,9 @@ splash_screen_hd=pkg:/images/logos/BHD LOGO_Face Of APP_1280x720.png
 splash_screen_sd=pkg:/images/logos/BHD LOGO_Face Of APP_1920X1080.png
 splash_color=#f5f5f5
 splash_min_time=1000
-
 ui_resolutions=fhd,4K
 splash_rsg_optimization=1
 sg_component_libs_required=Roku_Analytics
 supports_input_launch=1
 enable_debug_logging=1
+rsg_version=1.3

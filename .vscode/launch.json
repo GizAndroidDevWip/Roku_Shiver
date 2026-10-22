@@ -8,7 +8,7 @@
             "name": "BrightScript Debug: Launch",
             "type": "brightscript",
             "request": "launch",
-            "host": "192.168.2.79",
+            "host": "192.168.2.115",
             "password": "1234",
             "rootDir": "${workspaceFolder}",
             "injectRdbOnDeviceComponent": true,

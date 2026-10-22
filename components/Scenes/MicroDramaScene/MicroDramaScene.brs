@@ -888,16 +888,19 @@ sub reduceCoinsBalanceAfterPlaying(inputContent)
     selectedSubscriptionIndex = 0
     if m.Player <> invalid
         listNode = m.Player.findNode("CoinSubscriptionsList")
-        if listNode <> invalid and listNode.itemSelected <> invalid
+        ' ?listNode.itemSelected 
+        ?"listNodeitemSelected"
+        if listNode <> invalid and listNode.itemSelected <> invalid and listNode.itemSelected <> -1
             selectedSubscriptionIndex = listNode.itemSelected
         end if
     end if
     m.MicroDramaApiTask.callFunc("stopMicroDramaApiTask")
+    ' if selectedSubscriptionIndex<>-1
     m.MicroDramaApiTask.updateCoinsUsageAssoc = {
         video_id: inputContent.video_id,
         consumption_type: inputContent.subscriptions[selectedSubscriptionIndex].consumption_type }
     m.MicroDramaApiTask.callFunc("runUpdateCoinsUsageApiTask", "")
-
+    ' end if
 
     ' Get current balance
     currentBalanceStr = getCurrentCoinBalance()
